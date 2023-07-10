@@ -10,19 +10,24 @@ import SwiftUI
 struct HomePageView: View {
     
     var user: User
-    
+    @State var selectedIndex = 0
     var body: some View {
         
             
-            TabView {
-               StoreListView()
+            TabView(selection: $selectedIndex) {
+                StoreListView(stores: Store.MOCK_STORES)
+                    .onAppear(perform: {
+                        selectedIndex = 0
+                    })
                     .tabItem {
                         VStack{
                             Image(systemName: "house")
                             Text("Home")
                         }
-                    }
+                    }.tag(0)
+                    
               ApptView()
+                    
                     .tabItem {
                         VStack{
                             Image(systemName: "calendar")
@@ -43,7 +48,7 @@ struct HomePageView: View {
                             Text("History")
                         }
                     }
-            UserProfileView(user: user)
+                UserProfileView(user: user, selectedIndex: $selectedIndex)
                     .tabItem {
                         VStack{
                             Image(systemName: "person")

@@ -9,10 +9,15 @@ import SwiftUI
 
 struct PetProfileView: View {
     var pet: Pet
+    var user: User
+    @Binding var selectedIndex: Int
+    
     var body: some View {
         VStack{
             Spacer()
             Text("Pet Profile")
+                .font(.title2)
+                .bold()
             Image("user4")
                 .resizable()
                 .scaledToFill()
@@ -25,9 +30,26 @@ struct PetProfileView: View {
             }
             
             Spacer()
-            
             Button {
+                //back to homepage
+               selectedIndex = 0
+            } label: {
+                ZStack{
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(width: 350, height: 39)
+                        .foregroundColor(Color(.systemMint))
+                    Text("Book grooming session")
+                        .foregroundColor(.white)
+                        .bold()
+                }
+            }
+            .padding(.bottom, 5)
+            
+            
+            
+            NavigationLink {
                 //show edit view
+                EditPetProfileView()
             } label: {
                 ButtonView(title: "Edit Pet Profile")
             }
@@ -39,6 +61,6 @@ struct PetProfileView: View {
 
 struct PetProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        PetProfileView(pet: Pet.MOCK_PETS[0])
+        PetProfileView(pet: Pet.MOCK_PETS[0], user: User.MOCK_USERS[0], selectedIndex: .constant(0))
     }
 }

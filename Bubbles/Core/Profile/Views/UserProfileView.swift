@@ -9,14 +9,16 @@ import SwiftUI
 import FirebaseFirestoreSwift
 
 struct UserProfileView: View {
-    
+    @EnvironmentObject var viewModel: AddPetViewModel
+    @Binding var selectedIndex: Int
     var user: User
     
     @FirestoreQuery var pets: [Pet]
     
-    init(user: User) {
+    init(user: User, selectedIndex: Binding<Int>) {
         self.user = user
         self._pets = FirestoreQuery(collectionPath: "users/\(user.id)/pets")
+        self._selectedIndex = selectedIndex
     }
     
     var body: some View {
@@ -36,9 +38,6 @@ struct UserProfileView: View {
                     }
                 }
                 
-               
-                
-                
                     Section("Pet") {
                         NavigationLink{
                             // Add pet profileView
@@ -52,10 +51,11 @@ struct UserProfileView: View {
                             .accentColor(.black)
                         }
                         
+                        
                         ForEach(pets){ pet in
                             NavigationLink {
                                 // Pet profile page
-                                PetProfileView(pet: pet)
+                                PetProfileView(pet: pet, user: user, selectedIndex: $selectedIndex )
                             } label: {
                                 VStack(alignment: .leading){
                                     Text(pet.name)
@@ -63,21 +63,21 @@ struct UserProfileView: View {
                                 .font(.title3)
                             }
                         }
-                }
-                
-               
-                Section("Setting") {
-                    NavigationLink {
-                        // edit profile page
-                       
-                    } label: {
-                        VStack{
-                            Text("Edit Profile")
+                    }
+                    
+                    Section("Setting") {
+                        NavigationLink {
+                            // edit profile page
+                            
+                        } label: {
+                            VStack{
+                                Text("Edit Profile")
+                            }
+                            .font(.title3)
                         }
-                        .font(.title3)
                     }
                 }
-            }
+            
                 Button {
                     Task{
                         //need .shared so contentViewModel will know what is going on
@@ -91,13 +91,14 @@ struct UserProfileView: View {
                         .cornerRadius(15)
                         .foregroundColor(.white)
                 }
+                .padding(.bottom,10)
             }
     }
 }
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileView(user: User.MOCK_USERS[0])
+        UserProfileView(user: User.MOCK_USERS[0], selectedIndex: .constant(0))
             .environmentObject(AddPetViewModel())
     }
 }

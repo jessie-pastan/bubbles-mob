@@ -10,7 +10,7 @@ import SwiftUI
 struct RabiesExpirationView: View {
     
     @EnvironmentObject  var viewModel: AddPetViewModel
-    
+   
     var body: some View {
         VStack{
             Spacer()
@@ -26,10 +26,11 @@ struct RabiesExpirationView: View {
             Spacer()
             
             NavigationLink {
-               UploadCertificateView()
+                UploadCertificateView()
             } label: {
                 ButtonView(title: "Next")
             }
+            
             .padding(.bottom, 20)
         }
     }
@@ -38,7 +39,7 @@ struct RabiesExpirationView: View {
 struct RabiesExpirationView_Previews: PreviewProvider {
     static var previews: some View {
         RabiesExpirationView()
-        .environmentObject(AddPetViewModel())
+            .environmentObject(AddPetViewModel())
         
     }
 }

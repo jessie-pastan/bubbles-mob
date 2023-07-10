@@ -42,7 +42,7 @@ struct CompleteBookingView: View {
             } label: {
                 ButtonView(title: "Complete Booking")
             }
-            
+            .padding(.bottom,  80)
         }
         
     }

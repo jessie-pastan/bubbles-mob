@@ -8,25 +8,29 @@
 import SwiftUI
 
 struct StoreListView: View {
+    var stores: [Store]
     @State private var text = ""
     var body: some View {
         NavigationStack{
             ScrollView{
                 LazyVStack{
-                    ForEach(0..<6) { store in
-                        NavigationLink("this is grooming store") {
-                            StoreDetailView(store: Store.MOCK_STORES[0])
+                    ForEach(0..<stores.count, id: \.self) { index in
+                        NavigationLink {
+                            StoreDetailView(store: stores[index])
+                        } label: {
+                            StoreRowView(store: stores[index])
                         }
                     }
                 }
             }
         }
+        
         .searchable(text: $text, prompt: "Search")
     }
 }
 
 struct BusinessListView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreListView()
+        StoreListView(stores: Store.MOCK_STORES)
     }
 }

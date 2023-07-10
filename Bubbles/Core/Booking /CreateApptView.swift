@@ -6,62 +6,62 @@
 //
 
 import SwiftUI
+import FirebaseFirestoreSwift
+import FirebaseAuth
 
 struct CreateApptView: View {
-    @State var selectedService = 1
-    @State var selectedAddOnService = 2
-    @State var selectedGroomer = 1
     
+    @StateObject var viewModel = BookingViewModel()
+    
+    @FirestoreQuery var pets: [Pet]
+    
+    var store: Store
+    
+    init(store: Store){
+        self._pets = FirestoreQuery(collectionPath: "users/\(Auth.auth().currentUser?.uid ?? "")/pets")
+        self.store = store
+    }
     
     var body: some View {
         
         //select service
         NavigationStack{
             Spacer()
+            
             VStack( spacing: 60){
+                Text("Book Grooming for")
+                    .font(.title2)
+                    .bold()
+                Picker("", selection: $viewModel.petName) {
+                    ForEach(pets) { pet in
+                        Text("\(pet.name)").tag("\(pet.name)")
+                        
+                    }
+                    
+                }
+                .padding()
+                .pickerStyle(.menu)
+                
                 Text("Select Service")
                     .font(.title2)
                     .bold()
-                Picker("", selection: $selectedService) {
-                    Text("BasicBath").tag(1)
-                    Text("SpaBath").tag(2)
-                    Text("FullGrooming").tag(3)
+                Picker("", selection: $viewModel.selectedService) {
+                    Text("BasicBath").tag("BasicBath")
+                    Text("SpaBath").tag("SpaBath")
+                    Text("FullGrooming").tag("FullGrooming")
                     
                 }
                 .padding()
                 .pickerStyle(.segmented)
                 
-                Text("Add on Service")
-                    .bold()
-                Picker("", selection: $selectedAddOnService) {
-                    Text("Teeth Brush").tag(1)
-                    Text("Blueberry Facial").tag(2)
-                    Text("Detangle").tag(3)
-                    
-                }
-                .padding()
-                .pickerStyle(.segmented)
-                //select a specific groomer or any availble groomer
-                Text("Select Groomer")
-                    .font(.title2)
-                    .bold()
-                Picker("", selection: $selectedGroomer) {
-                    Text("Lisa").tag(1)
-                    Text("Jenny").tag(2)
-                    Text("Rose").tag(3)
-                    Text("Jisoo").tag(4)
-                    Text("Any Avialable").tag(5)
-                    
-                }
-                .padding()
-                .pickerStyle(.wheel)
+               
                 
-                Spacer()
                 NavigationLink(destination: {
-                    SelectDateView()
+                    SelectGroomerView()
                 }, label: {
                     ButtonView(title: "Next")
                 })
+                .padding(.bottom, 80)
                 
                 
             }
@@ -70,6 +70,7 @@ struct CreateApptView: View {
 }
 struct CreateApptView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateApptView()
+        CreateApptView(store: Store.MOCK_STORES[0])
+            
     }
 }

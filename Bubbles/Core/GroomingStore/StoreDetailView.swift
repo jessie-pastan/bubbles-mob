@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct StoreDetailView: View {
-    let store: Store
+    var store: Store
     @State var createApptShowed = false
+    @State var exploreGroomer = false
     
     var body: some View {
         NavigationStack{
@@ -23,6 +24,7 @@ struct StoreDetailView: View {
                     Image(store.storeImageUrl ?? "")
                         .resizable()
                         .frame(width: 350, height: 250)
+                        .cornerRadius(15)
                     
                     VStack{
                         Text("Service & Prices")
@@ -34,20 +36,35 @@ struct StoreDetailView: View {
                             Text("   $\(item.price)")
                         }.padding(0.1)
                     }
-                    //create booking
+                    
                     Button {
-                        createApptShowed.toggle()
+                        exploreGroomer.toggle()
+                    } label: {
+                        Text("Explore Groomers")
+                            .frame(width: 200, height: 39)
+                            .background(Color(.systemMint))
+                            .foregroundColor(.white)
+                            .cornerRadius(15)
+                            .padding(5)
+                    }
+                    .sheet(isPresented: $exploreGroomer) {
+                        ExploreGroomerView(store: store)
+                    }
+
+                    
+                    
+                    //create booking
+                    NavigationLink {
+                        CreateApptView(store: store)
                     } label: {
                         Text("Book an Appointment")
                             .frame(width: 200, height: 39)
-                            .background(Color(.systemBlue))
+                            .background(Color(.systemCyan))
                             .foregroundColor(.white)
                             .cornerRadius(15)
-                            .padding()
+                            .padding(5)
                     }
-                    .fullScreenCover(isPresented: $createApptShowed) {
-                        CreateApptView()
-                    }
+                    
                     
                     Text("Open: \(store.businessHour)")
                     Text("Location: \(store.address)")

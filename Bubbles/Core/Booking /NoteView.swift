@@ -29,6 +29,8 @@ struct NoteView: View {
                 } label: {
                     ButtonView(title: "Next")
                 }
+                .padding(.bottom, 20)
+                
             }
         }
     }

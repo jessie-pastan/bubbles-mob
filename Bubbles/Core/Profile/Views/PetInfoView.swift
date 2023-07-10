@@ -9,9 +9,8 @@ import SwiftUI
 
 struct PetInfoView: View {
     @EnvironmentObject  var viewModel: AddPetViewModel
+    
     var body: some View {
-        
-        
         NavigationStack{
             Spacer()
             Text("Pet Infomation")
@@ -25,15 +24,14 @@ struct PetInfoView: View {
             } label: {
                 Text("Upload pet image")
             }
-
             
-      
             VStack(alignment: .leading){
                 TextField("Name", text: $viewModel.petName)
                 TextField("Breed", text: $viewModel.petBreed)
                 TextField("Age", text: $viewModel.petAge)
                 TextField("Weight in lbs", text: $viewModel.petWeight)
             }
+            .autocorrectionDisabled()
             .textFieldStyle(.roundedBorder)
             .padding()
             
@@ -80,10 +78,11 @@ struct PetInfoView: View {
             Spacer()
             
             NavigationLink {
-               PetMedicationInfoView()
+                PetMedicationInfoView()
             } label: {
                 ButtonView(title: "Next")
             }
+            .isDetailLink(false)
             .padding(.bottom, 20)
         }
     }

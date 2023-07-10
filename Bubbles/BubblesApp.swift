@@ -26,7 +26,7 @@ struct BubblesApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-            .environmentObject(AddPetViewModel())
+                .environmentObject(AddPetViewModel())
             
         }
     }

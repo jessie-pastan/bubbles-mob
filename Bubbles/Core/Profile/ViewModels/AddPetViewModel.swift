@@ -21,6 +21,11 @@ class AddPetViewModel : ObservableObject {
     @Published var isDog = true
     @Published var isMed = false
     
+    @Published var currentTabSelected: Int?
+    
+    
+   
+    
     func updateData() async throws {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
