@@ -27,6 +27,7 @@ struct BubblesApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(AddPetViewModel())
+                .environmentObject(BookingViewModel())
             
         }
     }

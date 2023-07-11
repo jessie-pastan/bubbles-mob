@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct NoteView: View {
-    @State var note = ""
-
+    
+    @EnvironmentObject var viewModel: BookingViewModel
+    
     var body: some View {
         
         NavigationStack{
@@ -20,7 +21,7 @@ struct NoteView: View {
                     .resizable()
                     .frame(width: 60, height: 60)
                 
-                TextField("Leave a note (Any)", text: $note)
+                TextField("Leave a note (Any)", text: $viewModel.note)
                     .textFieldStyle(.roundedBorder)
                     .padding()
                 Spacer()
@@ -39,5 +40,6 @@ struct NoteView: View {
 struct NoteView_Previews: PreviewProvider {
     static var previews: some View {
         NoteView()
+            .environmentObject(BookingViewModel())
     }
 }

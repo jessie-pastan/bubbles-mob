@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SelectTimeView: View {
-    @State var selectedTime = 1
+    
+    @EnvironmentObject var viewModel: BookingViewModel
     
     var body: some View {
         NavigationStack{
@@ -18,12 +19,12 @@ struct SelectTimeView: View {
                 .font(.title2)
                 .bold()
             
-            Picker("", selection: $selectedTime) {
-                Text("10.00 am").tag(1)
-                Text("11.00 am").tag(2)
-                Text("12.00 am").tag(3)
-                Text("1.00 pm").tag(4)
-                Text("2.00 pm").tag(5)
+            Picker("", selection: $viewModel.selectedTime) {
+                Text("10.00 am").tag("10.00 am")
+                Text("11.00 am").tag("11.00 am")
+                Text("12.00 am").tag("12.00 am")
+                Text("1.00 pm").tag("1.00 pm")
+                Text("2.00 pm").tag("2.00 pm")
                 
             }
             .padding()
@@ -43,5 +44,6 @@ struct SelectTimeView: View {
 struct SelectTimeView_Previews: PreviewProvider {
     static var previews: some View {
         SelectTimeView()
+            .environmentObject(BookingViewModel())
     }
 }

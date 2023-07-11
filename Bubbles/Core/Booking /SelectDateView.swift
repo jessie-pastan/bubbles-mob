@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct SelectDateView: View {
-    @State var date = Date()
     
+    @EnvironmentObject var viewModel : BookingViewModel
     
-
     var body: some View {
         NavigationStack{
         
@@ -21,7 +20,7 @@ struct SelectDateView: View {
                 Text("Select Grooming Date")
                     .font(.title2)
                     .bold()
-                DatePicker("Date", selection: $date, displayedComponents: .date)
+                DatePicker("Date", selection: $viewModel.selectedDate, displayedComponents: .date)
                     .datePickerStyle(.graphical)
                 
               
@@ -42,5 +41,6 @@ struct SelectDateView: View {
 struct SelectDate_Previews: PreviewProvider {
     static var previews: some View {
         SelectDateView()
+            .environmentObject(BookingViewModel())
     }
 }

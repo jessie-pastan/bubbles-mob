@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CompleteBookingView: View {
+    @EnvironmentObject var viewModel: BookingViewModel
+
     var body: some View {
         
         NavigationStack{
@@ -51,5 +53,6 @@ struct CompleteBookingView: View {
 struct CompleteBookingView_Previews: PreviewProvider {
     static var previews: some View {
         CompleteBookingView()
+            .environmentObject(BookingViewModel())
     }
 }

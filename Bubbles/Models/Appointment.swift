@@ -18,11 +18,11 @@ struct Appointment: Codable, Identifiable {
     var time: String
     var note: String?
     var ownerId: String
-    var petId: String
+    var petName: String
 }
 
 extension Appointment {
     static var MOCK_APPOINTMENT  : Appointment {
-        .init(id: NSUUID().uuidString, store: "PuppyPaws", service: "BasicBath", addOnService: "None", groomer: "Lisa", date: Date().timeIntervalSince1970, time: "2.00pm", ownerId: "", petId: "")
+        .init(id: NSUUID().uuidString, store: "PuppyPaws", service: "BasicBath", addOnService: "None", groomer: "Lisa", date: Date().timeIntervalSince1970, time: "2.00pm", ownerId: "123", petName:  "Hachi")
     }
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct StoreDetailView: View {
+    
+   
     var store: Store
     @State var createApptShowed = false
     @State var exploreGroomer = false
@@ -79,5 +81,6 @@ struct StoreDetailView: View {
 struct BusinessDetailView_Previews: PreviewProvider {
     static var previews: some View {
         StoreDetailView(store: Store.MOCK_STORES[0])
+            
     }
 }
