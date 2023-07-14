@@ -11,71 +11,59 @@ struct StoreDetailView: View {
     
    
     var store: Store
-    @State var createApptShowed = false
+   
     @State var exploreGroomer = false
     
     var body: some View {
-        NavigationStack{
-            ScrollView{
-                VStack{
-                    Text(store.name)
-                        .font(.largeTitle)
-                    Text("'\(store.about)'")
-                        .font(.footnote)
-                        .fontWeight(.semibold)
-                    Image(store.storeImageUrl ?? "")
-                        .resizable()
-                        .frame(width: 350, height: 250)
-                        .cornerRadius(15)
-                    
-                    VStack{
-                        Text("Service & Prices")
-                            .font(.title2)
-                            .bold()
-                        
-                        ForEach(store.groomingService) { item in
-                            Text(item.item) + 
-                            Text("   $\(item.price)")
-                        }.padding(0.1)
+        VStack{
+            Text("Service of  \(store.name) ")
+            List(store.groomingService){ service in
+                NavigationLink(value: service){
+                    Text("\(service.item)") +
+                    Text("  $ \(service.price)")
                     }
-                    
-                    Button {
-                        exploreGroomer.toggle()
-                    } label: {
-                        Text("Explore Groomers")
-                            .frame(width: 200, height: 39)
-                            .background(Color(.systemMint))
-                            .foregroundColor(.white)
-                            .cornerRadius(15)
-                            .padding(5)
+                }
+            
+            if let groomers = store.groomer {
+                    Text("Our Groomers")
+                
+                List(groomers) { groomer in
+                    NavigationLink(value: groomer) {
+                        Text(groomer.name)
                     }
-                    .sheet(isPresented: $exploreGroomer) {
-                        ExploreGroomerView(store: store)
-                    }
-
-                    
-                    
-                    //create booking
-                    NavigationLink {
-                        CreateApptView(store: store)
-                    } label: {
-                        Text("Book an Appointment")
-                            .frame(width: 200, height: 39)
-                            .background(Color(.systemCyan))
-                            .foregroundColor(.white)
-                            .cornerRadius(15)
-                            .padding(5)
-                    }
-                    
-                    
-                    Text("Open: \(store.businessHour)")
-                    Text("Location: \(store.address)")
-                    Text("Contact: \(store.phoneNumber)")
-                    
                 }
             }
+            
+            
+            NavigationLink {
+                CreateBookingView(store: store)
+            } label: {
+                Text("Book an appointment")
+                    .frame(width: 200, height: 39)
+                    .background(Color(.systemCyan))
+                    .foregroundColor(.white)
+                    .cornerRadius(15)
+                    .padding(5)
+                
+            }
+
         }
+        .navigationDestination(for: GroomingService.self) { service in
+           GroomingServiceDetailView(service: service)
+        }
+        .navigationDestination(for: Groomer.self) { groomer in
+            GroomersView(groomer: groomer, store: store)
+        }
+       
+        
+        
     }
+        
+        
+        
+
+
+    
 }
 
 struct BusinessDetailView_Previews: PreviewProvider {

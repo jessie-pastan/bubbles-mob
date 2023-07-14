@@ -8,29 +8,48 @@
 import SwiftUI
 
 struct StoreListView: View {
-    var stores: [Store]
+    
+   
+    @EnvironmentObject var root : Router
     @State private var text = ""
     var body: some View {
-        NavigationStack{
+        NavigationStack(path: $root.path ){
             ScrollView{
                 LazyVStack{
-                    ForEach(0..<stores.count, id: \.self) { index in
-                        NavigationLink {
-                            StoreDetailView(store: stores[index])
-                        } label: {
-                            StoreRowView(store: stores[index])
+                    ForEach(Store.MOCK_STORES) { store in
+                        NavigationLink(value: store) {
+                            ZStack{
+                                
+                                StoreRowView(store: store)
+                                
+                                NavigationLink(value: store) {
+                                    Text("Book an appointment")
+                                        .frame(width: 200, height: 39)
+                                        .background(Color(.systemCyan))
+                                        .foregroundColor(.white)
+                                        .cornerRadius(15)
+                                        .padding(5)
+                                    
+                                }
+                               
+                            }
                         }
+                        .accentColor(.black)
                     }
                 }
             }
+            .navigationDestination(for: Store.self) { store in
+                    StoreDetailView(store: store)
+                
+            }
         }
-        
         .searchable(text: $text, prompt: "Search")
     }
 }
 
 struct BusinessListView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreListView(stores: Store.MOCK_STORES)
+        StoreListView()
+            .environmentObject(Router())
     }
 }

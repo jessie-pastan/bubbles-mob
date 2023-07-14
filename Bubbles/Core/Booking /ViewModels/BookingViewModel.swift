@@ -14,14 +14,15 @@ import FirebaseFirestoreSwift
 class BookingViewModel : ObservableObject {
     
     @Published var selectedService = ""
-    @Published var selectedAddOnService = ""
-    @Published var selectedGroomer = ""
+    @Published var selectedAddOnService = "Select Add On"
+    @Published var selectedGroomer = "Select Groomer"
     @Published var selectedDate = Date()
     @Published var selectedTime = ""
     @Published var note = ""
     @Published var store = ""
     @Published var petName = "hachi"
     @Published var petId = ""
+    @Published var groomerId = ""
     
     //init(){
         //self.petId = findSelectedPet(petName: petName)
@@ -30,7 +31,7 @@ class BookingViewModel : ObservableObject {
     
     func updateData() async throws {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        let appt = Appointment(id: NSUUID().uuidString, store: "", service: selectedService, addOnService: selectedAddOnService, groomer: selectedGroomer, date: selectedDate.timeIntervalSince1970, time: selectedTime, ownerId: uid, petName: petName)
+        let appt = Appointment(id: NSUUID().uuidString, store: store, service: selectedService, addOnService: selectedAddOnService, groomer: selectedGroomer, dueDate: selectedDate.timeIntervalSince1970, time: selectedTime, note: note, ownerId: uid, petName: petName, dateCreated: Date().timeIntervalSince1970, isDone: false)
         
         //encode swift object to json
         guard let encodeUser = try? Firestore.Encoder().encode(appt) else { return }
@@ -49,5 +50,9 @@ class BookingViewModel : ObservableObject {
             }
         }
    }
+    
+    func findGroomerId(groomer: Groomer) {
+        
+    }
     
 }

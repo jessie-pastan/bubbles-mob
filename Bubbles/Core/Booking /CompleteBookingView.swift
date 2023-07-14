@@ -23,23 +23,30 @@ struct CompleteBookingView: View {
                 .frame(width: 60, height: 60)
             Spacer()
             VStack(alignment: .leading, spacing: 30){
-                Text("Booking at: PuppyPaws")
-                Text("Service: BasicBath")
+                Text("Booking at: \(viewModel.store)")
+                Text("For:\(viewModel.petName)")
+                Text("Service: \(viewModel.selectedService)")
                 //if any add on service
-                Text("Add on: Teeth Brushing")
-                Text("Groomer: Lisa")
-                Text("Date: 7/10/23")
-                Text("Appiontment Time: 2 pm")
-                Text("Special Request: ......")
+                Text("Add on: \(viewModel.selectedAddOnService)")
+                Text("Groomer: \(viewModel.selectedGroomer)")
+                Text("Date: \(Date(timeIntervalSince1970: viewModel.selectedDate.timeIntervalSince1970).formatted(date: .abbreviated, time: .omitted))")
+                Text("Appiontment Time: \(viewModel.selectedTime)")
+                Text("Special Request: \(viewModel.note)")
+                VStack(alignment: .leading){
                 Text("Grooming duration approximately 3 hrs. ")
-                Text("Edit or Cancel appointment is allowed 24 hrs. prior grooming time:)")
+                Text("Edit or Cancel appointment is allowed 24 hrs. prior grooming day:)")
+                }.font(.footnote)
+                    .bold()
+                
             }
+            .font(.footnote)
             .padding()
             
             
             Spacer()
             Button {
                 //complete booking//save appt to firebase
+                
                 
             } label: {
                 ButtonView(title: "Complete Booking")

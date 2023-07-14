@@ -28,6 +28,7 @@ struct BubblesApp: App {
             ContentView()
                 .environmentObject(AddPetViewModel())
                 .environmentObject(BookingViewModel())
+                .environmentObject(Router())
             
         }
     }

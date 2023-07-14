@@ -10,7 +10,6 @@ import SwiftUI
 struct PetProfileView: View {
     var pet: Pet
     var user: User
-    @Binding var selectedIndex: Int
     
     var body: some View {
         VStack{
@@ -32,7 +31,7 @@ struct PetProfileView: View {
             Spacer()
             Button {
                 //back to homepage
-               selectedIndex = 0
+              
             } label: {
                 ZStack{
                     RoundedRectangle(cornerRadius: 15)
@@ -61,6 +60,6 @@ struct PetProfileView: View {
 
 struct PetProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        PetProfileView(pet: Pet.MOCK_PETS[0], user: User.MOCK_USERS[0], selectedIndex: .constant(0))
+        PetProfileView(pet: Pet.MOCK_PETS[0], user: User.MOCK_USERS[0])
     }
 }

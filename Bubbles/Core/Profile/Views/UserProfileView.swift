@@ -10,15 +10,15 @@ import FirebaseFirestoreSwift
 
 struct UserProfileView: View {
     @EnvironmentObject var viewModel: AddPetViewModel
-    @Binding var selectedIndex: Int
+   
     var user: User
     
     @FirestoreQuery var pets: [Pet]
     
-    init(user: User, selectedIndex: Binding<Int>) {
+    init(user: User) {
         self.user = user
         self._pets = FirestoreQuery(collectionPath: "users/\(user.id)/pets")
-        self._selectedIndex = selectedIndex
+        
     }
     
     var body: some View {
@@ -55,7 +55,7 @@ struct UserProfileView: View {
                         ForEach(pets){ pet in
                             NavigationLink {
                                 // Pet profile page
-                                PetProfileView(pet: pet, user: user, selectedIndex: $selectedIndex )
+                                PetProfileView(pet: pet, user: user )
                             } label: {
                                 VStack(alignment: .leading){
                                     Text(pet.name)
@@ -98,7 +98,7 @@ struct UserProfileView: View {
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileView(user: User.MOCK_USERS[0], selectedIndex: .constant(0))
+        UserProfileView(user: User.MOCK_USERS[0])
             .environmentObject(AddPetViewModel())
     }
 }
