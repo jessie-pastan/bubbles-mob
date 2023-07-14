@@ -13,22 +13,22 @@ struct AppointmentViewRow: View {
         
         VStack(alignment: .leading, spacing: 30){
             Text("Booking at: \(appt.store)")
+                .font(.title3)
+                .bold()
+                .lineLimit(1)
             Text("For: \(appt.petName)")
             Text("Service: \(appt.service)")
             //if any add on service
-            
-            Text("Add on: \(appt.addOnService ?? "None")")
-        
+            Text("Add on: \(appt.addOnService )")
             Text("Groomer: \(appt.groomer)")
             Text("DueDate: \(Date(timeIntervalSince1970: appt.dueDate).formatted(date: .abbreviated, time: .omitted))")
             Text("Appiontment Time: \(appt.time)")
-            Text("Special Request: \(appt.note ?? "")")
+            Text("Special Request: \(appt.note ?? "None")")
             VStack(alignment: .leading){
                 Text("Grooming duration approximately 3 hrs. ")
                 Text("Edit or Cancel appointment is allowed 24 hrs. prior grooming day:)")
             }.font(.footnote)
                 .bold()
-            
         }
     }
 }

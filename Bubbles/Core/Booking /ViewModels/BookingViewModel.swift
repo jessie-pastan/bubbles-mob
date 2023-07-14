@@ -13,14 +13,14 @@ import FirebaseFirestoreSwift
 @MainActor
 class BookingViewModel : ObservableObject {
     
-    @Published var selectedService = ""
+    @Published var selectedService = "Select Service"
     @Published var selectedAddOnService = "Select Add On"
     @Published var selectedGroomer = "Select Groomer"
     @Published var selectedDate = Date()
-    @Published var selectedTime = ""
+    @Published var selectedTime = "Select Time"
     @Published var note = ""
     @Published var store = ""
-    @Published var petName = "hachi"
+    @Published var petName = "Select Pet"
     @Published var petId = ""
     @Published var groomerId = ""
     

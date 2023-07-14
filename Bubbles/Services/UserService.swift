@@ -14,6 +14,11 @@ struct UserService {
         let snapshot = try await Firestore.firestore().collection("users").document(uid).getDocument()
         return try snapshot.data(as: User.self)
     }
+    static func fethUpdatedAppoinmet(uid: String) async throws -> Appointment {
+        let snapshot = try await Firestore.firestore().collection("appointments").document(uid).getDocument()
+        return try snapshot.data(as: Appointment.self)
+    
+    }
     
 }
 

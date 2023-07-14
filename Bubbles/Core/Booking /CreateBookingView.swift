@@ -30,6 +30,7 @@ struct CreateBookingView: View {
                         .bold()
                     Spacer()
                     Picker("", selection: $viewModel.petName) {
+                        Text("Select Pet").tag("Select Pet")
                         ForEach(pets) { pet in
                             Text("\(pet.name)").tag("\(pet.name)")
                         }
@@ -54,7 +55,7 @@ struct CreateBookingView: View {
                         .bold()
                     Spacer()
                     Picker("Select Add On Service", selection: $viewModel.selectedAddOnService) {
-                        Text("Select Add on").tag("Select Add On")
+                        Text("Select Add On").tag("Select Add On")
                         Text("Teeth Brush").tag("Teeth Brush")
                         Text("Nail Trimming").tag("Nail Trimming")
                         Text("Bluberry Facial").tag("Blueburry Facial")
@@ -69,7 +70,7 @@ struct CreateBookingView: View {
                         .font(.callout)
                         .bold()
                     Spacer()
-                    Picker("", selection: $viewModel.selectedTime) {
+                    Picker("", selection: $viewModel.selectedGroomer) {
                         Text("Select Groomer").tag("Select Groomer")
                         Text("Lisa").tag("Lisa")
                         Text("Rose'").tag("Rose'")
@@ -94,6 +95,7 @@ struct CreateBookingView: View {
                         .bold()
                     Spacer()
                     Picker("", selection: $viewModel.selectedTime) {
+                        Text("Select Time").tag("Select Time")
                         Text("10.00 am").tag("10.00 am")
                         Text("11.00 am").tag("11.00 am")
                         Text("12.00 am").tag("12.00 am")

@@ -36,6 +36,7 @@ struct BookingWithGroomerView: View {
                         .bold()
                     Spacer()
                     Picker("", selection: $viewModel.petName) {
+                        Text("Select Pet").tag("Select Pet")
                         ForEach(pets) { pet in
                             Text("\(pet.name)").tag("\(pet.name)")
                         }
@@ -47,6 +48,7 @@ struct BookingWithGroomerView: View {
                         .bold()
                     Spacer()
                     Picker("Select Service", selection: $viewModel.selectedService) {
+                        Text("Select Service").tag("Select Service")
                         Text("BasicBath").tag("BasicBath")
                         Text("SpaBath").tag("SpaBath")
                         Text("FullGrooming").tag("FullGrooming")
@@ -59,6 +61,7 @@ struct BookingWithGroomerView: View {
                         .bold()
                     Spacer()
                     Picker("Select Add On Service", selection: $viewModel.selectedAddOnService) {
+                        Text("Select Add On").tag("Select Add On")
                         Text("Teeth Brush").tag("Teeth Brush")
                         Text("Nail Trimming").tag("Nail Trimming")
                         Text("Bluberry Facial").tag("Blueburry Facial")
@@ -90,6 +93,7 @@ struct BookingWithGroomerView: View {
                         .bold()
                     Spacer()
                     Picker("", selection: $viewModel.selectedTime) {
+                        Text("Select Time").tag("Select Time")
                         Text("10.00 am").tag("10.00 am")
                         Text("11.00 am").tag("11.00 am")
                         Text("12.00 am").tag("12.00 am")
@@ -102,7 +106,7 @@ struct BookingWithGroomerView: View {
                     Text("Leave a note")
                         .font(.callout)
                         .bold()
-                    TextField("(If Any", text: $viewModel.note)
+                    TextField("(If Any)", text: $viewModel.note)
                         .textFieldStyle(.roundedBorder)
                 }
                 
