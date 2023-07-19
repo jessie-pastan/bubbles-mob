@@ -26,6 +26,8 @@ struct Appointment: Codable, Identifiable {
 
 extension Appointment {
     static var MOCK_APPOINTMENT  : Appointment {
-        .init(id: NSUUID().uuidString, store: "PuppyPaws", service: "BasicBath", addOnService: "None", groomer: "Lisa", dueDate: Date().timeIntervalSince1970, time: "2.00pm", ownerId: "123", petName:  "Hachi", dateCreated: Date().timeIntervalSince1970 )
+        .init(id: NSUUID().uuidString, store: "PuppyPaws", service: "BasicBath", addOnService: "None", groomer: "Lisa", dueDate: Date().timeIntervalSince1970, time: "2.00pm", ownerId: "123", petName:  "Hachi", groomerId: "user111", dateCreated: Date().timeIntervalSince1970 )
     }
 }
+
+

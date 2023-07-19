@@ -48,7 +48,7 @@ struct ApptView: View {
             }
         }.onAppear {
             Task{
-               try await  UserService.fethUpdatedAppoinmet(uid: Auth.auth().currentUser?.uid ?? "")
+               try await  UserService.fetchUpdatedAppoinment(uid: Auth.auth().currentUser?.uid ?? "")
             }
         }
     }

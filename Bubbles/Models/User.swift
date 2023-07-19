@@ -24,6 +24,7 @@ struct User: Codable, Identifiable {
     
     //groomer
     var groomingStore: String?
+    var groomingStoreId: String?
     var groomerNote: [GroomerNote]?
     
     //verify if this account is client or groomer

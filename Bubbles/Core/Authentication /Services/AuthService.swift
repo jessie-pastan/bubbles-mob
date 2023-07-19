@@ -28,7 +28,7 @@ class AuthService {
     func fetchCurrentUser() async throws {
         self.userSession = Auth.auth().currentUser
         guard let uid = self.userSession?.uid else { return }
-        self.currentUser =  try await UserService.fethUserData(uid: uid)
+        self.currentUser =  try await UserService.fetchUserData(uid: uid)
         
     }
     

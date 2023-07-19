@@ -31,7 +31,18 @@ class BookingViewModel : ObservableObject {
     
     func updateData() async throws {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        let appt = Appointment(id: NSUUID().uuidString, store: store, service: selectedService, addOnService: selectedAddOnService, groomer: selectedGroomer, dueDate: selectedDate.timeIntervalSince1970, time: selectedTime, note: note, ownerId: uid, petName: petName, dateCreated: Date().timeIntervalSince1970, isDone: false)
+        let appt = Appointment(id: NSUUID().uuidString,
+                               store: store,
+                               service: selectedService,
+                               addOnService: selectedAddOnService,
+                               groomer: selectedGroomer,
+                               dueDate: selectedDate.timeIntervalSince1970,
+                               time: selectedTime,
+                               note: note,
+                               ownerId: uid,
+                               petName: petName,
+                               dateCreated: Date().timeIntervalSince1970,
+                               isDone: false)
         
         //encode swift object to json
         guard let encodeUser = try? Firestore.Encoder().encode(appt) else { return }
@@ -52,7 +63,7 @@ class BookingViewModel : ObservableObject {
    }
     
     func findGroomerId(groomer: Groomer) {
-        
+        //let groomerId = groomer.id
     }
     
 }

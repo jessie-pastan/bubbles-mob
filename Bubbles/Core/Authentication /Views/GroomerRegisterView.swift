@@ -9,8 +9,7 @@ import SwiftUI
 
 struct GroomerRegisterView: View {
     
-    @StateObject var viewModel =  GroomerRegisterViewModel()
-    
+    @StateObject var viewModel = GroomerRegisterViewModel()
     
     var body: some View {
         NavigationStack{
@@ -24,18 +23,36 @@ struct GroomerRegisterView: View {
                 TextField("Email", text: $viewModel.email)
                 SecureField("Password at least 6 Characters", text: $viewModel.password)
                 TextField("Phone Number xxx-xxx-xxxx", text: $viewModel.phoneNumber)
-                TextField("Your Grooming Store", text: $viewModel.groomingStore)
-                
                 
             }
             .autocapitalization(.none)
             .textFieldStyle(.roundedBorder)
             .padding()
+            
+            HStack{
+                Text("Grooming Store: ")
+                Spacer()
+                if let stores = viewModel.groomingStoresList {
+                    Picker("", selection: $viewModel.groomingStoreId) {
+                        ForEach(stores) { store in
+                            Text(store.name).tag(store.id)
+                        }
+                    }
+                    
+                } else {
+                    Text("Stores is empty")
+                }
+            }.padding(.horizontal)
+            
+            
+            
+           
+            
             Spacer()
 
             Button {
                 Task{
-                    try await viewModel.registerUser()
+                    try await viewModel.registerGroomer()
                 }
             } label: {
                 ButtonView(title: "Register Account")

@@ -42,6 +42,13 @@
 		8387EB1C2A58D1ED00CDA143 /* GroomerRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387EB1B2A58D1ED00CDA143 /* GroomerRegisterView.swift */; };
 		8387EB1E2A58E13F00CDA143 /* AddPetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387EB1D2A58E13F00CDA143 /* AddPetViewModel.swift */; };
 		8387EB222A58ECC000CDA143 /* RadioButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387EB212A58ECC000CDA143 /* RadioButtonView.swift */; };
+		83D3DBD62A638F7600A43A3C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3DBD52A638F7600A43A3C /* Notification.swift */; };
+		83D3DBD92A63963200A43A3C /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3DBD82A63963200A43A3C /* NotificationViewModel.swift */; };
+		83D3DBDC2A64C1AB00A43A3C /* GroomerScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3DBDB2A64C1AB00A43A3C /* GroomerScheduleView.swift */; };
+		83D3DBDE2A64C75A00A43A3C /* ScheduleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3DBDD2A64C75A00A43A3C /* ScheduleDetailView.swift */; };
+		83D3DBE42A64E0BA00A43A3C /* GroomerScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3DBE32A64E0BA00A43A3C /* GroomerScheduleViewModel.swift */; };
+		83D3DBE72A662A0200A43A3C /* SelectedDateAndTimeSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3DBE62A662A0200A43A3C /* SelectedDateAndTimeSlot.swift */; };
+		83D3DBE92A66FBA800A43A3C /* TestSlotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3DBE82A66FBA800A43A3C /* TestSlotViewModel.swift */; };
 		83DBA91F2A55EA1800D3FF7D /* BubblesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBA91E2A55EA1800D3FF7D /* BubblesApp.swift */; };
 		83DBA9232A55EA1B00D3FF7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83DBA9222A55EA1B00D3FF7D /* Assets.xcassets */; };
 		83DBA9262A55EA1B00D3FF7D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83DBA9252A55EA1B00D3FF7D /* Preview Assets.xcassets */; };
@@ -59,7 +66,7 @@
 		83DBA9522A562E0E00D3FF7D /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBA9512A562E0E00D3FF7D /* Price.swift */; };
 		83E6FA932A5C8C1100732F90 /* BookingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FA922A5C8C1100732F90 /* BookingViewModel.swift */; };
 		83E6FA962A5CA10400732F90 /* Groomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FA952A5CA10400732F90 /* Groomer.swift */; };
-		83E6FA9A2A5CFF1A00732F90 /* Rewindkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FA992A5CFF1A00732F90 /* Rewindkey.swift */; };
+		83E6FA9A2A5CFF1A00732F90 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FA992A5CFF1A00732F90 /* Constants.swift */; };
 		83E6FA9C2A5D083C00732F90 /* Test2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FA9B2A5D083C00732F90 /* Test2.swift */; };
 		83E6FA9F2A5DD65200732F90 /* View1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FA9E2A5DD65200732F90 /* View1.swift */; };
 		83E6FAA12A5DD6C500732F90 /* TestTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FAA02A5DD6C500732F90 /* TestTabView.swift */; };
@@ -110,6 +117,13 @@
 		8387EB1B2A58D1ED00CDA143 /* GroomerRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomerRegisterView.swift; sourceTree = "<group>"; };
 		8387EB1D2A58E13F00CDA143 /* AddPetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetViewModel.swift; sourceTree = "<group>"; };
 		8387EB212A58ECC000CDA143 /* RadioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
+		83D3DBD52A638F7600A43A3C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		83D3DBD82A63963200A43A3C /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		83D3DBDB2A64C1AB00A43A3C /* GroomerScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomerScheduleView.swift; sourceTree = "<group>"; };
+		83D3DBDD2A64C75A00A43A3C /* ScheduleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailView.swift; sourceTree = "<group>"; };
+		83D3DBE32A64E0BA00A43A3C /* GroomerScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomerScheduleViewModel.swift; sourceTree = "<group>"; };
+		83D3DBE62A662A0200A43A3C /* SelectedDateAndTimeSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateAndTimeSlot.swift; sourceTree = "<group>"; };
+		83D3DBE82A66FBA800A43A3C /* TestSlotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSlotViewModel.swift; sourceTree = "<group>"; };
 		83DBA91B2A55EA1800D3FF7D /* Bubbles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bubbles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83DBA91E2A55EA1800D3FF7D /* BubblesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblesApp.swift; sourceTree = "<group>"; };
 		83DBA9222A55EA1B00D3FF7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -129,7 +143,7 @@
 		83DBA9512A562E0E00D3FF7D /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		83E6FA922A5C8C1100732F90 /* BookingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewModel.swift; sourceTree = "<group>"; };
 		83E6FA952A5CA10400732F90 /* Groomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groomer.swift; sourceTree = "<group>"; };
-		83E6FA992A5CFF1A00732F90 /* Rewindkey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rewindkey.swift; sourceTree = "<group>"; };
+		83E6FA992A5CFF1A00732F90 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		83E6FA9B2A5D083C00732F90 /* Test2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2.swift; sourceTree = "<group>"; };
 		83E6FA9E2A5DD65200732F90 /* View1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View1.swift; sourceTree = "<group>"; };
 		83E6FAA02A5DD6C500732F90 /* TestTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabView.swift; sourceTree = "<group>"; };
@@ -228,6 +242,16 @@
 				83DBA9332A55EB3500D3FF7D /* GroomerProfileView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		83D3DBDA2A64C10000A43A3C /* GroomerSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				83D3DBDB2A64C1AB00A43A3C /* GroomerScheduleView.swift */,
+				83D3DBDD2A64C75A00A43A3C /* ScheduleDetailView.swift */,
+				83D3DBE32A64E0BA00A43A3C /* GroomerScheduleViewModel.swift */,
+			);
+			path = GroomerSchedule;
 			sourceTree = "<group>";
 		};
 		83DBA9122A55EA1800D3FF7D = {
@@ -337,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				83DBA9432A55EFDF00D3FF7D /* NotificationView.swift */,
+				83D3DBD82A63963200A43A3C /* NotificationViewModel.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -361,14 +386,15 @@
 			isa = PBXGroup;
 			children = (
 				83DBA92D2A55EA4600D3FF7D /* Authentication  */,
-				83DBA92F2A55EA7500D3FF7D /* Search  */,
-				83DBA9482A55F57100D3FF7D /* Tabbar */,
-				83DBA9302A55EAD100D3FF7D /* Root */,
+				83DBA9392A55EBE200D3FF7D /* Booking  */,
+				83D3DBDA2A64C10000A43A3C /* GroomerSchedule */,
+				83DBA92E2A55EA5200D3FF7D /* GroomingStore */,
 				83DBA9422A55EFA800D3FF7D /* Notifications */,
 				83DBA92C2A55EA3700D3FF7D /* Profile */,
+				83DBA9302A55EAD100D3FF7D /* Root */,
+				83DBA92F2A55EA7500D3FF7D /* Search  */,
+				83DBA9482A55F57100D3FF7D /* Tabbar */,
 				83DBA9452A55F13F00D3FF7D /* History */,
-				83DBA92E2A55EA5200D3FF7D /* GroomingStore */,
-				83DBA9392A55EBE200D3FF7D /* Booking  */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -379,10 +405,12 @@
 				8387EADB2A563D0900CDA143 /* Appointment.swift */,
 				83E6FA952A5CA10400732F90 /* Groomer.swift */,
 				8387EAE82A566E3600CDA143 /* GroomerNote.swift */,
+				83D3DBD52A638F7600A43A3C /* Notification.swift */,
 				8387EB172A58850F00CDA143 /* Pet.swift */,
 				83DBA9512A562E0E00D3FF7D /* Price.swift */,
-				83DBA94D2A56131E00D3FF7D /* Store.swift */,
 				8387EAEA2A571A8C00CDA143 /* User.swift */,
+				83DBA94D2A56131E00D3FF7D /* Store.swift */,
+				83D3DBE62A662A0200A43A3C /* SelectedDateAndTimeSlot.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -406,7 +434,7 @@
 		83E6FA982A5CFEE500732F90 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				83E6FA992A5CFF1A00732F90 /* Rewindkey.swift */,
+				83E6FA992A5CFF1A00732F90 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -417,6 +445,7 @@
 				83E6FAA62A5F390F00732F90 /* TestViewModel.swift */,
 				83E6FA9B2A5D083C00732F90 /* Test2.swift */,
 				831D3BA32A5A6F66007BFAB5 /* Test.swift */,
+				83D3DBE82A66FBA800A43A3C /* TestSlotViewModel.swift */,
 				83E6FAA02A5DD6C500732F90 /* TestTabView.swift */,
 				83E6FA9E2A5DD65200732F90 /* View1.swift */,
 				83E6FAA22A5DD73400732F90 /* View2.swift */,
@@ -517,9 +546,12 @@
 				8387EB072A57995800CDA143 /* UserService.swift in Sources */,
 				83E6FAB02A5F584C00732F90 /* Profile.swift in Sources */,
 				83DBA93B2A55EC4800D3FF7D /* ApptView.swift in Sources */,
+				83D3DBDC2A64C1AB00A43A3C /* GroomerScheduleView.swift in Sources */,
 				8387EAF22A57427E00CDA143 /* AuthService.swift in Sources */,
+				83D3DBDE2A64C75A00A43A3C /* ScheduleDetailView.swift in Sources */,
 				8387EB1C2A58D1ED00CDA143 /* GroomerRegisterView.swift in Sources */,
 				831D3B9C2A5A2187007BFAB5 /* EditPetProfileView.swift in Sources */,
+				83D3DBE92A66FBA800A43A3C /* TestSlotViewModel.swift in Sources */,
 				83DBA9522A562E0E00D3FF7D /* Price.swift in Sources */,
 				83DBA9382A55EB7200D3FF7D /* StoreDetailView.swift in Sources */,
 				8387EB222A58ECC000CDA143 /* RadioButtonView.swift in Sources */,
@@ -533,7 +565,7 @@
 				8387EADC2A563D0900CDA143 /* Appointment.swift in Sources */,
 				831D3BA42A5A6F66007BFAB5 /* Test.swift in Sources */,
 				83E6FAAE2A5F54B400732F90 /* SuccessView.swift in Sources */,
-				83E6FA9A2A5CFF1A00732F90 /* Rewindkey.swift in Sources */,
+				83E6FA9A2A5CFF1A00732F90 /* Constants.swift in Sources */,
 				8387EAE92A566E3600CDA143 /* GroomerNote.swift in Sources */,
 				8387EAE32A564E4600CDA143 /* ButtonView.swift in Sources */,
 				83DBA9472A55F17200D3FF7D /* GroomingHistoryView.swift in Sources */,
@@ -550,8 +582,11 @@
 				83E6FA9F2A5DD65200732F90 /* View1.swift in Sources */,
 				8387EB1A2A58D13000CDA143 /* GroomerRegisterViewModel.swift in Sources */,
 				83DBA93F2A55EC7000D3FF7D /* EditBookingView.swift in Sources */,
+				83D3DBE42A64E0BA00A43A3C /* GroomerScheduleViewModel.swift in Sources */,
+				83D3DBD62A638F7600A43A3C /* Notification.swift in Sources */,
 				83DBA9362A55EB5800D3FF7D /* StoreListView.swift in Sources */,
 				8387EB122A57D15400CDA143 /* ChooseRegisterView.swift in Sources */,
+				83D3DBD92A63963200A43A3C /* NotificationViewModel.swift in Sources */,
 				831D3BA02A5A4D2E007BFAB5 /* ExploreGroomerView.swift in Sources */,
 				83E6FAA32A5DD73400732F90 /* View2.swift in Sources */,
 				83E6FAB62A5F717C00732F90 /* GroomingServiceDetailView.swift in Sources */,
@@ -563,6 +598,7 @@
 				83DBA94E2A56131E00D3FF7D /* Store.swift in Sources */,
 				8387EB0D2A57A0C300CDA143 /* ContentViewModel.swift in Sources */,
 				831D3B9A2A59FDEB007BFAB5 /* CompletedPetProfileView.swift in Sources */,
+				83D3DBE72A662A0200A43A3C /* SelectedDateAndTimeSlot.swift in Sources */,
 				83E6FAA52A5DF41400732F90 /* View3.swift in Sources */,
 				83E6FABC2A5F86D200732F90 /* SuccessBookingView.swift in Sources */,
 				83E6FAA12A5DD6C500732F90 /* TestTabView.swift in Sources */,

@@ -16,7 +16,7 @@ struct View2: View {
             VStack{
                 Text("View2")
                 Text("Service of  \(store.name) ")
-                List(store.groomingService){ service in
+                List(store.groomingService ?? GroomingService.MOCK_GROOMIMGSERVICE){ service in
                     NavigationLink(value: service){
                         Text("\(service.item)") +
                         Text("  $ \(service.price)")

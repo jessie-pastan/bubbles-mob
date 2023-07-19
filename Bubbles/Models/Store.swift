@@ -19,8 +19,8 @@ struct Store: Codable, Identifiable, Hashable {
     var about: String
     var rating: Double
     var liked: Bool
-    //these [] make this struct not conform to Equatable
-    var groomingService: [GroomingService]
+    //make sure  these conform to codable as well
+    var groomingService: [GroomingService]?
     var groomer: [Groomer]?
     
 }
