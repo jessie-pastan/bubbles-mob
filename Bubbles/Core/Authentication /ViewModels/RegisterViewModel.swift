@@ -16,7 +16,7 @@ class RegisterViewModel: ObservableObject {
     
     
     func registerUser() async throws {
-        try await AuthService.shared.createUser(email: email, password: password, userName: userName, phoneNumber: phoneNumber, isGroomer: isGroomer, groomingStore: "")
+        try await AuthService.shared.createUser(email: email, password: password, userName: userName, phoneNumber: phoneNumber, isGroomer: isGroomer, groomingStoreId: "none")
     }
     
     

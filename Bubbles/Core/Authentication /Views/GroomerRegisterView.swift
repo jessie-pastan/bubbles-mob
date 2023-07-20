@@ -10,6 +10,7 @@ import SwiftUI
 struct GroomerRegisterView: View {
     
     @StateObject var viewModel = GroomerRegisterViewModel()
+   
     
     var body: some View {
         NavigationStack{
@@ -32,21 +33,18 @@ struct GroomerRegisterView: View {
             HStack{
                 Text("Grooming Store: ")
                 Spacer()
-                if let stores = viewModel.groomingStoresList {
-                    Picker("", selection: $viewModel.groomingStoreId) {
-                        ForEach(stores) { store in
-                            Text(store.name).tag(store.id)
-                        }
+                Picker("Select Store", selection: $viewModel.groomingStoreId) {
+                    ForEach(viewModel.groomingStoresList) { store in
+                        Text(store.name).tag(store.id)
                     }
-                    
-                } else {
-                    Text("Stores is empty")
                 }
+                        
+                 
+                    
+                
             }.padding(.horizontal)
             
             
-            
-           
             
             Spacer()
 
@@ -58,8 +56,6 @@ struct GroomerRegisterView: View {
                 ButtonView(title: "Register Account")
             }
             .padding(.bottom, 20)
-
-
         }
     }
 }

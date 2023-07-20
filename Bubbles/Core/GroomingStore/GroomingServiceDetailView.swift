@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GroomingServiceDetailView: View {
+    
         var service: GroomingService
         
         var body: some View {

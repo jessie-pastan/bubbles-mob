@@ -84,6 +84,7 @@
 		83E6FABA2A5F7F9600732F90 /* CreateBookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FAB92A5F7F9600732F90 /* CreateBookingView.swift */; };
 		83E6FABC2A5F86D200732F90 /* SuccessBookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FABB2A5F86D200732F90 /* SuccessBookingView.swift */; };
 		83E6FABE2A60C4AF00732F90 /* AppointmentViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FABD2A60C4AF00732F90 /* AppointmentViewRow.swift */; };
+		83EF3E012A6881E4001AD56F /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF3E002A6881E4001AD56F /* StoreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -161,6 +162,7 @@
 		83E6FAB92A5F7F9600732F90 /* CreateBookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBookingView.swift; sourceTree = "<group>"; };
 		83E6FABB2A5F86D200732F90 /* SuccessBookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessBookingView.swift; sourceTree = "<group>"; };
 		83E6FABD2A60C4AF00732F90 /* AppointmentViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentViewRow.swift; sourceTree = "<group>"; };
+		83EF3E002A6881E4001AD56F /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -419,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				8387EB062A57995800CDA143 /* UserService.swift */,
+				83EF3E002A6881E4001AD56F /* StoreManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				83DBA94E2A56131E00D3FF7D /* Store.swift in Sources */,
 				8387EB0D2A57A0C300CDA143 /* ContentViewModel.swift in Sources */,
 				831D3B9A2A59FDEB007BFAB5 /* CompletedPetProfileView.swift in Sources */,
+				83EF3E012A6881E4001AD56F /* StoreManager.swift in Sources */,
 				83D3DBE72A662A0200A43A3C /* SelectedDateAndTimeSlot.swift in Sources */,
 				83E6FAA52A5DF41400732F90 /* View3.swift in Sources */,
 				83E6FABC2A5F86D200732F90 /* SuccessBookingView.swift in Sources */,

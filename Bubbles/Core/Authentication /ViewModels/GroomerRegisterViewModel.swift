@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
-@MainActor
+
 class GroomerRegisterViewModel: ObservableObject {
     
     @Published var userName = ""
@@ -17,24 +17,23 @@ class GroomerRegisterViewModel: ObservableObject {
     @Published var email = ""
     @Published var phoneNumber = ""
     @Published var isGroomer = true
-    @Published var groomingStore = ""
     @Published var groomingStoreId = ""
     @Published var groomingStoresList = [Store]()
     
-    //init()  {
-        //Task {
-            //self.groomingStoresList = try await UserService.fetchAllStores()
-        //}
-   // }
-    
-  
+    init()  {
+        Task {
+            self.groomingStoresList = try await UserService.fetchAllStores()
+        }
+   }
     
     func registerGroomer() async throws {
-        
-        try await AuthService.shared.createUser(email: email, password: password, userName: userName, phoneNumber: phoneNumber, isGroomer: isGroomer, groomingStore: groomingStore)
+       
+        try await AuthService.shared.createUser(email: email, password: password, userName: userName, phoneNumber: phoneNumber, isGroomer: isGroomer, groomingStoreId: groomingStoreId)
         try await createTimeslot()
        
     }
+    
+  
     
    private func createTimeslot() async throws {
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -69,9 +68,6 @@ class GroomerRegisterViewModel: ObservableObject {
         }
     }
     
-    private func addGroomerToStore() async throws {
-        
-        
-    }
+    
     
 }

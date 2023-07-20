@@ -14,7 +14,7 @@ struct StoreRowView: View {
         
         VStack{
             
-            Image(store.storeImageUrl ?? "")
+            Image(store.storeImageUrl ?? "shop2")
                 .resizable()
                 .frame(width: 350, height: 250)
             

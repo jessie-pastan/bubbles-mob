@@ -17,9 +17,9 @@ struct BookingWithGroomerView: View {
     @State var showSuccess = false
     
     var store: Store
-    var groomer:  Groomer
+    var groomer: User
     
-    init(store: Store,groomer: Groomer){
+    init(store: Store, groomer: User){
         self._pets = FirestoreQuery(collectionPath: "users/\(Auth.auth().currentUser?.uid ?? "")/pets")
         self.store = store
         self.groomer = groomer
@@ -76,7 +76,7 @@ struct BookingWithGroomerView: View {
                         .font(.callout)
                         .bold()
                     Spacer()
-                    Text(groomer.name)
+                    Text(groomer.userName)
                 }
             
                 HStack{
@@ -119,7 +119,7 @@ struct BookingWithGroomerView: View {
                     
                     showSuccess.toggle()
                     viewModel.store = store.name
-                    viewModel.selectedGroomer = groomer.name
+                    viewModel.selectedGroomer = groomer.userName
                     print(viewModel.store)
                     print(viewModel.selectedGroomer)
                     // update petId
@@ -148,7 +148,7 @@ struct BookingWithGroomerView: View {
 
 struct BookingWithGroomerView_Previews: PreviewProvider {
     static var previews: some View {
-        BookingWithGroomerView(store: Store.MOCK_STORES[0], groomer: Groomer.groomers[0])
+        BookingWithGroomerView(store: Store.MOCK_STORES[0], groomer: User.MOCK_USERS[0])
             .environmentObject(BookingViewModel())
     }
 }

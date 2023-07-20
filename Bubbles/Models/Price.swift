@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GroomingService: Codable, Identifiable,Hashable {
+struct GroomingService: Codable, Identifiable, Hashable {
     let id: String
     var item: String
     var price: Int

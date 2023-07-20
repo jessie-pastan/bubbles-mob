@@ -48,14 +48,14 @@ class AuthService {
     
     
     
-    func createUser(email: String, password: String, userName: String, phoneNumber: String, isGroomer: Bool, groomingStore: String?) async throws {
+    func createUser(email: String, password: String, userName: String, phoneNumber: String, isGroomer: Bool, groomingStoreId: String) async throws {
         do {
             //crate user in Auth
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             print("DEBUG: Did create user")
             self.userSession = result.user
             // upload user in firestore
-            await uploadUserData(uid: result.user.uid, email: email, userName: userName, phoneNumber: phoneNumber, isGroomer: isGroomer, groomingStore: groomingStore ?? "")
+            await uploadUserData(uid: result.user.uid, email: email, userName: userName, phoneNumber: phoneNumber, isGroomer: isGroomer, groomingStoreId: groomingStoreId )
             print("DEBUG: Did upload user data")
         }catch{
             print("DEBUG: Failed to register user with error \(error.localizedDescription)")
@@ -63,8 +63,8 @@ class AuthService {
     }
     
     
-    private func uploadUserData(uid: String, email: String, userName: String, phoneNumber: String, isGroomer: Bool,groomingStore: String?) async {
-       let user = User(id: uid, email: email, userName: userName, phoneNumber: phoneNumber, isGroomer: isGroomer )
+     func uploadUserData(uid: String, email: String, userName: String, phoneNumber: String, isGroomer: Bool, groomingStoreId: String) async {
+        let user = User(id: uid, email: email, userName: userName, phoneNumber: phoneNumber, groomingStoreId: groomingStoreId, isGroomer: isGroomer )
        self.currentUser = user
        //encode swift object to json
        guard let encodeUser = try? Firestore.Encoder().encode(user) else { return }
@@ -72,7 +72,7 @@ class AuthService {
        try? await Firestore.firestore().collection("users").document(uid).setData(encodeUser)
        
     }
-    
+
     
     func logOut() async throws {
         do {

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct GroomerNote: Codable, Identifiable {
+struct GroomerNote: Codable, Identifiable, Hashable {
     let id: String
     var date: TimeInterval
     var groomer: String

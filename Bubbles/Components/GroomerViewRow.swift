@@ -15,7 +15,7 @@ struct GroomerViewRow: View {
     var body: some View {
         
         VStack {
-            Image(imageUrl)
+            Image("shop4")
                 .resizable()
                 .frame(width: 100, height: 100)
                 .cornerRadius(15)

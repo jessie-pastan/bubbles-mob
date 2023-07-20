@@ -9,14 +9,14 @@ import SwiftUI
 
 struct StoreListView: View {
     
-   
+    @StateObject var viewModel = StoreManager()
     @EnvironmentObject var root : Router
     @State private var text = ""
     var body: some View {
         NavigationStack(path: $root.path ){
             ScrollView{
                 LazyVStack{
-                    ForEach(Store.MOCK_STORES) { store in
+                    ForEach(viewModel.stores) { store in
                         NavigationLink(value: store) {
                             ZStack{
                                 
@@ -39,7 +39,7 @@ struct StoreListView: View {
                 }
             }
             .navigationDestination(for: Store.self) { store in
-                    StoreDetailView(store: store)
+                StoreDetailView(store: store)
                 
             }
         }

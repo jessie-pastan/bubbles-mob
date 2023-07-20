@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Appointment: Codable, Identifiable {
+struct Appointment: Codable, Identifiable, Hashable {
     
     let id: String
     var store: String

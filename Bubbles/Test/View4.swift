@@ -14,7 +14,7 @@ struct View4: View {
         
         VStack{
             Text(groomer.name)
-            Text(groomer.bio)
+            Text(groomer.bio ?? "")
             NavigationLink {
                 //booking
                 BookingView(groomer: groomer)

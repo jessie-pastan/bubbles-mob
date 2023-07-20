@@ -6,34 +6,37 @@
 //
 
 import SwiftUI
+import FirebaseFirestoreSwift
 
 struct StoreDetailView: View {
     
-   
+    @StateObject var viewModel = StoreManager()
+    
     var store: Store
    
-    @State var exploreGroomer = false
+    @FirestoreQuery var services: [GroomingService]
+    init(store: Store) {
+        self.store = store
+        self._services = FirestoreQuery(collectionPath: "stores/\(store.id)/groomingServices")
+    }
     
     var body: some View {
         VStack{
             Text("Service of  \(store.name) ")
-            List(store.groomingService ?? GroomingService.MOCK_GROOMIMGSERVICE){ service in
+            List( services ){ service in
                 NavigationLink(value: service){
                     Text("\(service.item)") +
                     Text("  $ \(service.price)")
                     }
                 }
             
-            if let groomers = store.groomer {
-                    Text("Our Groomers")
-                
-                List(groomers) { groomer in
+            
+                Text("Our Groomers")
+                List(viewModel.groomers) { groomer in
                     NavigationLink(value: groomer) {
-                        Text(groomer.name)
+                        Text(groomer.userName)
                     }
                 }
-            }
-            
             
             NavigationLink {
                 CreateBookingView(store: store)
@@ -51,19 +54,16 @@ struct StoreDetailView: View {
         .navigationDestination(for: GroomingService.self) { service in
            GroomingServiceDetailView(service: service)
         }
-        .navigationDestination(for: Groomer.self) { groomer in
+        .navigationDestination(for: User.self) { groomer in
             GroomersView(groomer: groomer, store: store)
         }
-       
-        
-        
+        .onAppear {
+            Task{
+                try await viewModel.queryGroomers(storeId: store.id)
+            }
+        }
     }
         
-        
-        
-
-
-    
 }
 
 struct BusinessDetailView_Previews: PreviewProvider {
