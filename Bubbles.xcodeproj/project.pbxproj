@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8303091C2A6B693C001E5F7A /* FetchSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8303091B2A6B693C001E5F7A /* FetchSchedule.swift */; };
 		831D3B962A59BCEE007BFAB5 /* RabiesExpirationView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D3B952A59BCEE007BFAB5 /* RabiesExpirationView .swift */; };
 		831D3B982A59BE1E007BFAB5 /* UploadCertificateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D3B972A59BE1E007BFAB5 /* UploadCertificateView.swift */; };
 		831D3B9A2A59FDEB007BFAB5 /* CompletedPetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D3B992A59FDEB007BFAB5 /* CompletedPetProfileView.swift */; };
@@ -85,9 +86,12 @@
 		83E6FABC2A5F86D200732F90 /* SuccessBookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FABB2A5F86D200732F90 /* SuccessBookingView.swift */; };
 		83E6FABE2A60C4AF00732F90 /* AppointmentViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FABD2A60C4AF00732F90 /* AppointmentViewRow.swift */; };
 		83EF3E012A6881E4001AD56F /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF3E002A6881E4001AD56F /* StoreManager.swift */; };
+		83EF3E032A69DD17001AD56F /* CreateBookingView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF3E022A69DD17001AD56F /* CreateBookingView2.swift */; };
+		83EF3E062A6A0ED9001AD56F /* ScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF3E052A6A0ED9001AD56F /* ScheduleManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8303091B2A6B693C001E5F7A /* FetchSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSchedule.swift; sourceTree = "<group>"; };
 		831D3B952A59BCEE007BFAB5 /* RabiesExpirationView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RabiesExpirationView .swift"; sourceTree = "<group>"; };
 		831D3B972A59BE1E007BFAB5 /* UploadCertificateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadCertificateView.swift; sourceTree = "<group>"; };
 		831D3B992A59FDEB007BFAB5 /* CompletedPetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedPetProfileView.swift; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 		83E6FABB2A5F86D200732F90 /* SuccessBookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessBookingView.swift; sourceTree = "<group>"; };
 		83E6FABD2A60C4AF00732F90 /* AppointmentViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentViewRow.swift; sourceTree = "<group>"; };
 		83EF3E002A6881E4001AD56F /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		83EF3E022A69DD17001AD56F /* CreateBookingView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBookingView2.swift; sourceTree = "<group>"; };
+		83EF3E052A6A0ED9001AD56F /* ScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,6 +357,7 @@
 				83DBA93A2A55EC4800D3FF7D /* ApptView.swift */,
 				83E6FAB72A5F726E00732F90 /* BookingWithGroomerView.swift */,
 				83E6FAB92A5F7F9600732F90 /* CreateBookingView.swift */,
+				83EF3E022A69DD17001AD56F /* CreateBookingView2.swift */,
 				83E6FABB2A5F86D200732F90 /* SuccessBookingView.swift */,
 				8387EADF2A564B2F00CDA143 /* CompleteBookingView.swift */,
 				83DBA93E2A55EC7000D3FF7D /* EditBookingView.swift */,
@@ -422,6 +429,7 @@
 			children = (
 				8387EB062A57995800CDA143 /* UserService.swift */,
 				83EF3E002A6881E4001AD56F /* StoreManager.swift */,
+				83EF3E052A6A0ED9001AD56F /* ScheduleManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -458,6 +466,7 @@
 				83E6FAB12A5F5AE200732F90 /* BookingView2.swift */,
 				83E6FAAD2A5F54B400732F90 /* SuccessView.swift */,
 				83E6FAAF2A5F584C00732F90 /* Profile.swift */,
+				8303091B2A6B693C001E5F7A /* FetchSchedule.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -582,6 +591,7 @@
 				83DBA9322A55EB2300D3FF7D /* UserProfileView.swift in Sources */,
 				831D3BA22A5A50D1007BFAB5 /* GroomerViewRow.swift in Sources */,
 				8387EAE02A564B2F00CDA143 /* CompleteBookingView.swift in Sources */,
+				8303091C2A6B693C001E5F7A /* FetchSchedule.swift in Sources */,
 				83E6FA9F2A5DD65200732F90 /* View1.swift in Sources */,
 				8387EB1A2A58D13000CDA143 /* GroomerRegisterViewModel.swift in Sources */,
 				83DBA93F2A55EC7000D3FF7D /* EditBookingView.swift in Sources */,
@@ -590,6 +600,7 @@
 				83DBA9362A55EB5800D3FF7D /* StoreListView.swift in Sources */,
 				8387EB122A57D15400CDA143 /* ChooseRegisterView.swift in Sources */,
 				83D3DBD92A63963200A43A3C /* NotificationViewModel.swift in Sources */,
+				83EF3E032A69DD17001AD56F /* CreateBookingView2.swift in Sources */,
 				831D3BA02A5A4D2E007BFAB5 /* ExploreGroomerView.swift in Sources */,
 				83E6FAA32A5DD73400732F90 /* View2.swift in Sources */,
 				83E6FAB62A5F717C00732F90 /* GroomingServiceDetailView.swift in Sources */,
@@ -599,6 +610,7 @@
 				83DBA9342A55EB3500D3FF7D /* GroomerProfileView.swift in Sources */,
 				83E6FAAC2A5F525A00732F90 /* BookingView.swift in Sources */,
 				83DBA94E2A56131E00D3FF7D /* Store.swift in Sources */,
+				83EF3E062A6A0ED9001AD56F /* ScheduleManager.swift in Sources */,
 				8387EB0D2A57A0C300CDA143 /* ContentViewModel.swift in Sources */,
 				831D3B9A2A59FDEB007BFAB5 /* CompletedPetProfileView.swift in Sources */,
 				83EF3E012A6881E4001AD56F /* StoreManager.swift in Sources */,

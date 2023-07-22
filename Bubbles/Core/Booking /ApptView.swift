@@ -12,8 +12,9 @@ import FirebaseAuth
 struct ApptView: View {
     @FirestoreQuery var appts:  [Appointment]
     
+    
     init() {
-        self._appts =  FirestoreQuery(collectionPath: "users/\(Auth.auth().currentUser?.uid ?? "")/appointments")
+        self._appts =  FirestoreQuery(collectionPath: "users/\(Auth.auth().currentUser?.uid ?? "k2gnAeKHyKNyOfaQ2jXc9esjk3Y2")/appointments")
     }
     var body: some View {
         VStack{
@@ -48,7 +49,7 @@ struct ApptView: View {
             }
         }.onAppear {
             Task{
-               try await  UserService.fetchUpdatedAppoinment(uid: Auth.auth().currentUser?.uid ?? "")
+               try await  UserService.fetchUpdatedAppoinment(uid: Auth.auth().currentUser?.uid ?? "k2gnAeKHyKNyOfaQ2jXc9esjk3Y2")
             }
         }
     }

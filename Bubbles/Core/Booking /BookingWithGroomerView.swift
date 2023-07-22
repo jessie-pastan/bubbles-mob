@@ -13,18 +13,11 @@ struct BookingWithGroomerView: View {
     
     
     @EnvironmentObject var viewModel : BookingViewModel
-    @FirestoreQuery var pets: [Pet]
+   
     @State var showSuccess = false
     
     var store: Store
     var groomer: User
-    
-    init(store: Store, groomer: User){
-        self._pets = FirestoreQuery(collectionPath: "users/\(Auth.auth().currentUser?.uid ?? "")/pets")
-        self.store = store
-        self.groomer = groomer
-        
-    }
     
     var body: some View {
         VStack( spacing: 60){
@@ -37,7 +30,7 @@ struct BookingWithGroomerView: View {
                     Spacer()
                     Picker("", selection: $viewModel.petName) {
                         Text("Select Pet").tag("Select Pet")
-                        ForEach(pets) { pet in
+                        ForEach(viewModel.pets) { pet in
                             Text("\(pet.name)").tag("\(pet.name)")
                         }
                     }.pickerStyle(.automatic)
@@ -119,9 +112,9 @@ struct BookingWithGroomerView: View {
                     
                     showSuccess.toggle()
                     viewModel.store = store.name
-                    viewModel.selectedGroomer = groomer.userName
+                    viewModel.selectedGroomerId = groomer.userName
                     print(viewModel.store)
-                    print(viewModel.selectedGroomer)
+                    print(viewModel.selectedGroomerId)
                     // update petId
                     Task{
                         try await viewModel.updateData()

@@ -51,13 +51,14 @@ class GroomerRegisterViewModel: ObservableObject {
         
         // Define the calendar and date components
         let calendar = Calendar.current
-        var dateComponents = DateComponents()
+       var dateComponents = DateComponents()
         
         // Loop through 365 days and generate the dates
         for day in 0..<365 {
             // Add the day component to the start date
             dateComponents.day = day
             let generatedDate = calendar.date(byAdding: dateComponents, to: startDate)!
+            
             
             let dueDate = Schedule(id: NSUUID().uuidString, date: generatedDate, timeSlots: timeSlots, isFullBooked: false)
               //encode swift object to json

@@ -28,7 +28,7 @@ struct CompleteBookingView: View {
                 Text("Service: \(viewModel.selectedService)")
                 //if any add on service
                 Text("Add on: \(viewModel.selectedAddOnService)")
-                Text("Groomer: \(viewModel.selectedGroomer)")
+                Text("Groomer: \(viewModel.selectedGroomerId)")
                 Text("Date: \(Date(timeIntervalSince1970: viewModel.selectedDate.timeIntervalSince1970).formatted(date: .abbreviated, time: .omitted))")
                 Text("Appiontment Time: \(viewModel.selectedTime)")
                 Text("Special Request: \(viewModel.note)")

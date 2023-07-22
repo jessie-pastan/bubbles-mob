@@ -30,7 +30,7 @@ struct BookingView2: View {
                 isShow.toggle()
                 
             } label: {
-                Text("Confirm appt.")
+                Text("Create Appoinment")
             }
             .sheet(isPresented: $isShow) {
                 SuccessView()

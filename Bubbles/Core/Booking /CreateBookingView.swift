@@ -10,15 +10,12 @@ import FirebaseFirestoreSwift
 import FirebaseAuth
 
 struct CreateBookingView: View {
-    @EnvironmentObject var viewModel : BookingViewModel
-    @FirestoreQuery var pets: [Pet]
-    @State var showSuccess = false
-    var store: Store
     
-    init(store: Store){
-        self._pets = FirestoreQuery(collectionPath: "users/\(Auth.auth().currentUser?.uid ?? "")/pets")
-        self.store = store
-    }
+    @EnvironmentObject var viewModel : BookingViewModel
+   
+    @State var showSuccess = false
+    
+    var store: Store
     
     var body: some View {
         VStack( spacing: 60){
@@ -31,7 +28,7 @@ struct CreateBookingView: View {
                     Spacer()
                     Picker("", selection: $viewModel.petName) {
                         Text("Select Pet").tag("Select Pet")
-                        ForEach(pets) { pet in
+                        ForEach(viewModel.pets) { pet in
                             Text("\(pet.name)").tag("\(pet.name)")
                         }
                     }.pickerStyle(.automatic)
@@ -43,9 +40,10 @@ struct CreateBookingView: View {
                     Spacer()
                     Picker("Select Service", selection: $viewModel.selectedService) {
                         Text("Select Service").tag("Select Service")
-                        Text("BasicBath").tag("BasicBath")
-                        Text("SpaBath").tag("SpaBath")
-                        Text("FullGrooming").tag("FullGrooming")
+                        ForEach(viewModel.storeServices) { service in
+                            Text(service.item).tag(service.item)
+                            
+                        }
                     }
                     .pickerStyle(.automatic)
                 }
@@ -70,13 +68,12 @@ struct CreateBookingView: View {
                         .font(.callout)
                         .bold()
                     Spacer()
-                    Picker("", selection: $viewModel.selectedGroomer) {
+                    Picker("", selection: $viewModel.selectedGroomerId) {
                         Text("Select Groomer").tag("Select Groomer")
-                        Text("Lisa").tag("Lisa")
-                        Text("Rose'").tag("Rose'")
-                        Text("Jenny").tag("Jenny")
-                        Text("Jisoo").tag("Jisoo")
-                        
+                        ForEach(viewModel.groomers) { groomer in
+                            Text(groomer.userName).tag(groomer.id)
+                          
+                        }
                     }
                     .pickerStyle(.automatic)
                 }
@@ -88,45 +85,71 @@ struct CreateBookingView: View {
                     DatePicker("", selection: $viewModel.selectedDate, displayedComponents: .date)
                         .datePickerStyle(.automatic)
                 }
-                
-                HStack{
-                    Text("Select Time")
-                        .font(.callout)
-                        .bold()
-                    Spacer()
-                    Picker("", selection: $viewModel.selectedTime) {
-                        Text("Select Time").tag("Select Time")
-                        Text("10.00 am").tag("10.00 am")
-                        Text("11.00 am").tag("11.00 am")
-                        Text("12.00 am").tag("12.00 am")
-                        Text("1.00 pm").tag("1.00 pm")
-                        Text("2.00 pm").tag("2.00 pm")
+            
+                //test fething schedule
+                Button {
+                    Task{
+                        try await viewModel.fetchSelectedGroomer(groomerId: viewModel.selectedGroomerId)
+                        try await viewModel.fetchGroomerSchedule(groomerId: viewModel.selectedGroomerId, selectDate: viewModel.selectedDate)
+                        viewModel.showGroomerSlots(schedules: viewModel.groomerSchedule)
                     }
-                    .pickerStyle(.automatic)
+                } label: {
+                    Text("Check Available Slot")
                 }
+                
+                if !viewModel.groomerSlots.isEmpty{
+                    HStack{
+                        Text("Select Time")
+                            .font(.callout)
+                            .bold()
+                        Spacer()
+                        Picker("", selection: $viewModel.selectedTime) {
+                            //Text("Select Time").tag("Select Time")
+                            
+                            ForEach(viewModel.groomerSlots) { timeslot in
+                                Text(timeslot.timeString).tag(timeslot.timeString)
+                                
+                            }
+                            
+                        }
+                        .pickerStyle(.segmented)
+                    }
+                }
+                
                 HStack{
                     Text("Leave a note")
                         .font(.callout)
                         .bold()
-                    TextField("(If Any", text: $viewModel.note)
+                    TextField("(If Any)", text: $viewModel.note)
                         .textFieldStyle(.roundedBorder)
                 }
-               
-                    
-                
                 
             }
             .padding()
-          
             
+            /*
+            if !viewModel.groomerSchedule.isEmpty {
+                ForEach(viewModel.groomerSchedule){ schedule in
+                    Text(schedule.date.formatted(date: .abbreviated, time: .omitted))
+                }
+                Text(viewModel.selectedGroomerId)
+                Text(viewModel.selectedGroomerName)
+                Text(viewModel.selectedDate.formatted(date: .abbreviated, time: .omitted))
+                
+            }
+            
+        */
             Spacer()
                 Button {
                     // update petId
                     showSuccess.toggle()
                     viewModel.store = store.name
                     print(viewModel.store)
+                    print(viewModel.selectedGroomerId)
+                    
                     //unwind screen to HomePage
                     Task{
+                        
                         try await viewModel.updateData()
                     }
                     
@@ -134,8 +157,8 @@ struct CreateBookingView: View {
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 15)
-                            .frame(width: 200, height: 39)
-                            .foregroundColor(Color(.systemMint))
+                            .frame(width: 350, height: 39)
+                            .foregroundColor(Color(.systemCyan))
                         Text("Create Booking")
                             .foregroundColor(.white)
                             .bold()
@@ -144,12 +167,19 @@ struct CreateBookingView: View {
                 .sheet(isPresented: $showSuccess) {
                     SuccessBookingView()
                 }
+        }.onAppear {
+            Task{
+                try await viewModel.fetchStoreServices(storeId: store.id)
+                try await viewModel.fetchGroomers(storeId: store.id)
             }
+           
+        }
     }
 }
 
 struct CreateBookingView_Previews: PreviewProvider {
     static var previews: some View {
         CreateBookingView(store: Store.MOCK_STORES[0])
+            .environmentObject(BookingViewModel())
     }
 }

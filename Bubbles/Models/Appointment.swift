@@ -14,19 +14,19 @@ struct Appointment: Codable, Identifiable, Hashable {
     var service: String
     var addOnService: String
     var groomer: String
-    var dueDate: TimeInterval
+    var dueDate: Date
     var time: String
     var note: String?
     var ownerId: String
     var petName: String
-    var groomerId: String?
-    var dateCreated: TimeInterval
+    var groomerId: String
+    var dateCreated: Date
     var isDone = false 
 }
 
 extension Appointment {
     static var MOCK_APPOINTMENT  : Appointment {
-        .init(id: NSUUID().uuidString, store: "PuppyPaws", service: "BasicBath", addOnService: "None", groomer: "Lisa", dueDate: Date().timeIntervalSince1970, time: "2.00pm", ownerId: "123", petName:  "Hachi", groomerId: "user111", dateCreated: Date().timeIntervalSince1970 )
+        .init(id: NSUUID().uuidString, store: "PuppyPaws", service: "BasicBath", addOnService: "None", groomer: "Lisa", dueDate: Date(), time: "2.00pm", ownerId: "123", petName:  "Hachi", groomerId: "user111", dateCreated: Date() )
     }
 }
 

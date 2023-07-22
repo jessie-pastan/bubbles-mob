@@ -51,5 +51,6 @@ struct BusinessListView_Previews: PreviewProvider {
     static var previews: some View {
         StoreListView()
             .environmentObject(Router())
+            
     }
 }

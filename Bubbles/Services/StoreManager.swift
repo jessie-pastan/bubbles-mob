@@ -20,14 +20,21 @@ class StoreManager: ObservableObject {
         }
     }
     
-    func queryGroomers(storeId : String) async throws  {
+    func queryGroomers(storeId : String) async throws -> [User] {
         
         let snapshot = try await Firestore.firestore().collection("users").whereField("groomingStoreId", isEqualTo: storeId).getDocuments()
-        self.groomers = snapshot.documents.compactMap({try? $0.data (as : User.self )})
-       
+        self.groomers = snapshot.documents.compactMap({try? $0.data(as: User.self )})
+        return self.groomers
     }
     
+    static func fetchStoreServices(storeId: String) async throws -> [GroomingService] {
+        let snapshot = try await Firestore.firestore().collection("stores").document(storeId).collection("groomingServices").getDocuments()
+        return snapshot.documents.compactMap({try? $0.data(as:GroomingService.self)})
+    }
     
+    static func fetchAddOnServices(storeId: String) {
+    
+    }
     
     
     

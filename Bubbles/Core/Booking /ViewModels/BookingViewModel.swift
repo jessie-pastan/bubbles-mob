@@ -15,19 +15,29 @@ class BookingViewModel : ObservableObject {
     
     @Published var selectedService = "Select Service"
     @Published var selectedAddOnService = "Select Add On"
-    @Published var selectedGroomer = "Select Groomer"
+    // selected groomer is User Id String
+    @Published var selectedGroomerId = "Select Groomer"
+    @Published var selectedGroomerName = ""
     @Published var selectedDate = Date()
     @Published var selectedTime = "Select Time"
     @Published var note = ""
     @Published var store = ""
     @Published var petName = "Select Pet"
     @Published var petId = ""
-    @Published var groomerId = ""
     
-    //init(){
-        //self.petId = findSelectedPet(petName: petName)
-    //}
+    @Published var pets = [Pet]()
+    @Published var storeServices = [GroomingService]()
+    @Published var groomers = [User]()
+    @Published var groomerSchedule = [Schedule]()
+    @Published var groomerSlots = [TimeSlot]()
     
+   
+    
+    init(){
+        Task{
+            pets = try await fetchPets()
+        }
+    }
     
     func updateData() async throws {
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -35,13 +45,14 @@ class BookingViewModel : ObservableObject {
                                store: store,
                                service: selectedService,
                                addOnService: selectedAddOnService,
-                               groomer: selectedGroomer,
-                               dueDate: selectedDate.timeIntervalSince1970,
+                               groomer: selectedGroomerName,
+                               dueDate: selectedDate,
                                time: selectedTime,
                                note: note,
                                ownerId: uid,
                                petName: petName,
-                               dateCreated: Date().timeIntervalSince1970,
+                               groomerId: selectedGroomerId,
+                               dateCreated: Date(),
                                isDone: false)
         
         //encode swift object to json
@@ -50,20 +61,41 @@ class BookingViewModel : ObservableObject {
         let _ = try await Firestore.firestore().collection("users").document(uid).collection("appointments").addDocument(data: encodeUser)
     }
     
-    //Todo: fix this function to find PetId from selected pet
-    func findSelectedPet(pets: [Pet]) {
-        for index in 0..<pets.count {
-            let pet = pets[index]
-            let petId = pet.id
-            if pet.name == self.petName {
-                self.petId = petId
-                
-            }
+    func fetchPets() async throws -> [Pet]{
+            let snapshot = try await Firestore.firestore().collection("users").document(Auth.auth().currentUser?.uid ?? "").collection("pets").getDocuments()
+            return snapshot.documents.compactMap({try? $0.data (as: Pet.self)})
         }
-   }
-    
-    func findGroomerId(groomer: Groomer) {
-        //let groomerId = groomer.id
+        
+    func fetchStoreServices(storeId: String) async throws {
+        self.storeServices = try await StoreManager.fetchStoreServices(storeId: storeId)
     }
     
+    func fetchGroomers(storeId: String) async throws {
+        self.groomers = try await StoreManager().queryGroomers(storeId: storeId)
+    }
+    
+    func fetchGroomerSchedule(groomerId: String, selectDate: Date)async throws {
+        self.groomerSchedule = try await ScheduleManager.queryScheduleByselectDate(groomerId: selectedGroomerId, selectDate: selectDate)
+    }
+    
+    func fetchSelectedGroomer(groomerId: String) async throws {
+        let snapshot = try await Firestore.firestore().collection("users").document(groomerId).getDocument()
+        let groomer = try snapshot.data(as: User.self)
+        self.selectedGroomerName = groomer.userName
+    }
+    
+    
+    func showGroomerSlots(schedules: [Schedule]) {
+        var timeSlots = [TimeSlot]()
+        //extract schedule out of array
+        if let schedule  = schedules.first {
+            (schedule.timeSlots).forEach { timeSlot in
+                timeSlots.append(timeSlot)
+            }
+            self.groomerSlots = timeSlots
+        }
+    }
 }
+    
+    
+

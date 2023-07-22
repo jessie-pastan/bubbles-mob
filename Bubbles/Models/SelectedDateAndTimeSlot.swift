@@ -11,18 +11,10 @@ struct Schedule: Codable, Identifiable {
     var date: Date
     var timeSlots: [TimeSlot]
     var isFullBooked: Bool
+    mutating func markAsFullBooked(_ state: Bool){
+        isFullBooked = state
+    }
     
-    /*{
-        var timeSlotBooked = 0
-        
-        (timeSlot).forEach { timeSlot in
-            if timeSlot.isBooked {
-                timeSlotBooked += 1
-        }
-    }
-        return timeSlotBooked == timeSlot.count
-    }
-     */
 }
 
 struct TimeSlot: Codable, Identifiable {
@@ -31,6 +23,11 @@ struct TimeSlot: Codable, Identifiable {
     var timeString: String
     var isBooked: Bool
     var ApptId: String?
+    
+    mutating func markBooked(_ state: Bool){
+        isBooked = state
+    }
+    
 }
 
 

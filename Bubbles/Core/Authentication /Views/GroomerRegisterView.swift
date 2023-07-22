@@ -34,6 +34,7 @@ struct GroomerRegisterView: View {
                 Text("Grooming Store: ")
                 Spacer()
                 Picker("Select Store", selection: $viewModel.groomingStoreId) {
+                    Text("Select")
                     ForEach(viewModel.groomingStoresList) { store in
                         Text(store.name).tag(store.id)
                     }
