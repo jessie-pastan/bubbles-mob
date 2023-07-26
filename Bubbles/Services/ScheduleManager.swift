@@ -23,98 +23,93 @@ class ScheduleManager {
     // Display that avialable timeslot
     // Else Display to user that schedule has fullbooked
     
-    static func verifyDateAsFullBooked(schedules: [Schedule])->Bool {
-        var timeSlotBooked = 0
-        var allTimeSlots = 0
-        for schedule in schedules {
-            allTimeSlots = schedule.timeSlots.count
-            (schedule.timeSlots).forEach { timeSlot in
-                    if timeSlot.isBooked {
-                        timeSlotBooked += 1
+        static func verifyDateAsFullBooked(schedules: [Schedule])->Bool {
+            var timeSlotBooked = 0
+            var allTimeSlots = 0
+            for schedule in schedules {
+                allTimeSlots = schedule.timeSlots.count
+                (schedule.timeSlots).forEach { timeSlot in
+                        if timeSlot.isBooked {
+                            timeSlotBooked += 1
+                    }
                 }
             }
+            return timeSlotBooked == allTimeSlots
+                
         }
-        return timeSlotBooked == allTimeSlots
-             
-    }
     
-    static func markDateFullBooked(items: [Schedule], groomerId: String) async throws  {
-        let isFullbooked = verifyDateAsFullBooked(schedules: items)
-        let itemId = ""
-        for item in items {
-            var copyItem = item
-            copyItem.markAsFullBooked(isFullbooked)
-            let _ = try? Firestore.firestore().collection("users").document(groomerId).collection("schedules").document(itemId).setData(from: copyItem)
+        static func markDateFullBooked(items: [Schedule], groomerId: String) async throws  {
+            let isFullbooked = verifyDateAsFullBooked(schedules: items)
+            let itemId = ""
+            for item in items {
+                var copyItem = item
+                copyItem.markAsFullBooked(isFullbooked)
+                let _ = try? Firestore.firestore().collection("users").document(groomerId).collection("schedules").document(itemId).setData(from: copyItem)
+            }
         }
-    }
                                                                                                                                         
-                                                                                                                                       
-                                                                                                                                    
-    //Mark Booked status of timeslot
-    static func markSlotBooked(items: [Schedule], timeSlotString: String, groomerId: String) async throws {
+                                                                                                            
+        //Mark Booked status of timeslot
+        static func markSlotBooked(items: [Schedule], timeSlotString: String, groomerId: String) async throws {
+            
+            
 
-        var schedule = try Schedule(from: Schedule.MOCK_selectedDateAndTime as! Decoder)
-        
-        for item in items {
-            schedule = item
-        }
-        
-        (schedule.timeSlots).forEach { timeSlot in
-            let itemId = schedule.id
-            var copytimeSlot = timeSlot
-            if timeSlotString == copytimeSlot.timeString {
-                copytimeSlot.markBooked(true)
+            if let schedule = items.first{
+                let scheduleId = schedule.id ?? ""
+                
+                var timeSlotId = ""
+                let newTimeSlot = TimeSlot(id: NSUUID().uuidString, timeString: timeSlotString, isBooked: true)
+
+                (schedule.timeSlots).forEach { timeslot in
+                    if timeslot.timeString == timeSlotString {
+                        timeSlotId = timeslot.id
+                    }
+                }
+                // remove timeslot that Booked
+                let db = Firestore.firestore()
+                let ref = db.collection("users").document(groomerId).collection("schedules").document(scheduleId)
+                
+                let snapshot = try await ref.getDocument()
+                if var schedule  = try? snapshot.data(as: Schedule.self) {
+                    
+                    // Filter out the TimeSlot with the given timeSlotID and remove the isBooked value
+                    schedule.timeSlots.removeAll { $0.id == timeSlotId }
+                    // update isbooked: true
+                    schedule.timeSlots.append(newTimeSlot)
+                    
+                    try ref.setData(from: schedule)
+                }
+            
             }
-            // update marked status in firebase
-            let _ = try? Firestore.firestore().collection("users").document(groomerId).collection("schedules").document(itemId).setData(from: copytimeSlot)
+        }
+       
+        // Fetch 365 day of schedule of a groomer
+        static func queryAllGroomerSchedule(groomerId: String) async throws -> [Schedule] {
+            var schedules = [Schedule]()
+            // Fetch schedule documents for the groomer
+            let snapshot = try await Firestore.firestore().collection("users").document(groomerId).collection("schedules").getDocuments()
+            let documents = snapshot.documents
+            for doc in documents {
+                let schedule = try doc.data(as:Schedule.self)
+                schedules.append(schedule)
+            }
+            return schedules
         }
         
-        /*
-        for item in items {
-            var timeSlots = item.timeSlots
-            itemId = item.id
-            for timeSlot in timeSlots {
-                var copytimeSlot = timeSlot
-                if timeSlotString == copytimeSlot.timeString {
-                    copytimeSlot.markBooked(true)
+        // filter schedule with selected date
+        static func queryScheduleByselectDate(groomerId: String, selectDate: Date) async throws -> [Schedule] {
+            var targetSchedule = [Schedule]()
+            let schedules = try await queryAllGroomerSchedule(groomerId: groomerId)
+            for schedule in schedules {
+                let groomerDateString = (schedule.date.formatted(date: .abbreviated, time: .omitted))
+                let selectDateString = selectDate.formatted(date: .abbreviated, time: .omitted)
+                if groomerDateString == selectDateString {
+                    targetSchedule.append(schedule)
                 }
             }
-            // update marked status in firebase
-            let _ = try? Firestore.firestore().collection("users").document(groomerId).collection("schedules").document(itemId).setData(from: item)
-            
+            //return 1 schedule in array of schedule
+            return targetSchedule
         }
         
-     */
-        
-    }
-    
-    // Fetch 365 day of schedule of a groomer
-    static func queryAllGroomerSchedule(groomerId: String) async throws -> [Schedule] {
-        var schedules = [Schedule]()
-        // Fetch schedule documents for the groomer
-        let snapshot = try await Firestore.firestore().collection("users").document(groomerId).collection("schedules").getDocuments()
-        let documents = snapshot.documents
-        for doc in documents {
-            let schedule = try doc.data(as:Schedule.self)
-            schedules.append(schedule)
-        }
-        return schedules
-    }
-    
-    // filter schedule with selected date
-    static func queryScheduleByselectDate(groomerId: String, selectDate: Date) async throws -> [Schedule] {
-        var targetSchedule = [Schedule]()
-        let schedules = try await queryAllGroomerSchedule(groomerId: groomerId)
-        for schedule in schedules {
-            let groomerDateString = (schedule.date.formatted(date: .abbreviated, time: .omitted))
-            let selectDateString = selectDate.formatted(date: .abbreviated, time: .omitted)
-            if groomerDateString == selectDateString {
-                targetSchedule.append(schedule)
-            }
-        }
-        //return 1 schedule in array of schedule
-        return targetSchedule
-    }
-    
     
 }

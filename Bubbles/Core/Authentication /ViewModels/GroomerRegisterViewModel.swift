@@ -60,7 +60,7 @@ class GroomerRegisterViewModel: ObservableObject {
             let generatedDate = calendar.date(byAdding: dateComponents, to: startDate)!
             
             
-            let dueDate = Schedule(id: NSUUID().uuidString, date: generatedDate, timeSlots: timeSlots, isFullBooked: false)
+            let dueDate = Schedule(date: generatedDate, timeSlots: timeSlots, isFullBooked: false)
               //encode swift object to json
             guard let encodeDueDate = try? Firestore.Encoder().encode(dueDate) else { return }
             // Store the generated date in Firebase Firestore

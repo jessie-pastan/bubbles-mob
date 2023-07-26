@@ -92,12 +92,24 @@ struct CreateBookingView: View {
                         try await viewModel.fetchSelectedGroomer(groomerId: viewModel.selectedGroomerId)
                         try await viewModel.fetchGroomerSchedule(groomerId: viewModel.selectedGroomerId, selectDate: viewModel.selectedDate)
                         viewModel.showGroomerSlots(schedules: viewModel.groomerSchedule)
+                        viewModel.checkSlotsFull(schedules: viewModel.groomerSchedule, bookedSlots: viewModel.bookedSlots)
+                        
+                        
                     }
                 } label: {
-                    Text("Check Available Slot")
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 15)
+                            .frame(width: 200, height: 39)
+                            .foregroundColor(Color(.systemMint))
+                        Text("Check Available Slot")
+                            .foregroundColor(.white)
+                            .bold()
+                            
+                    }
                 }
                 
-                if !viewModel.groomerSlots.isEmpty{
+                
+                if !viewModel.availbleSlots.isEmpty{
                     HStack{
                         Text("Select Time")
                             .font(.callout)
@@ -106,14 +118,17 @@ struct CreateBookingView: View {
                         Picker("", selection: $viewModel.selectedTime) {
                             //Text("Select Time").tag("Select Time")
                             
-                            ForEach(viewModel.groomerSlots) { timeslot in
-                                Text(timeslot.timeString).tag(timeslot.timeString)
-                                
+                            ForEach(viewModel.availbleSlots) { timeslot in
+                                    Text(timeslot.timeString).tag(timeslot.timeString)
                             }
                             
                         }
                         .pickerStyle(.segmented)
                     }
+                }else if viewModel.isSlotFull {
+                        Text("There's no timeslot available, please select other day.")
+                            .font(.footnote)
+                        .foregroundColor(Color(.systemRed))
                 }
                 
                 HStack{
@@ -127,18 +142,31 @@ struct CreateBookingView: View {
             }
             .padding()
             
-            /*
+            //testing //delete after done 
             if !viewModel.groomerSchedule.isEmpty {
-                ForEach(viewModel.groomerSchedule){ schedule in
-                    Text(schedule.date.formatted(date: .abbreviated, time: .omitted))
+                ScrollView{
+                    if let schedule = viewModel.groomerSchedule.first{
+                        Text(schedule.date.formatted(date: .abbreviated, time: .omitted))
+                        ForEach(schedule.timeSlots) {timeslot in
+                            HStack{
+                                Text(timeslot.timeString)
+                                Spacer()
+                                Text(String("isBooked? : \(timeslot.isBooked)"))
+                            }
+                        }
+                        
+                    }
+                    //Text(viewModel.selectedGroomerId)
+                    Text(viewModel.selectedGroomerName)
+                    //Text(viewModel.selectedDate.formatted(date: .abbreviated, time: .omitted))
                 }
-                Text(viewModel.selectedGroomerId)
-                Text(viewModel.selectedGroomerName)
-                Text(viewModel.selectedDate.formatted(date: .abbreviated, time: .omitted))
-                
+                //.frame( height: 150) // Enlarge the ScrollView
             }
             
-        */
+        
+            
+            
+        
             Spacer()
                 Button {
                     // update petId
@@ -151,9 +179,12 @@ struct CreateBookingView: View {
                     Task{
                         
                         try await viewModel.updateData()
+                        
+                        try await viewModel.updateSlots(items: viewModel.groomerSchedule, timeSlotString: viewModel.selectedTime, groomerId: viewModel.selectedGroomerId)
+                        
                     }
                     
-                    
+
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 15)

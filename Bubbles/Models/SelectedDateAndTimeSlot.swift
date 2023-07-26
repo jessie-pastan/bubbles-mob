@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 struct Schedule: Codable, Identifiable {
-    let id: String
+    @DocumentID var id: String?
     var date: Date
     var timeSlots: [TimeSlot]
     var isFullBooked: Bool
