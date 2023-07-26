@@ -6,10 +6,10 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
 struct Appointment: Codable, Identifiable, Hashable {
-    
-    let id: String
+    @DocumentID var id: String?
     var store: String
     var service: String
     var addOnService: String

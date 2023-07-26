@@ -36,7 +36,8 @@ class GroomerRegisterViewModel: ObservableObject {
   
     
    private func createTimeslot() async throws {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = await AuthService.shared.currentUser?.id else { return }
+       //guard let uid = Auth.auth().currentUser?.uid else { return }
         //time slots
         let timeSlots = [ TimeSlot(id: NSUUID().uuidString, timeString: "10 AM", isBooked: false),
                           TimeSlot(id: NSUUID().uuidString, timeString: "11 AM", isBooked: false),

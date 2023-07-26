@@ -27,9 +27,9 @@ class AddPetViewModel : ObservableObject {
    
     
     func updateData() async throws {
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let pet = Pet(id: NSUUID().uuidString, name: petName, breed: petBreed, age: petAge, weight: petWeight, isDog: isDog, vaccineExpireDate: expirationDate.timeIntervalSince1970, ownerId: uid, isMed: isMed, petMedication: petMedication)
+        guard let uid = await AuthService.shared.currentUser?.id else { return }
+        // guard let uid = Auth.auth().currentUser?.uid else { return }
+        let pet = Pet(id: NSUUID().uuidString, name: petName, breed: petBreed, age: petAge, weight: petWeight, isDog: isDog, vaccineExpireDate: expirationDate, ownerId: uid, isMed: isMed, petMedication: petMedication)
         //encode swift object to json
         guard let encodeUser = try? Firestore.Encoder().encode(pet) else { return }
         //insert in firestore

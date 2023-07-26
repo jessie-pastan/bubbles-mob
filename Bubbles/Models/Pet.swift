@@ -6,15 +6,17 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
+
 struct Pet: Codable, Identifiable, Hashable {
-    let id: String
+    @DocumentID var id: String?
     var name: String
     var breed: String
     var age: String
     var weight: String
     var isDog: Bool
     var imageUrl: String?
-    var vaccineExpireDate: TimeInterval
+    var vaccineExpireDate: Date
     var vaccineImageUrl: String?
     var ownerId: String
     var isMed: Bool
@@ -23,7 +25,7 @@ struct Pet: Codable, Identifiable, Hashable {
 
 extension Pet {
     static var MOCK_PETS : [Pet] = [
-        .init(id: NSUUID().uuidString, name: "Candy", breed: "Maltese", age: "11", weight: "3", isDog: true, vaccineExpireDate: Date().timeIntervalSince1970, ownerId: "", isMed: false, petMedication: "None")
+        .init(id: NSUUID().uuidString, name: "Candy", breed: "Maltese", age: "11", weight: "3", isDog: true, vaccineExpireDate: Date(), ownerId: "", isMed: false, petMedication: "None")
     ]
     
 }

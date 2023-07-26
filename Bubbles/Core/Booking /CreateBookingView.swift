@@ -179,7 +179,6 @@ struct CreateBookingView: View {
                     Task{
                         
                         try await viewModel.updateData()
-                        
                         try await viewModel.updateSlots(items: viewModel.groomerSchedule, timeSlotString: viewModel.selectedTime, groomerId: viewModel.selectedGroomerId)
                         
                     }

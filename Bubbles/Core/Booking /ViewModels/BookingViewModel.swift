@@ -43,7 +43,9 @@ class BookingViewModel : ObservableObject {
     }
     
     func updateData() async throws {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = AuthService.shared.currentUser?.id else { return }
+        //guard let uid = Auth.auth().currentUser?.uid else { return }
+        
         let appt = Appointment(id: NSUUID().uuidString,
                                store: store,
                                service: selectedService,
@@ -66,40 +68,6 @@ class BookingViewModel : ObservableObject {
     
     func updateSlots(items: [Schedule], timeSlotString: String, groomerId: String) async throws {
         try await ScheduleManager.markSlotBooked(items: items, timeSlotString: timeSlotString, groomerId: groomerId)
-    }
-    
-    // no use function
-    func updateTimeSlot(schedules: [Schedule], groomerId: String, timeSlotString: String) {
-        
-        if let schedule = schedules.first {
-            let  scheduleId =  schedule.id ?? ""
-            let db = Firestore.firestore()
-            let scheduleRef = db.collection("users").document(groomerId).collection("schedules").document(scheduleId)
-            
-            scheduleRef.getDocument { document, error in
-                guard let document = document,
-                      let schedule = try? document.data(as: Schedule.self),
-                      var timeSlots = schedule.timeSlots.first(where: { $0.timeString == timeSlotString }) else {
-                    print("Error fetching schedule or timeSlot data")
-                    return
-                }
-                
-                timeSlots.isBooked = true
-                
-                // Update the specific TimeSlot within the TimeSlots array
-                if let index = schedule.timeSlots.firstIndex(where: { $0.timeString == timeSlotString }) {
-                    var copySchedule = schedule
-                    copySchedule.timeSlots[index] = timeSlots
-                }
-                
-                // Write the updated Schedule back to Firestore
-                do {
-                    try scheduleRef.setData(from: schedule)
-                } catch {
-                    print("Error updating schedule: \(error.localizedDescription)")
-                }
-            }
-        }
     }
     
     func fetchPets() async throws -> [Pet]{
@@ -153,4 +121,10 @@ class BookingViewModel : ObservableObject {
             }
         }
     }
+    
+    
+    func addGroomerBookings() {
+        
+    }
+    
 }

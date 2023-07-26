@@ -12,6 +12,7 @@ struct Schedule: Codable, Identifiable {
     var date: Date
     var timeSlots: [TimeSlot]
     var isFullBooked: Bool
+    //will delete later
     mutating func markAsFullBooked(_ state: Bool){
         isFullBooked = state
     }
@@ -25,6 +26,7 @@ struct TimeSlot: Codable, Identifiable {
     var isBooked: Bool
     var ApptId: String?
     
+    //will delete later
     mutating func markBooked(_ state: Bool){
         isBooked = state
     }

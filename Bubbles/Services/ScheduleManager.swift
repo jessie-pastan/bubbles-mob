@@ -23,6 +23,7 @@ class ScheduleManager {
     // Display that avialable timeslot
     // Else Display to user that schedule has fullbooked
     
+        //no use
         static func verifyDateAsFullBooked(schedules: [Schedule])->Bool {
             var timeSlotBooked = 0
             var allTimeSlots = 0
@@ -37,7 +38,7 @@ class ScheduleManager {
             return timeSlotBooked == allTimeSlots
                 
         }
-    
+        // no use
         static func markDateFullBooked(items: [Schedule], groomerId: String) async throws  {
             let isFullbooked = verifyDateAsFullBooked(schedules: items)
             let itemId = ""
@@ -51,13 +52,10 @@ class ScheduleManager {
                                                                                                             
         //Mark Booked status of timeslot
         static func markSlotBooked(items: [Schedule], timeSlotString: String, groomerId: String) async throws {
-            
-            
-
             if let schedule = items.first{
-                let scheduleId = schedule.id ?? ""
+                let scheduleId = schedule.id ?? "123"
                 
-                var timeSlotId = ""
+                var timeSlotId = "123"
                 let newTimeSlot = TimeSlot(id: NSUUID().uuidString, timeString: timeSlotString, isBooked: true)
 
                 (schedule.timeSlots).forEach { timeslot in
@@ -111,5 +109,10 @@ class ScheduleManager {
             return targetSchedule
         }
         
+        static func queryLastApptId(uid: String) async throws -> String {
+            // fetch all appt of current user
+            _ = try await Firestore.firestore().collection("users").document(uid).collection("appointments").getDocuments()
+            return ""
+        }
     
 }

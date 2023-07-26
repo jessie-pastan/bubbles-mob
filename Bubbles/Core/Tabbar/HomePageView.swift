@@ -22,7 +22,7 @@ struct HomePageView: View {
                             Text("Home")
                         }
                     }
-                    
+            /*
               ApptView()
                     .tabItem {
                         VStack{
@@ -30,6 +30,8 @@ struct HomePageView: View {
                             Text("Appointment")
                         }
                     }
+             
+             */
               NotificationView()
                     .tabItem {
                         VStack{
