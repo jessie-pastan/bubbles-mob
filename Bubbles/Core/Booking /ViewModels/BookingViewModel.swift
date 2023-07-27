@@ -20,6 +20,7 @@ class BookingViewModel : ObservableObject {
     @Published var selectedGroomerName = ""
     @Published var selectedDate = Date()
     @Published var selectedTime = "Select Time"
+    @Published var timeDate = Date()
     @Published var note = ""
     @Published var store = ""
     @Published var petName = "Select Pet"
@@ -44,7 +45,8 @@ class BookingViewModel : ObservableObject {
     
     func updateData() async throws {
         guard let uid = AuthService.shared.currentUser?.id else { return }
-        //guard let uid = Auth.auth().currentUser?.uid else { return }
+        self.convertTimeStringtoDate(timeString: selectedTime)
+        
         
         let appt = Appointment(id: NSUUID().uuidString,
                                store: store,
@@ -53,6 +55,7 @@ class BookingViewModel : ObservableObject {
                                groomer: selectedGroomerName,
                                dueDate: selectedDate,
                                time: selectedTime,
+                               timeDate: timeDate,
                                note: note,
                                ownerId: uid,
                                petName: petName,
@@ -122,8 +125,6 @@ class BookingViewModel : ObservableObject {
         }
     }
     
-    
-    
     func addGroomerBooking(bookingDate: Date, groomerId: String) async throws {
         var docId = ""
         guard let uid = AuthService.shared.currentUser?.id else { return }
@@ -155,5 +156,12 @@ class BookingViewModel : ObservableObject {
                 try await Firestore.firestore().collection("users").document(groomerId).collection("bookings").addDocument(data: encodeUser)
             }
         }
+    }
+    
+    func convertTimeStringtoDate(timeString: String) {
+        if let time = ConvertTime.convertTimeStringToTimeOnly(timeString: timeString) {
+            self.timeDate = time
+        }
+        
     }
 }

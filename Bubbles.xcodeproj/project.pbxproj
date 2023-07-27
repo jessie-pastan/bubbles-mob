@@ -10,6 +10,7 @@
 		8303091C2A6B693C001E5F7A /* FetchSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8303091B2A6B693C001E5F7A /* FetchSchedule.swift */; };
 		831A9C112A71828E0043EFF2 /* GroomerBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A9C102A71828E0043EFF2 /* GroomerBooking.swift */; };
 		831A9C132A719D140043EFF2 /* ApptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A9C122A719D140043EFF2 /* ApptViewModel.swift */; };
+		831A9C152A720EC60043EFF2 /* ConvertTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A9C142A720EC60043EFF2 /* ConvertTime.swift */; };
 		831D3B962A59BCEE007BFAB5 /* RabiesExpirationView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D3B952A59BCEE007BFAB5 /* RabiesExpirationView .swift */; };
 		831D3B982A59BE1E007BFAB5 /* UploadCertificateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D3B972A59BE1E007BFAB5 /* UploadCertificateView.swift */; };
 		831D3B9A2A59FDEB007BFAB5 /* CompletedPetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D3B992A59FDEB007BFAB5 /* CompletedPetProfileView.swift */; };
@@ -97,6 +98,7 @@
 		8303091B2A6B693C001E5F7A /* FetchSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSchedule.swift; sourceTree = "<group>"; };
 		831A9C102A71828E0043EFF2 /* GroomerBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomerBooking.swift; sourceTree = "<group>"; };
 		831A9C122A719D140043EFF2 /* ApptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApptViewModel.swift; sourceTree = "<group>"; };
+		831A9C142A720EC60043EFF2 /* ConvertTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertTime.swift; sourceTree = "<group>"; };
 		831D3B952A59BCEE007BFAB5 /* RabiesExpirationView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RabiesExpirationView .swift"; sourceTree = "<group>"; };
 		831D3B972A59BE1E007BFAB5 /* UploadCertificateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadCertificateView.swift; sourceTree = "<group>"; };
 		831D3B992A59FDEB007BFAB5 /* CompletedPetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedPetProfileView.swift; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 			children = (
 				83E6FA992A5CFF1A00732F90 /* Constants.swift */,
 				83AA295F2A6F47C6005AB3C7 /* Extention.swift */,
+				831A9C142A720EC60043EFF2 /* ConvertTime.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				831D3BA42A5A6F66007BFAB5 /* Test.swift in Sources */,
 				83E6FAAE2A5F54B400732F90 /* SuccessView.swift in Sources */,
 				83E6FA9A2A5CFF1A00732F90 /* Constants.swift in Sources */,
+				831A9C152A720EC60043EFF2 /* ConvertTime.swift in Sources */,
 				8387EAE92A566E3600CDA143 /* GroomerNote.swift in Sources */,
 				8387EAE32A564E4600CDA143 /* ButtonView.swift in Sources */,
 				83DBA9472A55F17200D3FF7D /* GroomingHistoryView.swift in Sources */,

@@ -16,6 +16,7 @@ struct Appointment: Codable, Identifiable, Hashable {
     var groomer: String
     var dueDate: Date
     var time: String
+    var timeDate: Date?
     var note: String?
     var ownerId: String
     var petName: String
