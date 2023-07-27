@@ -123,8 +123,37 @@ class BookingViewModel : ObservableObject {
     }
     
     
-    func addGroomerBookings() {
-        
-    }
     
+    func addGroomerBooking(bookingDate: Date, groomerId: String) async throws {
+        var docId = ""
+        guard let uid = AuthService.shared.currentUser?.id else { return }
+        let lastApptId = try await ScheduleManager.queryLastApptId(uid: uid)
+        
+        //fetch all booking of this groomer and check if date has created ?
+        let allBookings = try await ScheduleManager.fetchAllGroomerBooking(groomerId: groomerId)
+        
+        if !allBookings.isEmpty{ 
+            allBookings.forEach { booking in
+                if booking.date.formatted(date: .abbreviated, time: .omitted) == bookingDate.formatted(date: .abbreviated, time: .omitted) {
+                    docId = booking.id ?? ""
+                
+                    // if booking date already exist, add lastApptId in array
+                    Task{
+                        try await Firestore.firestore().collection("users").document(groomerId).collection("bookings").document(docId).updateData([ "bookingsId" : FieldValue.arrayUnion([lastApptId]) ])
+                    }
+                  }
+                }
+            
+        }else{
+            
+            //if "bookings" is empty create new booking with date and [apptId] in it
+            let groomerBooking = GroomerBooking(date: bookingDate, bookingsId: [lastApptId])
+            //encode swift object to json
+            guard let encodeUser = try? Firestore.Encoder().encode(groomerBooking) else { return }
+            //insert in firestore\
+            Task{
+                try await Firestore.firestore().collection("users").document(groomerId).collection("bookings").addDocument(data: encodeUser)
+            }
+        }
+    }
 }

@@ -22,8 +22,8 @@ struct HomePageView: View {
                             Text("Home")
                         }
                     }
-            /*
-              ApptView()
+            
+              ApptView(user: user)
                     .tabItem {
                         VStack{
                             Image(systemName: "calendar")
@@ -31,7 +31,7 @@ struct HomePageView: View {
                         }
                     }
              
-             */
+            
               NotificationView()
                     .tabItem {
                         VStack{

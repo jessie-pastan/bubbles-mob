@@ -11,5 +11,5 @@ struct GroomerBooking: Codable, Identifiable, Hashable {
     @DocumentID var id : String?
     var date: Date
     var bookingsId: [String]?
-   
+     
 }

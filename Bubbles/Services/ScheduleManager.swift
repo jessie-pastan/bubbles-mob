@@ -110,9 +110,17 @@ class ScheduleManager {
         }
         
         static func queryLastApptId(uid: String) async throws -> String {
-            // fetch all appt of current user
-            _ = try await Firestore.firestore().collection("users").document(uid).collection("appointments").getDocuments()
-            return ""
+            // query last appt of current user
+            let snapshots = try await Firestore.firestore().collection("users").document(uid).collection("appointments").order(by: "dateCreated", descending: true)
+                .limit(to: 1).getDocuments()
+            guard let doc = snapshots.documents.first  else { return ""}
+            let lastAppt = try doc.data(as: Appointment.self)
+            return lastAppt.id ?? ""
         }
+    
+        static func fetchAllGroomerBooking(groomerId: String) async throws -> [GroomerBooking] {
+        let snapshot = try await Firestore.firestore().collection("users").document(groomerId).collection("bookings").getDocuments()
+        return snapshot.documents.compactMap({try? $0.data (as: GroomerBooking.self)})
+    }
     
 }
