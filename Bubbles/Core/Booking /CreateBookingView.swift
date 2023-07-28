@@ -16,7 +16,7 @@ struct CreateBookingView: View {
     @State var showSuccess = false
     
     var store: Store
-    
+   
     var body: some View {
         VStack( spacing: 60){
             
@@ -180,7 +180,8 @@ struct CreateBookingView: View {
                         
                         try await viewModel.updateData()
                         try await viewModel.updateSlots(items: viewModel.groomerSchedule, timeSlotString: viewModel.selectedTime, groomerId: viewModel.selectedGroomerId)
-                        try await viewModel.addGroomerBooking(bookingDate: viewModel.selectedDate, groomerId: viewModel.selectedGroomerId)
+                        
+                        // no use try await viewModel.addGroomerBooking(bookingDate: viewModel.selectedDate, groomerId: viewModel.selectedGroomerId)
                         
                     }
                     

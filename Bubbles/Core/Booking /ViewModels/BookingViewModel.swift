@@ -35,8 +35,6 @@ class BookingViewModel : ObservableObject {
     
     @Published var isSlotFull = false
     
-    
-    
     init(){
         Task{
             pets = try await fetchPets()
@@ -64,9 +62,9 @@ class BookingViewModel : ObservableObject {
                                isDone: false)
         
         //encode swift object to json
-        guard let encodeUser = try? Firestore.Encoder().encode(appt) else { return }
+        guard let encodeAppt = try? Firestore.Encoder().encode(appt) else { return }
         //insert in firestore
-        let _ = try await Firestore.firestore().collection("users").document(uid).collection("appointments").addDocument(data: encodeUser)
+        let _ = try await Firestore.firestore().collection("appointments").addDocument(data: encodeAppt)
     }
     
     func updateSlots(items: [Schedule], timeSlotString: String, groomerId: String) async throws {
@@ -74,7 +72,8 @@ class BookingViewModel : ObservableObject {
     }
     
     func fetchPets() async throws -> [Pet]{
-        let snapshot = try await Firestore.firestore().collection("users").document(Auth.auth().currentUser?.uid ?? "").collection("pets").getDocuments()
+        guard let uid = AuthService.shared.currentUser?.id else { return [Pet]() }
+        let snapshot = try await Firestore.firestore().collection("users").document(uid).collection("pets").getDocuments()
         return snapshot.documents.compactMap({try? $0.data (as: Pet.self)})
     }
     

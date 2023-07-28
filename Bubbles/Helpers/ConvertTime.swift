@@ -9,7 +9,7 @@ import Foundation
 class ConvertTime {
     
     static func switchTimeFormatted(timeString: String) -> String {
-        
+            
         switch timeString {
         case "10 AM" :
             return "10.00.00"

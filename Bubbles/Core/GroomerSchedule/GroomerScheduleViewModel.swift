@@ -18,7 +18,7 @@ class GroomerScheduleViewModel: ObservableObject {
     @Published var currentDay: Date = Date()
     
     // filter today's schedule for groomer( current User )
-    @Published var todayGroomerSchedules: [Schedule]?
+    @Published var todayGroomerSchedules: [GroomerBooking]?
     
     
     
@@ -27,8 +27,6 @@ class GroomerScheduleViewModel: ObservableObject {
         Task{
             try await fetchTodaySchedules()
         }
-       
-        
     }
     
     func fetchTodaySchedules() async throws {
@@ -37,7 +35,6 @@ class GroomerScheduleViewModel: ObservableObject {
     }
     
     func fetchCurrentWeek() {
-        
         let today = Date()
         //create calender
         let calendar = Calendar.current
@@ -60,9 +57,7 @@ class GroomerScheduleViewModel: ObservableObject {
     
     //this func checking if current Date is Today
     func isToday(date: Date)-> Bool {
-        
         let calendar = Calendar.current
-        
         return calendar.isDate(currentDay, inSameDayAs: date)
     }
 }

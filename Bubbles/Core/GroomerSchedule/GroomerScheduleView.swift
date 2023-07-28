@@ -14,11 +14,11 @@ struct GroomerScheduleView: View {
         
         ScrollView(.vertical, showsIndicators: false) {
             
-            // MARK: LAZY STACK WITH PINNED HEADER
+            //LAZY STACK WITH PINNED HEADER
             LazyVStack(spacing: 15, pinnedViews: [.sectionHeaders]){
                 Section {
                    
-                    // MARK: CURRENT WEEK VIEW
+                    // CURRENT WEEK VIEW
                     // display all schedule current groomer has
                     ScrollView(.horizontal, showsIndicators: false)  {
                         HStack(spacing: 10){
@@ -26,7 +26,8 @@ struct GroomerScheduleView: View {
                                 VStack{
                                     Text(viewModel.extractDate(date: day, format: "dd"))
                                         .font(.system(size: 16))
-                                        .fontWeight(.semibold)                                //extract first 3 letters of each day to display
+                                        .fontWeight(.semibold)
+                                    //extract first 3 letters of each day to display
                                     Text(viewModel.extractDate(date: day, format: "EEE"))
                                         .font(.system(size: 14))
                                         .fontWeight(.semibold)
@@ -37,7 +38,6 @@ struct GroomerScheduleView: View {
                                 }
                                 
                                 //capsule shape
-    
                                 .foregroundColor(viewModel.isToday(date: day) ? .white : .black)
                                 .frame(width: 45, height: 90)
                                 .background(
@@ -71,7 +71,7 @@ struct GroomerScheduleView: View {
         }
     }
     
-    //MARK: Header
+    //Header
     func HeaderView()-> some View {
         HStack{
             VStack(alignment: .leading, spacing: 10){
@@ -109,7 +109,7 @@ struct GroomerScheduleView_Previews: PreviewProvider {
     }
 }
 
-//MARK: UI design helper function
+//UI design helper function
 extension View {
     func hLeading()->some View{
         self
