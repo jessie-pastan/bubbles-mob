@@ -7,13 +7,17 @@
 
 import Foundation
 import FirebaseAuth
+
 @MainActor
 class ApptViewModel : ObservableObject {
     @Published var appts = [Appointment]()
+    @Published var sortedAppts = [Appointment]()
     
-    init() {
-        Task{
-           
-        }
+    func fetchAppt() async throws {
+        self.appts = try await UserService.fetchUserAppts()
+        self.sortedAppts = SortedTime.sortedItemsByDayAndTime(appts: appts)
+        
     }
+    
+    
 }

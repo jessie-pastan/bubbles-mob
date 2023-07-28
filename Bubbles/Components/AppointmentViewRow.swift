@@ -11,25 +11,64 @@ struct AppointmentViewRow: View {
     var appt: Appointment
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 30){
-            Text("Booking at: \(appt.store)")
-                .font(.title3)
-                .bold()
-                .lineLimit(1)
-            Text("For: \(appt.petName)")
-            Text("Service: \(appt.service)")
-            //if any add on service
-            Text("Add on: \(appt.addOnService )")
-            Text("Groomer: \(appt.groomer)")
-            Text("DueDate: \(appt.dueDate.formatted(date: .abbreviated, time: .omitted))")
-            Text("Appiontment Time: \(appt.time)")
-            Text("Special Request: \(appt.note ?? "None")")
-            VStack(alignment: .leading){
-                Text("Grooming duration approximately 3 hrs. ")
-                Text("Edit or Cancel appointment is allowed 24 hrs. prior grooming day:)")
-            }.font(.footnote)
-                .bold()
+        VStack{
+            VStack{
+                VStack(alignment: .leading){
+                    Text("Booking at: \(appt.store)")
+                        .font(.title3)
+                        .bold()
+                        .lineLimit(1)
+                    Text("For: \(appt.petName)")
+                    Text("Service: \(appt.service)")
+                    //if any add on service
+                    Text("Add on: \(appt.addOnService )")
+                    Text("Groomer: \(appt.groomer)")
+                    Text("DueDate: \(appt.dueDate.formatted(date: .abbreviated, time: .omitted))")
+                    Text("Appiontment Time: \(appt.time)")
+                    Text("Note: \(appt.note ?? "None")")
+                    VStack(alignment: .leading){
+                        Text("Grooming duration approximately 3 hrs. ")
+                        Text("Appoinment Cancellation is allowed 24 hrs. prior grooming day:)")
+                    }.font(.footnote)
+                        .bold()
+                        .padding(.vertical)
+                }.padding(.horizontal).padding(.vertical)
+                
+                
+                HStack(spacing: 10){
+                    //cancel appt button
+                    Button {
+                        //
+                    } label: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(width: 180, height: 39)
+                                .foregroundColor(Color(.systemRed))
+                            Text("Cancel Appointment")
+                                .foregroundColor(.white)
+                                .bold()
+                        }
+                    }
+                    
+                    // call store button
+                    Button {
+                        //
+                    } label: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(width: 180, height: 39)
+                                .foregroundColor(Color(.systemCyan))
+                            Text("Call Store")
+                                .foregroundColor(.white)
+                                .bold()
+                        }
+                    }
+                }.padding(.bottom,20).padding(.horizontal)
+            }
         }
+        .frame(width:410, height: 400)
+        .background(Color(.systemCyan).opacity(0.3).cornerRadius(15))
+        
     }
 }
 

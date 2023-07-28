@@ -204,7 +204,6 @@
 		831A9C1C2A72F9A60043EFF2 /* GroomerBooking  */ = {
 			isa = PBXGroup;
 			children = (
-				83D3DBDD2A64C75A00A43A3C /* BookingRowView.swift */,
 				831A9C182A72F3C70043EFF2 /* GroomerBookingView.swift */,
 				831A9C1A2A72F4350043EFF2 /* GroomerBookingViewModel.swift */,
 			);
@@ -219,6 +218,7 @@
 				831D3BA12A5A50D1007BFAB5 /* GroomerViewRow.swift */,
 				831D3B9F2A5A4D2E007BFAB5 /* ExploreGroomerView.swift */,
 				83E6FABD2A60C4AF00732F90 /* AppointmentViewRow.swift */,
+				83D3DBDD2A64C75A00A43A3C /* BookingRowView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";

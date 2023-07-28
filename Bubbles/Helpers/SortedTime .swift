@@ -14,7 +14,7 @@ class SortedTime {
     }
     
     
-    func sortedItemsByDayAndTime(appts: [Appointment]) -> [Appointment] {
+    static func sortedItemsByDayAndTime(appts: [Appointment]) -> [Appointment] {
         return appts.sorted { item1, item2 in
             let calendar = Calendar.current
 

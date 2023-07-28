@@ -22,7 +22,7 @@ struct HomePageView: View {
                             Text("Home")
                         }
                     }
-               /*
+              
               if  user.isGroomer {
                 GroomerBookingView()
                         .tabItem {
@@ -33,8 +33,8 @@ struct HomePageView: View {
                         }
                     
                 }
-                */
-            /*
+               
+            
               ApptView(user: user)
                     .tabItem {
                         VStack{
@@ -42,7 +42,7 @@ struct HomePageView: View {
                             Text("Appointment")
                         }
                     }
-             */
+             
             
               NotificationView()
                     .tabItem {

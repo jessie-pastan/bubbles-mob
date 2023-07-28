@@ -15,9 +15,9 @@ struct UserService {
         return try snapshot.data(as: User.self)
     }
     
-    func fetchUserAppts() async throws -> [Appointment] {
+    static func fetchUserAppts() async throws -> [Appointment] {
         guard let uid = await AuthService.shared.currentUser?.id else { return [Appointment]()}
-        let snapshot = try await Firestore.firestore().collection("appointments").whereField("groomerId", isEqualTo: uid).getDocuments()
+        let snapshot = try await Firestore.firestore().collection("appointments").whereField("ownerId", isEqualTo: uid).getDocuments()
         return snapshot.documents.compactMap({try? $0.data(as: Appointment.self)})
     }
     

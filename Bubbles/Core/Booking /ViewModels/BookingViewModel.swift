@@ -35,15 +35,6 @@ class BookingViewModel : ObservableObject {
     
     @Published var isSlotFull = false
     
-    
-    
-    init(){
-        Task{
-            //try await AuthService().fetchCurrentUser()
-            //pets = try await fetchPets()
-        }
-    }
-    
     func updateData() async throws {
         
         guard let uid = AuthService.shared.currentUser?.id else { return }

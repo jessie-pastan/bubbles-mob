@@ -27,7 +27,7 @@ struct BookingRowView: View {
                         //create grooming note
                     } label: {
                         HStack{
-                            Text("Note")
+                            Text("GroomerNote")
                             Image(systemName: "note.text")
                                 .resizable()
                                 .frame(width: 20, height: 20)
@@ -41,7 +41,7 @@ struct BookingRowView: View {
                     Text("Add On : \(appt.addOnService)")
                     
                 }
-                Text("Memo:")
+                Text("Note:")
               
             }
             .frame(maxWidth: .infinity, alignment: .leading)
