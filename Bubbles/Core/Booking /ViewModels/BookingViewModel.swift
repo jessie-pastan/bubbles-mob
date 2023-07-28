@@ -35,13 +35,17 @@ class BookingViewModel : ObservableObject {
     
     @Published var isSlotFull = false
     
+    
+    
     init(){
         Task{
-            pets = try await fetchPets()
+            //try await AuthService().fetchCurrentUser()
+            //pets = try await fetchPets()
         }
     }
     
     func updateData() async throws {
+        
         guard let uid = AuthService.shared.currentUser?.id else { return }
         self.convertTimeStringtoDate(timeString: selectedTime)
         
@@ -71,11 +75,12 @@ class BookingViewModel : ObservableObject {
         try await ScheduleManager.markSlotBooked(items: items, timeSlotString: timeSlotString, groomerId: groomerId)
     }
     
-    func fetchPets() async throws -> [Pet]{
-        guard let uid = AuthService.shared.currentUser?.id else { return [Pet]() }
+    func fetchPets() async throws {
+        guard let uid = AuthService.shared.currentUser?.id else { return }
         let snapshot = try await Firestore.firestore().collection("users").document(uid).collection("pets").getDocuments()
-        return snapshot.documents.compactMap({try? $0.data (as: Pet.self)})
+        self.pets = snapshot.documents.compactMap({try? $0.data (as: Pet.self)})
     }
+     
     
     func fetchStoreServices(storeId: String) async throws {
         self.storeServices = try await StoreManager.fetchStoreServices(storeId: storeId)

@@ -79,6 +79,7 @@ class AuthService {
             try  Auth.auth().signOut()
             self.userSession = nil
             self.currentUser = nil
+            
             print("DEBUG: Logged Out")
         } catch {
             print("DEBUG: Failed to Log Out  with \(error.localizedDescription).")

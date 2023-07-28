@@ -180,8 +180,7 @@ struct CreateBookingView: View {
                         
                         try await viewModel.updateData()
                         try await viewModel.updateSlots(items: viewModel.groomerSchedule, timeSlotString: viewModel.selectedTime, groomerId: viewModel.selectedGroomerId)
-                        
-                        // no use try await viewModel.addGroomerBooking(bookingDate: viewModel.selectedDate, groomerId: viewModel.selectedGroomerId)
+                       
                         
                     }
                     
@@ -203,6 +202,7 @@ struct CreateBookingView: View {
             Task{
                 try await viewModel.fetchStoreServices(storeId: store.id)
                 try await viewModel.fetchGroomers(storeId: store.id)
+                try await viewModel.fetchPets()
             }
            
         }

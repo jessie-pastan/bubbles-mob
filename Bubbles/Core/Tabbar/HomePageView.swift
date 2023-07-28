@@ -22,8 +22,8 @@ struct HomePageView: View {
                             Text("Home")
                         }
                     }
-                
-                if  user.isGroomer {
+               /*
+              if  user.isGroomer {
                 GroomerBookingView()
                         .tabItem {
                             VStack{
@@ -33,6 +33,7 @@ struct HomePageView: View {
                         }
                     
                 }
+                */
             /*
               ApptView(user: user)
                     .tabItem {
