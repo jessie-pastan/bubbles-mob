@@ -23,9 +23,9 @@ struct AppointmentViewRow: View {
                     //if any add on service
                     Text("Add on: \(appt.addOnService )")
                     Text("Groomer: \(appt.groomer)")
-                    Text("DueDate: \(appt.dueDate.formatted(date: .abbreviated, time: .omitted))")
+                    Text("Date: \(appt.dueDate.formatted(date: .abbreviated, time: .omitted))")
                     Text("Appiontment Time: \(appt.time)")
-                    Text("Note: \(appt.note ?? "None")")
+                    //Text("Note: \(appt.note ?? "None")")
                     VStack(alignment: .leading){
                         Text("Grooming duration approximately 3 hrs. ")
                         Text("Appoinment Cancellation is allowed 24 hrs. prior grooming day:)")
@@ -42,9 +42,10 @@ struct AppointmentViewRow: View {
                     } label: {
                         ZStack{
                             RoundedRectangle(cornerRadius: 10)
-                                .frame(width: 180, height: 39)
+                                .frame(width: 150, height: 39)
                                 .foregroundColor(Color(.systemRed))
                             Text("Cancel Appointment")
+                                .font(.footnote)
                                 .foregroundColor(.white)
                                 .bold()
                         }
@@ -56,9 +57,10 @@ struct AppointmentViewRow: View {
                     } label: {
                         ZStack{
                             RoundedRectangle(cornerRadius: 10)
-                                .frame(width: 180, height: 39)
+                                .frame(width: 150, height: 39)
                                 .foregroundColor(Color(.systemCyan))
                             Text("Call Store")
+                                .font(.footnote)
                                 .foregroundColor(.white)
                                 .bold()
                         }
@@ -66,6 +68,7 @@ struct AppointmentViewRow: View {
                 }.padding(.bottom,20).padding(.horizontal)
             }
         }
+        
         .frame(width:410, height: 400)
         .background(Color(.systemCyan).opacity(0.3).cornerRadius(15))
         

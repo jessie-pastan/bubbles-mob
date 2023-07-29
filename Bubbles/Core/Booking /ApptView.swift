@@ -15,12 +15,36 @@ struct ApptView: View {
     
     var body: some View {
         
-        Text("heloo")
+        VStack{
+            if !viewModel.appts.isEmpty {
+                if let appts = viewModel.sortedAppts.filter({ $0.isDone == false}){
+                    Text("Upcoming Appointments")
+                        .font(.title2)
+                        .bold()
+                    ScrollView{
+                        ForEach(appts) { appt in
+                            VStack{
+                                AppointmentViewRow(appt: appt)
+                            }
+                        }
+                    }
+                }
+            }else{
+                Text("No Upcomimg Appointment yet.")
+            }
+        }.onAppear {
+            Task{
+                try await viewModel.fetchAppt()
+            }
+            
+            
+        }
     }
 }
+    
 
 struct ApptView_Previews: PreviewProvider {
     static var previews: some View {
-        ApptView(user: User.MOCK_USERS[0])
+        ApptView()
     }
 }
