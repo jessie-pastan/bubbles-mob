@@ -24,10 +24,10 @@ struct BookingRowView: View {
                     Spacer()
                 
                     Button {
-                        //create grooming note
+                        //create grooming note for this booking 
                     } label: {
                         HStack{
-                            Text("GroomerNote")
+                            //Text("GroomerNote")
                             Image(systemName: "note.text")
                                 .resizable()
                                 .frame(width: 20, height: 20)

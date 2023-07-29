@@ -31,33 +31,45 @@ struct HomePageView: View {
                                 Text("Booking")
                             }
                         }
-                    
-                }
-               
-            
-              ApptView(user: user)
-                    .tabItem {
-                        VStack{
-                            Image(systemName: "calendar")
-                            Text("Appointment")
-                        }
-                    }
-             
-            
-              NotificationView()
-                    .tabItem {
-                        VStack{
-                            Image(systemName: "bubble.right")
-                            Text("Notifications")
-                        }
-                    }
-            GroomingHistoryView()
-                    .tabItem {
-                        VStack{
-                            Image(systemName: "bathtub")
-                            Text("History")
-                        }
-                    }
+                  
+                  ManageScheduleView()
+                      .tabItem {
+                          VStack{
+                              Image(systemName: "calendar.badge.plus")
+                              Text("Manage Schedule")
+                          }
+                      }
+              }else{
+                  
+                  ApptView()
+                      .tabItem {
+                          VStack{
+                              Image(systemName: "calendar")
+                              Text("Appointment")
+                          }
+                      }
+                  
+                 
+                  
+                  NotificationView()
+                      .tabItem {
+                          VStack{
+                              Image(systemName: "bubble.right")
+                              Text("Notifications")
+                          }
+                      }
+                  
+                  GroomingHistoryView()
+                      .tabItem {
+                          VStack{
+                              Image(systemName: "bathtub")
+                              Text("History")
+                          }
+                      }
+                  
+              }
+                
+                
                 UserProfileView(user: user)
                     .tabItem {
                         VStack{
