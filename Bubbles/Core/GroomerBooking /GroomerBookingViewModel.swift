@@ -30,6 +30,12 @@ class GroomerBookingViewModel : ObservableObject {
     
     func sortedTime(appts: [Appointment]){
         self.sortedAppts = SortedTime.clockwiseSortedItems(appts: appts)
-        
+    }
+    
+    func updateDone(item : Appointment) async throws {
+        var copyItem = item
+        copyItem.setDone()
+        // update done appt in firebase
+        try Firestore.firestore().collection("appointments").document(copyItem.id ?? "").setData(from:copyItem)
     }
 }

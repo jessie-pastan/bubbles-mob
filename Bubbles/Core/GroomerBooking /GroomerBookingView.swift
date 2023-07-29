@@ -35,7 +35,7 @@ struct GroomerBookingView: View {
                         .padding(.horizontal)
                     }else{
                         VStack{
-                            Text("No Booking")
+                            Text("No booking yet.")
                         }
                         .font(.title)
                         .bold()

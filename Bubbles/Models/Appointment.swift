@@ -22,7 +22,12 @@ struct Appointment: Codable, Identifiable, Hashable {
     var petName: String
     var groomerId: String
     var dateCreated: Date
-    var isDone = false 
+    var isDone = false
+    
+    mutating func setDone(){
+        isDone = true
+    }
+    
 }
 
 extension Appointment {

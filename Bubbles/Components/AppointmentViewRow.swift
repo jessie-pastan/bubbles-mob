@@ -19,12 +19,13 @@ struct AppointmentViewRow: View {
                         .bold()
                         .lineLimit(1)
                     Text("For: \(appt.petName)")
+                    Text("Date: \(appt.dueDate.formatted(date: .abbreviated, time: .omitted))")
+                    Text("Appiontment Time: \(appt.time)")
                     Text("Service: \(appt.service)")
                     //if any add on service
                     Text("Add on: \(appt.addOnService )")
                     Text("Groomer: \(appt.groomer)")
-                    Text("Date: \(appt.dueDate.formatted(date: .abbreviated, time: .omitted))")
-                    Text("Appiontment Time: \(appt.time)")
+                    
                     //Text("Note: \(appt.note ?? "None")")
                     VStack(alignment: .leading){
                         Text("Grooming duration approximately 3 hrs. ")

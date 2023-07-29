@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import FirebaseFirestoreSwift
-import FirebaseAuth
 
 struct ApptView: View {
     
