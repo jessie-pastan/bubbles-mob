@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct NotificationView: View {
+    
+    @StateObject var viewModel = NotificationViewModel()
+    
     var body: some View {
-        Text("Your grooming appt has confirmed!")
+    ScrollView{
+            VStack{
+                ForEach(viewModel.notifications) { noti in
+                
+                NotificationsRowView(noti: noti)
+                
+                }
+            }
+        }
     }
 }
 

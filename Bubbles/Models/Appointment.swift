@@ -23,6 +23,7 @@ struct Appointment: Codable, Identifiable, Hashable {
     var groomerId: String
     var dateCreated: Date
     var isDone = false
+    var groomerNote : GroomerNote?
     
     mutating func setDone(){
         isDone = true

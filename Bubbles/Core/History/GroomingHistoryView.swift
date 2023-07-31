@@ -10,6 +10,8 @@ import SwiftUI
 struct GroomingHistoryView: View {
     
     @StateObject var viewModel = ApptViewModel()
+    @State private var isShowNote = false
+    @State private var selectedAppt: Appointment?
 
     var body: some View {
         VStack{
@@ -20,7 +22,7 @@ struct GroomingHistoryView: View {
                         .bold()
                     ScrollView{
                         ForEach(appts) { appt in
-                            VStack{
+                            VStack(alignment: .leading){
                                 
                                 Text("Booking at: \(appt.store)")
                                     .font(.title3)
@@ -34,22 +36,45 @@ struct GroomingHistoryView: View {
                                 Text("Add on: \(appt.addOnService )")
                                 Text("Groomer: \(appt.groomer)")
                                 
-                                Button {
-                                    //
-                                } label: {
-                                    ZStack{
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .frame(width: 150, height: 39)
-                                            .foregroundColor(Color(.systemCyan))
-                                        Text("View groomer note")
-                                            .font(.footnote)
-                                            .foregroundColor(.white)
-                                            .bold()
+                                HStack( spacing: 20 ){
+                                    Button {
+                                        //show appt's groomer note
+                                        isShowNote = true
+                                        selectedAppt = appt
+                                    } label: {
+                                        ZStack{
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .frame(width: 140, height: 39)
+                                                .foregroundColor(Color(.systemMint))
+                                            Text("View groomer note")
+                                                .font(.footnote)
+                                                .foregroundColor(.white)
+                                                .bold()
+                                        }
+                                    }
+                                    .sheet(isPresented: $isShowNote) {
+                                        GroomerNoteView(appt: selectedAppt ?? Appointment.MOCK_APPOINTMENT)
+                                        
+                                    }
+                                    
+                                    Button {
+                                        //
+                                    } label: {
+                                        ZStack{
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .frame(width: 120, height: 39)
+                                                .foregroundColor(Color(.systemCyan))
+                                            Text("Write a review")
+                                                .font(.footnote)
+                                                .foregroundColor(.white)
+                                                .bold()
+                                        }
                                     }
                                 }
+                                
                             }
-                            .frame(width: 300, height: 300, alignment: .center)
-                            .background(Color(.systemCyan).opacity(0.3).cornerRadius(15))
+                            .frame(width: 380, height: 250, alignment: .center)
+                            .background(Color(.systemMint).opacity(0.3).cornerRadius(15))
                             
                         }
                     }

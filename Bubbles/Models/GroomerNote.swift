@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 struct GroomerNote: Codable, Identifiable, Hashable {
-    let id: String
-    var date: TimeInterval
+    @DocumentID var id: String?
+    var date: Date
     var groomer: String
     var groomingImageUrl: String?
-    var groomerNote: String
-    var appintmentId: String
+    var text: String
+    var apptId: String
     
 }

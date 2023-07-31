@@ -12,6 +12,7 @@ struct BookingRowView: View {
     var appt : Appointment
     @State private var isTapforPickUp = false
     @State private var isTapRemind = false
+    @State private var isNoteShow = false
     
     var body: some View {
         
@@ -28,7 +29,8 @@ struct BookingRowView: View {
                     Spacer()
                 
                     Button {
-                        //create grooming note for this booking 
+                        //create grooming note for this booking
+                        isNoteShow = true
                     } label: {
                         HStack{
                             //Text("GroomerNote")
@@ -38,6 +40,9 @@ struct BookingRowView: View {
                         }
                     }
                     .accentColor(.black)
+                    .sheet(isPresented: $isNoteShow) {
+                        GroomerNoteView(appt: appt)
+                    }
 
                 }
                 HStack{
@@ -46,7 +51,7 @@ struct BookingRowView: View {
                     
                 }
                 if appt.note == "" {
-                    Text("Note: \(appt.note ?? "None")")
+                    
                 }else{
                     Text("Note: \(appt.note ?? "None")")
                     
@@ -59,8 +64,10 @@ struct BookingRowView: View {
                     if !isTapRemind {
                         Task{
                            //send reminder
+                            NotificationViewModel().uploadNotification(toUid: appt.ownerId, type: .reminder, appt: appt)
+                            isTapRemind = true
                         }
-                        isTapRemind = true
+                        
                     }
                 } label: {
                     ZStack{
@@ -79,6 +86,7 @@ struct BookingRowView: View {
                     if !isTapforPickUp {
                         Task{
                             try await viewModel.updateDone(item: appt)
+                            NotificationViewModel().uploadNotification(toUid: appt.ownerId, type: .completeGrooming, appt: appt)
                         }
                         isTapforPickUp = true
                     }

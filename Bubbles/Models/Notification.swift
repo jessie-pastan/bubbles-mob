@@ -7,24 +7,30 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestoreSwift
 struct Notification : Codable, Identifiable {
-    var id: String
-    let timeStamp: Timestamp
-    let type: Int
-    let uid: String
+    @DocumentID var id: String?
+    var timeStamp: Date
+    var type: NotificationType
+    var groomerId: String // uid of groomer who send noification
+    var userName: String// groomer userName
+    var petName: String
+    var store: String
+    var date: Date
+    var time: String
+    var clientId: String
 }
 
 enum NotificationType: Int, Codable {
-    case confirm // raw value 1
-    case reminder // raw value 2
-    case completeGrooming// raw value 3
+   
+    case reminder // raw value 0
+    case completeGrooming// raw value 1
 
     
-    var notifivationMessage: String {
+    var notificationMessage: String {
         switch self {
-        case .confirm: return "Your grooming appointment has confirmed"
-        case .reminder: return "Hi! You have grooming appointment tommorrow"
-        case .completeGrooming: return "Your pet is ready for pick up in 20 mins"
+        case .reminder: return "Woof! Kindly reminder for upcoming grooming appointment"
+        case .completeGrooming: return "is ready for pick up in 15 minutes"
             
         }
     }
