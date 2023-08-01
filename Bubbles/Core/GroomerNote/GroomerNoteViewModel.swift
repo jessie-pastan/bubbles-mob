@@ -9,15 +9,19 @@ import Foundation
 import FirebaseFirestoreSwift
 import FirebaseAuth
 import Firebase
+
 @MainActor
 class GroomerNoteViewModel: ObservableObject {
     @Published var text = ""
     @Published var user: User?
+    @Published var appts  = [Appointment]()
+    
     
     
     init(){
         Task{
              try await findUser()
+            
             
         }
     }
@@ -31,6 +35,10 @@ class GroomerNoteViewModel: ObservableObject {
         let _ = try snapshot.data(as: Appointment.self)
     }
      
+    func fetchAppt() async throws {
+        self.appts = try await UserService.fetchUserAppts()
+    }
+    
     
     func uploadGroomerNote(appt: Appointment) async throws {
         guard let user = AuthService.shared.currentUser  else { return }
@@ -50,3 +58,4 @@ class GroomerNoteViewModel: ObservableObject {
     
     
 }
+

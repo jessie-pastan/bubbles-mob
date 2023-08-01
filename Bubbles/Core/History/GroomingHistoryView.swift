@@ -9,9 +9,9 @@ import SwiftUI
 
 struct GroomingHistoryView: View {
     
-    @StateObject var viewModel = ApptViewModel()
+    @EnvironmentObject var viewModel : ApptViewModel
     @State private var isShowNote = false
-    @State private var selectedAppt: Appointment?
+    
 
     var body: some View {
         VStack{
@@ -40,7 +40,7 @@ struct GroomingHistoryView: View {
                                     Button {
                                         //show appt's groomer note
                                         isShowNote = true
-                                        selectedAppt = appt
+                                        viewModel.selectedAppt = appt
                                     } label: {
                                         ZStack{
                                             RoundedRectangle(cornerRadius: 15)
@@ -53,7 +53,7 @@ struct GroomingHistoryView: View {
                                         }
                                     }
                                     .sheet(isPresented: $isShowNote) {
-                                        GroomerNoteView(appt: selectedAppt ?? Appointment.MOCK_APPOINTMENT)
+                                        GroomerNoteForClientView()
                                         
                                     }
                                     

@@ -15,6 +15,8 @@ class GroomerBookingViewModel : ObservableObject {
     @Published var date = Date()
     @Published var appts = [Appointment]()
     @Published var sortedAppts = [Appointment]()
+    //@Published var updatedAppt: Appointment?
+    
     
 
     
@@ -38,4 +40,7 @@ class GroomerBookingViewModel : ObservableObject {
         // update done appt in firebase
         try Firestore.firestore().collection("appointments").document(copyItem.id ?? "").setData(from:copyItem)
     }
+    
+    
+    
 }

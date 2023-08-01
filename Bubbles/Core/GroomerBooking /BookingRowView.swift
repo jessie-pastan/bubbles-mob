@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct BookingRowView: View {
-    @StateObject var viewModel = GroomerBookingViewModel()
+    @ObservedObject var viewModel = GroomerBookingViewModel()
+    @StateObject var sheetController = SheetController()
+   
+   
     var appt : Appointment
+   
+    
     @State private var isTapforPickUp = false
     @State private var isTapRemind = false
     @State private var isNoteShow = false
+    
+    
     
     var body: some View {
         
@@ -26,11 +33,14 @@ struct BookingRowView: View {
                         .fontWeight(.semibold)
                     Text(appt.petName)
                         .font(.title)
+                    Text(appt.groomerNote?.text ?? "no note")
+                    
                     Spacer()
                 
                     Button {
-                        //create grooming note for this booking
-                        isNoteShow = true
+                       
+                        sheetController.showNoteSheet()
+                        
                     } label: {
                         HStack{
                             //Text("GroomerNote")
@@ -40,8 +50,8 @@ struct BookingRowView: View {
                         }
                     }
                     .accentColor(.black)
-                    .sheet(isPresented: $isNoteShow) {
-                        GroomerNoteView(appt: appt)
+                    .sheet(isPresented: $sheetController.isShowingNoteSheet) {
+                        GroomerNoteView(sheetController: sheetController, appt: appt  )
                     }
 
                 }
@@ -110,6 +120,7 @@ struct BookingRowView: View {
         .padding(.vertical, 10)
         .padding(.horizontal,20 )
         .background(Color(.systemCyan).opacity(0.3).cornerRadius(10))
+        
     }
 }
 
