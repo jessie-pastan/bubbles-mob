@@ -12,7 +12,7 @@ struct GroomingHistoryView: View {
     @EnvironmentObject var viewModel : ApptViewModel
     @State private var isShowNote = false
     
-
+    
     var body: some View {
         VStack{
             if !viewModel.appts.isEmpty {
@@ -78,19 +78,16 @@ struct GroomingHistoryView: View {
                             
                         }
                     }
+                }else{
+                    Text("No history.")
                 }
-            }else{
-                Text("No history.")
             }
         }.onAppear {
             Task{
                 try await viewModel.fetchAppt()
             }
-            
-            
         }
     }
-    
 }
 
 struct GroomingHistoryView_Previews: PreviewProvider {

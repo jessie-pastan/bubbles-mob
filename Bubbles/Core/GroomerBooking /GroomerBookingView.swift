@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GroomerBookingView: View {
     @StateObject var viewModel = GroomerBookingViewModel()
-    @State private var isTakeDayoff = false
+    @State private var isTakeDayOff = false
     
     var body: some View {
         VStack{

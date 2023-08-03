@@ -24,9 +24,19 @@ struct Appointment: Codable, Identifiable, Hashable {
     var dateCreated: Date
     var isDone = false
     var groomerNote : GroomerNote?
+    var reminderSent = false
+    var clientConfirmed = false
     
     mutating func setDone(){
         isDone = true
+    }
+    
+    mutating func sentReminder(){
+       reminderSent = true
+    }
+    
+    mutating func sentConfirm(){
+        clientConfirmed = false
     }
     
 }

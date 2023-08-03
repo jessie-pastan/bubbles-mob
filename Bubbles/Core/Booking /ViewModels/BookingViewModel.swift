@@ -56,7 +56,9 @@ class BookingViewModel : ObservableObject {
                                petName: petName,
                                groomerId: selectedGroomerId,
                                dateCreated: Date(),
-                               isDone: false)
+                               isDone: false,
+        reminderSent: false,
+        clientConfirmed: false)
         
         //encode swift object to json
         guard let encodeAppt = try? Firestore.Encoder().encode(appt) else { return }

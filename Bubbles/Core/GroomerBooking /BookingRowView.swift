@@ -26,7 +26,6 @@ struct BookingRowView: View {
         
         VStack{
             VStack(alignment: .leading){
-                
                 HStack{
                     Text("\(appt.time) :")
                         .font(.title)
@@ -34,7 +33,7 @@ struct BookingRowView: View {
                     Text(appt.petName)
                         .font(.title)
                     //testing delete when done 
-                    Text(appt.groomerNote?.text ?? "no note")
+                    //Text(appt.groomerNote?.text ?? "no note")
                     
                     Spacer()
                 
@@ -56,35 +55,44 @@ struct BookingRowView: View {
                     }
 
                 }
+                
                 HStack{
-                    Text(appt.service)
-                    Text("Add On : \(appt.addOnService)")
                     
+                        Text(appt.service)
+                        .lineLimit(nil)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("Add On : \(appt.addOnService)")
+                        .lineLimit(nil)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 if appt.note == "" {
                     
                 }else{
                     Text("Note: \(appt.note ?? "None")")
+                        .padding(.top)
                     
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            HStack(spacing: 60){
+            .padding(30)
+            .padding(.top,-20)
+            .font(.subheadline)
+            //.frame(maxWidth: .infinity, alignment: .leading)
+            HStack(spacing: 10){
                 //send reminder button
                 Button {
                     if !isTapRemind {
                         Task{
                            //send reminder
+                            try await viewModel.updateSentReminder(item: appt)
                             NotificationViewModel().uploadNotification(toUid: appt.ownerId, type: .reminder, appt: appt)
-                            isTapRemind = true
                         }
-                        
+                        isTapRemind = true
                     }
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 150, height: 39)
-                            .foregroundColor(isTapRemind ? Color(.gray) : Color(.systemMint))
+                            .foregroundColor(isTapRemind || appt.reminderSent ? Color(.gray) : Color(.systemMint))
                         Text("Send Reminder")
                             .foregroundColor(.white)
                             .bold()
@@ -118,8 +126,9 @@ struct BookingRowView: View {
             
             
         }
-        .padding(.vertical, 10)
-        .padding(.horizontal,20 )
+        
+        .padding(.vertical, 20)
+        .padding(.horizontal,-20 )
         .background(Color(.systemCyan).opacity(0.3).cornerRadius(10))
         
     }

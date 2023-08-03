@@ -42,6 +42,7 @@ class NotificationViewModel: ObservableObject {
                                    "clientId": uid]
         
         COLLECTION_NOTIFICATIONS.document(uid).collection("user-notifications").addDocument(data: data)
+        print("DEBUG: Uploaded Notification")
                             
     }
     

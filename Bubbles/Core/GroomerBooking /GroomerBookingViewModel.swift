@@ -44,6 +44,15 @@ class GroomerBookingViewModel : ObservableObject {
         try Firestore.firestore().collection("appointments").document(copyItem.id ?? "").setData(from:copyItem)
     }
     
+    func updateSentReminder(item : Appointment) async throws {
+        var copyItem = item
+        copyItem.sentReminder()
+        // update reminder     in firebase
+        try Firestore.firestore().collection("appointments").document(copyItem.id ?? "").setData(from:copyItem)
+    }
+    
+    
+    
     
     func updateDayoffToggleTrue(schedule: Schedule) async throws {
         guard let uid = AuthService.shared.currentUser?.id else { return }
@@ -52,9 +61,6 @@ class GroomerBookingViewModel : ObservableObject {
         try Firestore.firestore().collection("users").document(uid).collection("schedules").document(schedule.id ?? "").setData(from: copyItem)
         print("DeBuG:Updated isFullBook to true")
     }
-    
-  
-    
     
     func updateDayoffToggleFalse(schedule: Schedule) async throws {
         guard let uid = AuthService.shared.currentUser?.id else { return }
