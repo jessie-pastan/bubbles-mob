@@ -33,6 +33,7 @@ struct BookingRowView: View {
                         .fontWeight(.semibold)
                     Text(appt.petName)
                         .font(.title)
+                    //testing delete when done 
                     Text(appt.groomerNote?.text ?? "no note")
                     
                     Spacer()

@@ -11,8 +11,9 @@ struct Schedule: Codable, Identifiable {
     @DocumentID var id: String?
     var date: Date
     var timeSlots: [TimeSlot]
-    var isFullBooked: Bool
-    //will delete later
+    var isFullBooked = false
+    
+    
     mutating func markAsFullBooked(_ state: Bool){
         isFullBooked = state
     }

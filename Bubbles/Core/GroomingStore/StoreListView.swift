@@ -12,11 +12,17 @@ struct StoreListView: View {
     @StateObject var viewModel = StoreManager()
     @EnvironmentObject var root : Router
     @State private var text = ""
+    
+    var filteredStores : [Store] {
+        guard  !text.isEmpty else {return viewModel.stores}
+        return viewModel.stores.filter {$0.name.localizedCaseInsensitiveContains(text)}
+    }
+    
     var body: some View {
         NavigationStack(path: $root.path ){
             ScrollView{
                 LazyVStack{
-                    ForEach(viewModel.stores) { store in
+                    ForEach(filteredStores) { store in
                         NavigationLink(value: store) {
                             ZStack{
                                 
@@ -43,7 +49,7 @@ struct StoreListView: View {
                 
             }
         }
-        .searchable(text: $text, prompt: "Search")
+        .searchable(text: $text, prompt: "Search store")
     }
 }
 

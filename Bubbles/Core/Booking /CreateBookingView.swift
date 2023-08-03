@@ -12,6 +12,7 @@ import FirebaseAuth
 struct CreateBookingView: View {
     
     @EnvironmentObject var viewModel : BookingViewModel
+    
    
     @State var showSuccess = false
     
@@ -86,15 +87,13 @@ struct CreateBookingView: View {
                         .datePickerStyle(.automatic)
                 }
             
-                //test fething schedule
+                //fething schedule
                 Button {
                     Task{
                         try await viewModel.fetchSelectedGroomer(groomerId: viewModel.selectedGroomerId)
                         try await viewModel.fetchGroomerSchedule(groomerId: viewModel.selectedGroomerId, selectDate: viewModel.selectedDate)
                         viewModel.showGroomerSlots(schedules: viewModel.groomerSchedule)
                         viewModel.checkSlotsFull(schedules: viewModel.groomerSchedule, bookedSlots: viewModel.bookedSlots)
-                        
-                        
                     }
                 } label: {
                     ZStack{
@@ -109,7 +108,7 @@ struct CreateBookingView: View {
                 }
                 
                 
-                if !viewModel.availbleSlots.isEmpty{
+                if !viewModel.availbleSlots.isEmpty && !viewModel.vertifyTakeDayOff(schedules: viewModel.groomerSchedule){
                     HStack{
                         Text("Select Time")
                             .font(.callout)
@@ -125,11 +124,12 @@ struct CreateBookingView: View {
                         }
                         .pickerStyle(.segmented)
                     }
-                }else if viewModel.isSlotFull {
+                } else if viewModel.isSlotFull || viewModel.vertifyTakeDayOff(schedules: viewModel.groomerSchedule) {
                         Text("There's no timeslot available, please select other day.")
                             .font(.footnote)
                         .foregroundColor(Color(.systemRed))
                 }
+                
                 
                 HStack{
                     Text("Leave a note")

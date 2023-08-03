@@ -29,11 +29,13 @@ class BookingViewModel : ObservableObject {
     @Published var pets = [Pet]()
     @Published var storeServices = [GroomingService]()
     @Published var groomers = [User]()
-    @Published var groomerSchedule = [Schedule]()
+    @Published var groomerSchedule = [Schedule.MOCK_selectedDateAndTime]
+    
     @Published var availbleSlots = [TimeSlot]()
     @Published var bookedSlots = [TimeSlot]()
     
     @Published var isSlotFull = false
+    @Published var isTakeDayOff = false
     
     func updateData() async throws {
         
@@ -81,9 +83,24 @@ class BookingViewModel : ObservableObject {
         self.groomers = try await StoreManager().queryGroomers(storeId: storeId)
     }
     
-    func fetchGroomerSchedule(groomerId: String, selectDate: Date)async throws {
+    func fetchGroomerSchedule(groomerId: String, selectDate: Date) async throws {
         self.groomerSchedule = try await ScheduleManager.queryScheduleByselectDate(groomerId: selectedGroomerId, selectDate: selectDate)
-    }
+            print(self.groomerSchedule)
+        }
+    
+    
+    func vertifyTakeDayOff(schedules: [Schedule]) -> Bool {
+        //verify if that schedule set as day off?
+        guard let schedule = schedules.first else { return false}
+            if schedule.isFullBooked == true {
+                print(schedule.isFullBooked)
+                return true
+            }
+            return false
+        }
+       
+    
+    
     
     func fetchSelectedGroomer(groomerId: String) async throws {
         let snapshot = try await Firestore.firestore().collection("users").document(groomerId).getDocument()

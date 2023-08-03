@@ -9,6 +9,8 @@ import SwiftUI
 
 struct GroomerBookingView: View {
     @StateObject var viewModel = GroomerBookingViewModel()
+    @State private var isTakeDayoff = false
+    
     var body: some View {
         VStack{
             DatePicker("Today", selection:$viewModel.date , displayedComponents: .date)
@@ -17,6 +19,7 @@ struct GroomerBookingView: View {
                 .onChange(of: viewModel.date, perform: { newValue in
                     Task{
                         try await viewModel.fetchTodayBookings(date: viewModel.date)
+                        let _ = try await viewModel.fetchSelectedSchedule(date: viewModel.date)
                     }
                 })
 
@@ -26,23 +29,59 @@ struct GroomerBookingView: View {
                         .font(.title)
                         .bold()
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading,35)
+                        .padding()
+                    
                     if !viewModel.appts.isEmpty{
                         ForEach(viewModel.sortedAppts) { appt in
                             BookingRowView(appt: appt)
                             
                         }
                         .padding(.horizontal)
+                        
+                        
                     }else{
+                        
                         VStack{
                             Text("No booking yet.")
+                            
                         }
+                        .padding()
                         .font(.title)
                         .bold()
-                        .offset(x: 40, y: 50)
                         
+                        
+                        
+                        Toggle(isOn: $viewModel.isTakeDayOff) {
+                            VStack(alignment: .leading){
+                                Text("Take day off? ")
+                                Text("When turn this on will block all day slots")
+                                    .foregroundColor(.red)
+                                    .font(.subheadline)
+                            }
+                        }
+                        .padding()
+                        .font(.subheadline)
+                        .bold()
+                        .onChange(of: viewModel.isTakeDayOff) { newValue in
+                            
+                            if newValue{
+                                Task{
+                                    try await viewModel.updateDayoffToggleTrue(schedule: viewModel.schedule ?? Schedule.MOCK_selectedDateAndTime)
+                                }
+                                
+                            }else{
+                                Task{
+                                    try await viewModel.updateDayoffToggleFalse(schedule: viewModel.schedule ?? Schedule.MOCK_selectedDateAndTime)
+                                }
+                            }
+                        }
                     }
                 }
+                
+            }
+        }.onAppear {
+            Task{
+                try await viewModel.fetchAllSched()
             }
         }
         

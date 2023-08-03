@@ -7,14 +7,19 @@
 
 import SwiftUI
 
-struct ManageScheduleView: View {
+struct SearchPetView: View {
+    @ObservedObject var viewModel = GroomerBookingViewModel()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+         
+        Text("Search pet info")
+            
+        }
     }
 }
 
 struct ManageScheduleView_Previews: PreviewProvider {
     static var previews: some View {
-        ManageScheduleView()
+        SearchPetView()
     }
 }

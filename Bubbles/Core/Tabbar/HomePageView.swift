@@ -32,11 +32,11 @@ struct HomePageView: View {
                             }
                         }
                   
-                  ManageScheduleView()
+                  SearchPetView()
                       .tabItem {
                           VStack{
-                              Image(systemName: "calendar.badge.plus")
-                              Text("Manage Schedule")
+                              Image(systemName: "magnifyingglass")
+                              Text("Search pet")
                           }
                       }
               }else{
