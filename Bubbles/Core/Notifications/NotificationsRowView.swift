@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct NotificationsRowView: View {
+    
+    @ObservedObject var viewModel = NotificationViewModel()
+    @State private var isConfirmed = false
+    
     var noti : Notification
+    
+    
     var body: some View {
         VStack(alignment: .trailing){
             //time stamp
@@ -29,9 +35,30 @@ struct NotificationsRowView: View {
                         .font(.callout)
                         .padding(.horizontal)
                         .multilineTextAlignment(.leading)
-                    
+                    Button {
+                        //tap to confirm appt
+                        if !isConfirmed {
+                            Task{
+                                try await viewModel.confirmAppt(item: viewModel.appt ?? Appointment.MOCK_APPOINTMENT)
+                            }
+                            isConfirmed = true
+                        }
+                    } label: {
+                        ZStack(alignment: .center){
+                            RoundedRectangle(cornerRadius: 15)
+                                .frame(width: 250, height: 35)
+                                .foregroundColor(isConfirmed || viewModel.appt?.clientConfirmed ?? true ?  Color(.gray) :  Color(.systemMint))
+                            Text(isConfirmed || viewModel.appt?.clientConfirmed ?? true ?  "You have comfirmed the appointment" : "Tap to confirm the appointment")
+                                .font(.footnote)
+                                .foregroundColor(.white)
+                                .bold()
+                        }
+                    }
+                    .offset(x:-20)
+                    .disabled(!isConfirmed)
+
                 }
-                .frame(width: 280, height: 100)
+                .frame(width: 280, height: 165)
                 .background(Color(.systemCyan).opacity(0.3).cornerRadius(15))
                 
             }else{
@@ -49,7 +76,11 @@ struct NotificationsRowView: View {
              
             Divider()
             
-        }.padding(.horizontal)
+        }.padding(.horizontal).onAppear {
+            Task{
+                try await viewModel.fetchAppt(noti: noti)
+            }
+        }
     }
             
 }

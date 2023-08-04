@@ -49,19 +49,18 @@ struct StoreDetailView: View {
                */
                 
             
-                    NavigationLink {
-                       CreateBookingView(store: store)
-                    } label: {
-                        Text("Book an appointment")
-                            .frame(width: 200, height: 39)
-                            .background(Color(.systemCyan))
-                            .foregroundColor(.white)
-                            .cornerRadius(15)
-                            .padding(5)
-                        
-                    }
+                NavigationLink {
+                    CreateBookingView(store: store)
+                } label: {
+                    Text("Book an appointment")
+                        .frame(width: 200, height: 39)
+                        .background(Color(.systemCyan))
+                        .foregroundColor(.white)
+                        .cornerRadius(15)
+                        .padding(5)
+                    
+                }
                 
-          
                 
             }
             .navigationDestination(for: GroomingService.self) { service in

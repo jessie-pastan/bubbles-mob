@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NotificationView: View {
     
-    @StateObject var viewModel = NotificationViewModel()
+    @ObservedObject var viewModel = NotificationViewModel()
     
     var body: some View {
     ScrollView{

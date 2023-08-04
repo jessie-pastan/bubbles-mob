@@ -22,6 +22,8 @@ class GroomerBookingViewModel : ObservableObject {
     @Published var isTakeDayOff = false
     @Published var allSchedules = [Schedule]()
     
+    
+    
    
     func fetchTodayBookings(date: Date) async throws {
         guard let uid = AuthService.shared.currentUser?.id else { return }
@@ -98,7 +100,5 @@ class GroomerBookingViewModel : ObservableObject {
         print(self.allSchedules.count)
     }
     
-      
-        
     
 }

@@ -80,6 +80,8 @@
 		83DBA94E2A56131E00D3FF7D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBA94D2A56131E00D3FF7D /* Store.swift */; };
 		83DBA9502A561ACA00D3FF7D /* StoreRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBA94F2A561ACA00D3FF7D /* StoreRowView.swift */; };
 		83DBA9522A562E0E00D3FF7D /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBA9512A562E0E00D3FF7D /* Price.swift */; };
+		83E58E9B2A7C6D170032326B /* PetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E58E9A2A7C6D170032326B /* PetDetailView.swift */; };
+		83E58E9D2A7C97A80032326B /* PetDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E58E9C2A7C97A80032326B /* PetDetailViewModel.swift */; };
 		83E6FA932A5C8C1100732F90 /* BookingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FA922A5C8C1100732F90 /* BookingViewModel.swift */; };
 		83E6FA962A5CA10400732F90 /* Groomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FA952A5CA10400732F90 /* Groomer.swift */; };
 		83E6FA9A2A5CFF1A00732F90 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FA992A5CFF1A00732F90 /* Constants.swift */; };
@@ -176,6 +178,8 @@
 		83DBA94D2A56131E00D3FF7D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		83DBA94F2A561ACA00D3FF7D /* StoreRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRowView.swift; sourceTree = "<group>"; };
 		83DBA9512A562E0E00D3FF7D /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
+		83E58E9A2A7C6D170032326B /* PetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailView.swift; sourceTree = "<group>"; };
+		83E58E9C2A7C97A80032326B /* PetDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailViewModel.swift; sourceTree = "<group>"; };
 		83E6FA922A5C8C1100732F90 /* BookingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewModel.swift; sourceTree = "<group>"; };
 		83E6FA952A5CA10400732F90 /* Groomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groomer.swift; sourceTree = "<group>"; };
 		83E6FA992A5CFF1A00732F90 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -454,6 +458,7 @@
 				83D3DBDA2A64C10000A43A3C /* GroomerSchedule */,
 				83DBA92E2A55EA5200D3FF7D /* GroomingStore */,
 				83DBA9422A55EFA800D3FF7D /* Notifications */,
+				83E58E972A7C6C4D0032326B /* Pet Info */,
 				83DBA92C2A55EA3700D3FF7D /* Profile */,
 				83DBA9302A55EAD100D3FF7D /* Root */,
 				83DBA92F2A55EA7500D3FF7D /* Search  */,
@@ -488,6 +493,15 @@
 				83EF3E052A6A0ED9001AD56F /* ScheduleManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		83E58E972A7C6C4D0032326B /* Pet Info */ = {
+			isa = PBXGroup;
+			children = (
+				83E58E9A2A7C6D170032326B /* PetDetailView.swift */,
+				83E58E9C2A7C97A80032326B /* PetDetailViewModel.swift */,
+			);
+			path = "Pet Info";
 			sourceTree = "<group>";
 		};
 		83E6FA942A5C8C1600732F90 /* ViewModels */ = {
@@ -633,6 +647,7 @@
 				8387EB222A58ECC000CDA143 /* RadioButtonView.swift in Sources */,
 				831D3B982A59BE1E007BFAB5 /* UploadCertificateView.swift in Sources */,
 				83DBA9502A561ACA00D3FF7D /* StoreRowView.swift in Sources */,
+				83E58E9D2A7C97A80032326B /* PetDetailViewModel.swift in Sources */,
 				83E6FA962A5CA10400732F90 /* Groomer.swift in Sources */,
 				831A12012A759BE900051561 /* NotificationsRowView.swift in Sources */,
 				83E6FA9C2A5D083C00732F90 /* Test2.swift in Sources */,
@@ -696,6 +711,7 @@
 				83E6FAA12A5DD6C500732F90 /* TestTabView.swift in Sources */,
 				8387EB032A57780600CDA143 /* RegisterViewModel.swift in Sources */,
 				831D3B962A59BCEE007BFAB5 /* RabiesExpirationView .swift in Sources */,
+				83E58E9B2A7C6D170032326B /* PetDetailView.swift in Sources */,
 				8387EAFF2A57609D00CDA143 /* PetInfoView.swift in Sources */,
 				83E6FAAA2A5F4F1E00732F90 /* View4.swift in Sources */,
 				8387EB0B2A579F7500CDA143 /* ContentView.swift in Sources */,

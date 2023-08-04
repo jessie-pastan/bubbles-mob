@@ -36,7 +36,7 @@ struct Appointment: Codable, Identifiable, Hashable {
     }
     
     mutating func sentConfirm(){
-        clientConfirmed = false
+        clientConfirmed = true
     }
     
 }

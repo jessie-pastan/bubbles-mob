@@ -19,6 +19,7 @@ struct Notification : Codable, Identifiable {
     var date: Date
     var time: String
     var clientId: String
+    var apptId: String
 }
 
 enum NotificationType: Int, Codable {

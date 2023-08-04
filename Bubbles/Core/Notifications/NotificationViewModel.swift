@@ -11,7 +11,7 @@ import Firebase
 @MainActor
 class NotificationViewModel: ObservableObject {
     @Published var notifications = [Notification]()
-    
+    @Published var appt: Appointment?
     
     init() {
         Task{
@@ -29,6 +29,8 @@ class NotificationViewModel: ObservableObject {
     
     
     func uploadNotification(toUid uid: String, type: NotificationType, appt: Appointment) {
+        
+      
         guard let user  = AuthService.shared.currentUser else { return }
         let userId = user.id 
         let data: [String: Any] = ["timeStamp": Date(),
@@ -39,11 +41,30 @@ class NotificationViewModel: ObservableObject {
                                    "date": appt.dueDate,
                                    "time": appt.time,
                                    "store": appt.store,
-                                   "clientId": uid]
+                                   "clientId": uid,
+                                   "apptId" : appt.id ?? ""]
         
         COLLECTION_NOTIFICATIONS.document(uid).collection("user-notifications").addDocument(data: data)
         print("DEBUG: Uploaded Notification")
                             
     }
+    
+    
+    func fetchAppt(noti: Notification) async throws {
+        let apptId = noti.apptId
+        let snapshot = try await Firestore.firestore().collection("appointments").document(apptId).getDocument()
+        self.appt = try snapshot.data(as: Appointment.self)
+    }
+    
+    
+    
+    func confirmAppt(item : Appointment) async throws {
+            var copyItem = item
+            copyItem.sentConfirm()
+            // update done appt in firebase
+            try Firestore.firestore().collection("appointments").document(copyItem.id ?? "").setData(from:copyItem)
+        }
+        
+   
     
 }
