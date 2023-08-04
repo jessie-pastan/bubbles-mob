@@ -120,7 +120,7 @@ struct BookingRowView: View {
                                 .bold()
                         }
                     }
-                    .disabled(!isTapRemind)
+                    .disabled(appt.reminderSent)
                     
                     // pick up button
                     Button {
@@ -143,7 +143,7 @@ struct BookingRowView: View {
                         }
                         
                     }
-                    .disabled(!isTapforPickUp)
+                    .disabled(isTapforPickUp)
                 }
                 
                 

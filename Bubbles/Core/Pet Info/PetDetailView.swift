@@ -9,6 +9,10 @@ import SwiftUI
 
 struct PetDetailView: View {
     @ObservedObject var viewModel = PetDetailViewModel()
+    @State private var text = ""
+    @State private var servicePrice = ""
+    @State private var addOnPrice = ""
+    @State private var totalPrice = ""
     
     var appt: Appointment
     
@@ -34,26 +38,49 @@ struct PetDetailView: View {
                 Text("Contact: \(viewModel.client?.phoneNumber ?? "" ) \(viewModel.client?.userName ?? "" )")
             }
             
-            Divider()
             
             
             VStack{
-                ScrollView{
-                    
-                    Text("Grooming History")
-                        .bold()
-                        .font(.title)
-                    
-                    Text("Date: ")
-                    Text("Service: ")
-                    Text("Add On: ")
-                    Text("Detail: ")
-                    Text("Groom by : ")
-                    
+                Divider()
+                Text("Grooming History")
+                /*
+                    .padding()
+                    .bold()
+                    .font(.title3)
+                    .background(Color(.systemMint).cornerRadius(15))
+                    .frame(width: 200, height: 39)
+                    */
+                
+                ScrollView {
+                    ForEach(viewModel.petHistories) { history in
+                        PetHistoryRowView(petHistory: history)
+                    }
+                   
                 }
+                
+                //Divider()
+                VStack(alignment: .leading) {
+                    Text("Date : \(Date().formatted(date: .abbreviated, time: .omitted))")
+                    HStack{
+                        Text("Service : \(appt.service) ")
+                        TextField("$Service price", text: $viewModel.servicePrice)
+                    }
+                    HStack{
+                        Text("Add on: \(appt.addOnService) ")
+                        TextField("$Add on price", text: $viewModel.addOnPrice)
+                    }
+                    TextField("Add grooming detail", text: $viewModel.text)
+                }
+                .font(.subheadline)
+                .padding(.horizontal)
+                
+                
             }
             Button {
                 //add grooming history
+                Task{
+                    try await viewModel.uploadPetHistory(appt:appt)
+                }
             } label: {
                 Text("Add")
                     .padding()
@@ -67,6 +94,7 @@ struct PetDetailView: View {
             Task{
                 try await viewModel.fetchClientfromAppt(appt:  appt)
                 try await viewModel.fetchPetOfAppt(appt: appt)
+                try await viewModel.fetchPetHistory(pet: viewModel.pet ?? Pet.MOCK_PETS[0])
             }
         }
     }

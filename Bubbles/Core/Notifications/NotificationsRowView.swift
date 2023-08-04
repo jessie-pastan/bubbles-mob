@@ -55,10 +55,10 @@ struct NotificationsRowView: View {
                         }
                     }
                     .offset(x:-20)
-                    .disabled(!isConfirmed)
+                    .disabled(viewModel.appt?.clientConfirmed ?? true )
 
                 }
-                .frame(width: 280, height: 165)
+                .frame(width: 280, height: 200)
                 .background(Color(.systemCyan).opacity(0.3).cornerRadius(15))
                 
             }else{

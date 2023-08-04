@@ -32,11 +32,11 @@ struct HomePageView: View {
                             }
                         }
                   
-                  SearchPetView()
+                  GroomerCompensateView()
                       .tabItem {
                           VStack{
-                              Image(systemName: "magnifyingglass")
-                              Text("Search pet")
+                              Image(systemName: "chart.bar.xaxis")
+                              Text("Compensate")
                           }
                       }
               }else{

@@ -82,6 +82,9 @@
 		83DBA9522A562E0E00D3FF7D /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBA9512A562E0E00D3FF7D /* Price.swift */; };
 		83E58E9B2A7C6D170032326B /* PetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E58E9A2A7C6D170032326B /* PetDetailView.swift */; };
 		83E58E9D2A7C97A80032326B /* PetDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E58E9C2A7C97A80032326B /* PetDetailViewModel.swift */; };
+		83E58E9F2A7D652A0032326B /* GroomingHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E58E9E2A7D652A0032326B /* GroomingHistory.swift */; };
+		83E58EA12A7D825D0032326B /* PetHistoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E58EA02A7D825D0032326B /* PetHistoryRowView.swift */; };
+		83E58EA42A7D915C0032326B /* GroomerCompensateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E58EA32A7D915C0032326B /* GroomerCompensateView.swift */; };
 		83E6FA932A5C8C1100732F90 /* BookingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FA922A5C8C1100732F90 /* BookingViewModel.swift */; };
 		83E6FA962A5CA10400732F90 /* Groomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FA952A5CA10400732F90 /* Groomer.swift */; };
 		83E6FA9A2A5CFF1A00732F90 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6FA992A5CFF1A00732F90 /* Constants.swift */; };
@@ -180,6 +183,9 @@
 		83DBA9512A562E0E00D3FF7D /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		83E58E9A2A7C6D170032326B /* PetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailView.swift; sourceTree = "<group>"; };
 		83E58E9C2A7C97A80032326B /* PetDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailViewModel.swift; sourceTree = "<group>"; };
+		83E58E9E2A7D652A0032326B /* GroomingHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomingHistory.swift; sourceTree = "<group>"; };
+		83E58EA02A7D825D0032326B /* PetHistoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetHistoryRowView.swift; sourceTree = "<group>"; };
+		83E58EA32A7D915C0032326B /* GroomerCompensateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomerCompensateView.swift; sourceTree = "<group>"; };
 		83E6FA922A5C8C1100732F90 /* BookingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewModel.swift; sourceTree = "<group>"; };
 		83E6FA952A5CA10400732F90 /* Groomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groomer.swift; sourceTree = "<group>"; };
 		83E6FA992A5CFF1A00732F90 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -454,6 +460,7 @@
 				83DBA92D2A55EA4600D3FF7D /* Authentication  */,
 				83DBA9392A55EBE200D3FF7D /* Booking  */,
 				831A9C1C2A72F9A60043EFF2 /* GroomerBooking  */,
+				83E58EA22A7D90EA0032326B /* GroomerCompensate  */,
 				831A12022A75FE8900051561 /* GroomerNote */,
 				83D3DBDA2A64C10000A43A3C /* GroomerSchedule */,
 				83DBA92E2A55EA5200D3FF7D /* GroomingStore */,
@@ -481,6 +488,7 @@
 				83DBA94D2A56131E00D3FF7D /* Store.swift */,
 				83D3DBE62A662A0200A43A3C /* SelectedDateAndTimeSlot.swift */,
 				831A9C102A71828E0043EFF2 /* GroomerBooking.swift */,
+				83E58E9E2A7D652A0032326B /* GroomingHistory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -500,8 +508,17 @@
 			children = (
 				83E58E9A2A7C6D170032326B /* PetDetailView.swift */,
 				83E58E9C2A7C97A80032326B /* PetDetailViewModel.swift */,
+				83E58EA02A7D825D0032326B /* PetHistoryRowView.swift */,
 			);
 			path = "Pet Info";
+			sourceTree = "<group>";
+		};
+		83E58EA22A7D90EA0032326B /* GroomerCompensate  */ = {
+			isa = PBXGroup;
+			children = (
+				83E58EA32A7D915C0032326B /* GroomerCompensateView.swift */,
+			);
+			path = "GroomerCompensate ";
 			sourceTree = "<group>";
 		};
 		83E6FA942A5C8C1600732F90 /* ViewModels */ = {
@@ -661,6 +678,7 @@
 				83E6FAAE2A5F54B400732F90 /* SuccessView.swift in Sources */,
 				83E6FA9A2A5CFF1A00732F90 /* Constants.swift in Sources */,
 				831A9C152A720EC60043EFF2 /* ConvertTime.swift in Sources */,
+				83E58EA42A7D915C0032326B /* GroomerCompensateView.swift in Sources */,
 				8387EAE92A566E3600CDA143 /* GroomerNote.swift in Sources */,
 				8387EAE32A564E4600CDA143 /* ButtonView.swift in Sources */,
 				83DBA9472A55F17200D3FF7D /* GroomingHistoryView.swift in Sources */,
@@ -696,6 +714,7 @@
 				83E6FAB62A5F717C00732F90 /* GroomingServiceDetailView.swift in Sources */,
 				8387EB052A57839700CDA143 /* LoginView .swift in Sources */,
 				8387EB092A579DED00CDA143 /* LoginViewModel.swift in Sources */,
+				83E58EA12A7D825D0032326B /* PetHistoryRowView.swift in Sources */,
 				8387EB142A587E5100CDA143 /* PetProfileView.swift in Sources */,
 				83DBA9342A55EB3500D3FF7D /* GroomerProfileView.swift in Sources */,
 				83E6FAAC2A5F525A00732F90 /* BookingView.swift in Sources */,
@@ -711,6 +730,7 @@
 				83E6FAA12A5DD6C500732F90 /* TestTabView.swift in Sources */,
 				8387EB032A57780600CDA143 /* RegisterViewModel.swift in Sources */,
 				831D3B962A59BCEE007BFAB5 /* RabiesExpirationView .swift in Sources */,
+				83E58E9F2A7D652A0032326B /* GroomingHistory.swift in Sources */,
 				83E58E9B2A7C6D170032326B /* PetDetailView.swift in Sources */,
 				8387EAFF2A57609D00CDA143 /* PetInfoView.swift in Sources */,
 				83E6FAAA2A5F4F1E00732F90 /* View4.swift in Sources */,

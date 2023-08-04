@@ -21,6 +21,9 @@ struct Pet: Codable, Identifiable, Hashable {
     var ownerId: String
     var isMed: Bool
     var petMedication: String
+    var groomingHistory: [GroomingHistory]?
+    
+    
 }
 
 extension Pet {
