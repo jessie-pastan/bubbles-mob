@@ -13,7 +13,8 @@ struct PetHistoryRowView: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            Text("\(petHistory.date.formatted(date: .abbreviated, time: .omitted))")
+            Text("Appointment date:\(petHistory.apptDate.formatted(date: .abbreviated, time: .omitted))")
+           
             HStack{
                 Text("\(petHistory.service) ")
                 Text("$\(petHistory.servicePrice)")
@@ -25,8 +26,9 @@ struct PetHistoryRowView: View {
             }
             
             Text("Detail: \(petHistory.detail)")
-            Text("Groom by: \(petHistory.groomBy)")
-        Divider()
+            Text("Groomed by: \(petHistory.groomBy)")
+            Text("Date created : \(petHistory.createdDate.formatted(date: .abbreviated, time: .omitted))  ")
+            Divider()
         }
         .font(.subheadline)
         .padding(.horizontal)

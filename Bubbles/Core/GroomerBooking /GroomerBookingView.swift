@@ -21,6 +21,7 @@ struct GroomerBookingView: View {
                         Task{
                             try await viewModel.fetchTodayBookings(date: viewModel.date)
                             let _ = try await viewModel.fetchSelectedSchedule(date: viewModel.date)
+                            print(viewModel.date)
                         }
                     })
                 

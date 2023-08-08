@@ -33,6 +33,7 @@ class GroomerBookingViewModel : ObservableObject {
         let snapshots = try await Firestore.firestore().collection("appointments").whereField("groomerId", isEqualTo: uid).whereField("dueDate", isGreaterThanOrEqualTo: startOfDay).whereField("dueDate", isLessThan: endOfDay).getDocuments()
         self.appts = snapshots.documents.compactMap({try? $0.data(as: Appointment.self)})
         sortedTime(appts: self.appts)
+        
     }
     
     func sortedTime(appts: [Appointment]){
@@ -82,14 +83,14 @@ class GroomerBookingViewModel : ObservableObject {
         //fetch a selected schedule
         let snapshots =  try await Firestore.firestore().collection("users").document(uid).collection("schedules").whereField("date", isGreaterThanOrEqualTo: startOfDay).whereField("date", isLessThan: endOfDay).getDocuments()
         self.schedules = snapshots.documents.compactMap { (try? $0.data(as: Schedule.self)) }
-        print(self.schedules)
-        print(self.schedules.count)
+        print("schedules : \(self.schedules)")
+        print("schedules count: \(self.schedules.count)")
         if let schedule = self.schedules.first {
             self.isTakeDayOff = schedule.isFullBooked
             self.schedule = schedule
             
-            print(self.schedule ?? Schedule.MOCK_selectedDateAndTime)
-            print(self.isTakeDayOff)
+            //print(self.schedule ?? Schedule.MOCK_selectedDateAndTime)
+            print("is take day off? : \(self.isTakeDayOff)")
         }
     }
         

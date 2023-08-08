@@ -143,7 +143,7 @@ struct BookingRowView: View {
                         }
                         
                     }
-                    .disabled(isTapforPickUp)
+                    .disabled(appt.isDone)
                 }
                 
                 

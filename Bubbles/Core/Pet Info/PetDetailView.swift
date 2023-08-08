@@ -44,52 +44,67 @@ struct PetDetailView: View {
                 Divider()
                 Text("Grooming History")
                 /*
-                    .padding()
-                    .bold()
-                    .font(.title3)
-                    .background(Color(.systemMint).cornerRadius(15))
-                    .frame(width: 200, height: 39)
-                    */
+                 .padding()
+                 .bold()
+                 .font(.title3)
+                 .background(Color(.systemMint).cornerRadius(15))
+                 .frame(width: 200, height: 39)
+                 */
                 
                 ScrollView {
                     ForEach(viewModel.petHistories) { history in
                         PetHistoryRowView(petHistory: history)
                     }
-                   
+                    
                 }
-                
-                //Divider()
-                VStack(alignment: .leading) {
-                    Text("Date : \(Date().formatted(date: .abbreviated, time: .omitted))")
-                    HStack{
-                        Text("Service : \(appt.service) ")
-                        TextField("$Service price", text: $viewModel.servicePrice)
+                VStack{
+                    //Divider()
+                    VStack(alignment: .leading) {
+                        Text("Appointment date: \(appt.dueDate.formatted(date: .abbreviated, time: .omitted))")
+                        HStack{
+                            Text("Service : \(appt.service) ")
+                            TextField("$Service price", text: $viewModel.servicePrice)
+                        }
+                        HStack{
+                            Text("Add on: \(appt.addOnService) ")
+                            TextField("$Add on price", text: $viewModel.addOnPrice)
+                        }
+                        TextField("Add grooming detail", text: $viewModel.text)
+                        Text("Create date: \(Date().formatted(date: .abbreviated, time: .omitted))")
                     }
-                    HStack{
-                        Text("Add on: \(appt.addOnService) ")
-                        TextField("$Add on price", text: $viewModel.addOnPrice)
-                    }
-                    TextField("Add grooming detail", text: $viewModel.text)
+                    .font(.subheadline)
+                    .padding(.horizontal)
+                    
+                    
+                    
+                    Button {
+                        
+                        Task{
+                            //add grooming history
+                            try await viewModel.uploadPetHistory(appt:appt)
+                            // update groomer compensate
+                            try await viewModel.updateGroomerIncomeData(servicePrice: viewModel.servicePrice, addOnPrice: viewModel.addOnPrice, appt: appt)
+                            //try await viewModel.updateGroomerCompensate(servicePrice: viewModel.servicePrice, addOnPrice: viewModel.addOnPrice, appt: appt)
+                            try await viewModel.fetchPetHistory(pet: viewModel.pet ?? Pet.MOCK_PETS[0])
+                            
+                        }
+                    } label: {
+                        Text("Add grooming history")
+                            .bold()
+                            .padding()
+                            .frame(width: 230, height: 39)
+                            .background(Color(.systemCyan).cornerRadius(15))
+                            .foregroundColor(.white)
+                            
+                        
+                    }.padding()
+                    
                 }
-                .font(.subheadline)
-                .padding(.horizontal)
+                .padding()
+                .background(Color(.systemMint).opacity(0.3).cornerRadius(15).padding())
                 
                 
             }
-            Button {
-                //add grooming history
-                Task{
-                    try await viewModel.uploadPetHistory(appt:appt)
-                }
-            } label: {
-                Text("Add")
-                    .padding()
-                    .frame(width: 100, height: 39)
-                    .background(Color(.systemCyan).cornerRadius(15))
-                    .foregroundColor(.white)
-                
-            }
-            
         }.onAppear {
             Task{
                 try await viewModel.fetchClientfromAppt(appt:  appt)

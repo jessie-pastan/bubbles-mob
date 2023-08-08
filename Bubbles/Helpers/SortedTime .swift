@@ -42,4 +42,15 @@ class SortedTime {
         }
     }
     
+    static func sortedByDate(incomes: [GroomerIncomeData]) -> [GroomerIncomeData] {
+        return incomes.sorted { $0.apptDate < $1.apptDate}
+        }
+    
+    
+    
+    
+    
+    
+    
+    
 }

@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
-
+@MainActor
 class GroomerRegisterViewModel: ObservableObject {
     
     @Published var userName = ""
@@ -36,7 +36,7 @@ class GroomerRegisterViewModel: ObservableObject {
   
     
    private func createTimeslot() async throws {
-        guard let uid = await AuthService.shared.currentUser?.id else { return }
+        guard let uid =  AuthService.shared.currentUser?.id else { return }
        //guard let uid = Auth.auth().currentUser?.uid else { return }
         //time slots
         let timeSlots = [ TimeSlot(id: NSUUID().uuidString, timeString: "10 AM", isBooked: false),
@@ -61,7 +61,7 @@ class GroomerRegisterViewModel: ObservableObject {
             let generatedDate = calendar.date(byAdding: dateComponents, to: startDate)!
             
             
-            let dueDate = Schedule(date: generatedDate, timeSlots: timeSlots, isFullBooked: false)
+            let dueDate = Schedule(date: generatedDate, timeSlots: timeSlots, isFullBooked: false, compensate: 0)
               //encode swift object to json
             guard let encodeDueDate = try? Firestore.Encoder().encode(dueDate) else { return }
             // Store the generated date in Firebase Firestore

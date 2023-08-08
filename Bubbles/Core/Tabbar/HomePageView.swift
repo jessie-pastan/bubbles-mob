@@ -35,10 +35,19 @@ struct HomePageView: View {
                   GroomerCompensateView()
                       .tabItem {
                           VStack{
-                              Image(systemName: "chart.bar.xaxis")
+                              Image(systemName: "dollarsign.circle")
                               Text("Compensate")
                           }
                       }
+                  
+                  GroomerAnalyticView()
+                      .tabItem {
+                          VStack{
+                              Image(systemName: "chart.bar.xaxis")
+                              Text("Analytics")
+                          }
+                      }
+                  
               }else{
                   
                   ApptView()
