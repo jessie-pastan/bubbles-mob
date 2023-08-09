@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct GroomerAnalyticView: View {
+    @ObservedObject var viewModel = GroomerAnalyticViewModel()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text("Booking analytic")
+            Button {
+                Task{
+                    try await viewModel.uploadSevendayBookingData()
+                    try await viewModel.fetchSevendayBookingData()
+                }
+            } label: {
+                //fetch 7 days booking data
+                Text("Weekly booking ")
+            }
+            
+        }
     }
 }
 

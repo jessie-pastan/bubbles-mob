@@ -86,7 +86,7 @@
 		83E58EA12A7D825D0032326B /* PetHistoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E58EA02A7D825D0032326B /* PetHistoryRowView.swift */; };
 		83E58EA42A7D915C0032326B /* GroomerCompensateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E58EA32A7D915C0032326B /* GroomerCompensateView.swift */; };
 		83E58EA62A7F44670032326B /* GroomerIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E58EA52A7F44670032326B /* GroomerIncome.swift */; };
-		83E58EA82A8096F30032326B /* GroomerCompensateViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E58EA72A8096F30032326B /* GroomerCompensateViewDetail.swift */; };
+		83E58EA82A8096F30032326B /* GroomerCompensateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E58EA72A8096F30032326B /* GroomerCompensateViewModel.swift */; };
 		83E58EAB2A82DA4C0032326B /* GroomerAnalyticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E58EAA2A82DA4C0032326B /* GroomerAnalyticView.swift */; };
 		83E58EAD2A82E35E0032326B /* GroomerAlalyticViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E58EAC2A82E35E0032326B /* GroomerAlalyticViewModel.swift */; };
 		83E58EAF2A82E3F40032326B /* BookingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E58EAE2A82E3F40032326B /* BookingData.swift */; };
@@ -192,7 +192,7 @@
 		83E58EA02A7D825D0032326B /* PetHistoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetHistoryRowView.swift; sourceTree = "<group>"; };
 		83E58EA32A7D915C0032326B /* GroomerCompensateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomerCompensateView.swift; sourceTree = "<group>"; };
 		83E58EA52A7F44670032326B /* GroomerIncome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomerIncome.swift; sourceTree = "<group>"; };
-		83E58EA72A8096F30032326B /* GroomerCompensateViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomerCompensateViewDetail.swift; sourceTree = "<group>"; };
+		83E58EA72A8096F30032326B /* GroomerCompensateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomerCompensateViewModel.swift; sourceTree = "<group>"; };
 		83E58EAA2A82DA4C0032326B /* GroomerAnalyticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomerAnalyticView.swift; sourceTree = "<group>"; };
 		83E58EAC2A82E35E0032326B /* GroomerAlalyticViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomerAlalyticViewModel.swift; sourceTree = "<group>"; };
 		83E58EAE2A82E3F40032326B /* BookingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingData.swift; sourceTree = "<group>"; };
@@ -530,7 +530,7 @@
 			isa = PBXGroup;
 			children = (
 				83E58EA32A7D915C0032326B /* GroomerCompensateView.swift */,
-				83E58EA72A8096F30032326B /* GroomerCompensateViewDetail.swift */,
+				83E58EA72A8096F30032326B /* GroomerCompensateViewModel.swift */,
 			);
 			path = "GroomerCompensate ";
 			sourceTree = "<group>";
@@ -721,7 +721,7 @@
 				83E6FABA2A5F7F9600732F90 /* CreateBookingView.swift in Sources */,
 				83DBA9322A55EB2300D3FF7D /* UserProfileView.swift in Sources */,
 				831D3BA22A5A50D1007BFAB5 /* GroomerViewRow.swift in Sources */,
-				83E58EA82A8096F30032326B /* GroomerCompensateViewDetail.swift in Sources */,
+				83E58EA82A8096F30032326B /* GroomerCompensateViewModel.swift in Sources */,
 				8387EAE02A564B2F00CDA143 /* CompleteBookingView.swift in Sources */,
 				831A120A2A7856ED00051561 /* EditGroomerNoteView.swift in Sources */,
 				8303091C2A6B693C001E5F7A /* FetchSchedule.swift in Sources */,

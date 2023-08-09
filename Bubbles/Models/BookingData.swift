@@ -11,10 +11,7 @@ import FirebaseFirestoreSwift
 struct BookingData: Codable, Identifiable, Hashable {
     @DocumentID var id: String?
     //how  many booking time?
-    var bookings: Int
-    // on this day eg. "MON", "TUE"
+    var bookings: CGFloat
+    // day of week eg. "Mon", "Tue", "Wed"
     var day: String
-    //
-    var bookingDate: Date
-    
 }

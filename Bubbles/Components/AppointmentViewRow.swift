@@ -64,6 +64,6 @@ struct AppointmentViewRow: View {
 
 struct AppointmentViewRow_Previews: PreviewProvider {
     static var previews: some View {
-        AppointmentViewRow(appt: Appointment(id: "1", store: "PuppyPaws", service: "FullGrooming", addOnService: "Nailcut", groomer: "Lisa", dueDate: Date(), time: "2pm", timeDate: Date(), note: "Hachi is very sensitive", ownerId: "123", petName: "Hachi", groomerId: "123", dateCreated: Date()))
+        AppointmentViewRow(appt: Appointment(id: "1", store: "PuppyPaws", service: "FullGrooming", addOnService: "Nailcut", groomer: "Lisa", dueDate: Date(), time: "2pm", timeDate: Date(), note: "Hachi is very sensitive", ownerId: "123", petName: "Hachi", groomerId: "123", dateCreated: Date(), dayOfWeek: "Wed"))
     }
 }

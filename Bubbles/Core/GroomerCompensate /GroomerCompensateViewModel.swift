@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 
 @MainActor
-class GroomerCompensateViewDetail : ObservableObject {
+class GroomerCompensateViewModel : ObservableObject {
     @Published var todayCompensate: Int = 0
     @Published var sevendayCompensate: Int = 0
     @Published var allCompensate: Int = 0
@@ -54,9 +54,9 @@ class GroomerCompensateViewDetail : ObservableObject {
         //fetch 7 days schedule
         let snapshots =  try await Firestore.firestore().collection("groomerIncomeData").whereField("groomerId", isEqualTo: uid).whereField("apptDate", isGreaterThan: sevenDaysAgo ).getDocuments()
         self.sevendayIncome = snapshots.documents.compactMap { (try? $0.data(as: GroomerIncomeData.self)) }
-        print("7daysIncome : \(self.sevendayIncome)")
+        print("7daysIncome[] : \(self.sevendayIncome)")
         self.sevendayCompensate =  self.sevendayIncome.reduce(0, {$0 + ($1.income)})
-        print("7day Com : \(self.sevendayCompensate)")
+        print("7dayIncome : \(self.sevendayCompensate)")
     }
     
     

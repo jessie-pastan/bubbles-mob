@@ -42,6 +42,10 @@ class BookingViewModel : ObservableObject {
         guard let uid = AuthService.shared.currentUser?.id else { return }
         self.convertTimeStringtoDate(timeString: selectedTime)
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E" // "E" represents the abbreviated day name (e.g., Sun, Mon, etc.)
+
+        let dayOfWeek = DayOfWeek(rawValue: dateFormatter.string(from: selectedDate)) ?? .sunday
         
         let appt = Appointment(id: NSUUID().uuidString,
                                store: store,
@@ -58,8 +62,8 @@ class BookingViewModel : ObservableObject {
                                dateCreated: Date(),
                                isDone: false,
         reminderSent: false,
-        clientConfirmed: false)
-        
+        clientConfirmed: false,
+                               dayOfWeek: dayOfWeek.rawValue)
         //encode swift object to json
         guard let encodeAppt = try? Firestore.Encoder().encode(appt) else { return }
         //insert in firestore

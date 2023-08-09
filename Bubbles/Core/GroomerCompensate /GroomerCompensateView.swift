@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GroomerCompensateView: View {
     
-    @ObservedObject var viewModel = GroomerCompensateViewDetail()
+    @ObservedObject var viewModel = GroomerCompensateViewModel()
     
     var body: some View {
         VStack {
