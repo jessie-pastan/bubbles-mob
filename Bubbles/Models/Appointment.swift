@@ -40,7 +40,7 @@ struct Appointment: Codable, Identifiable, Hashable {
     var reminderSent = false
     var clientConfirmed = false
      
-    var dayOfWeek : String
+    var dayOfWeek : DayOfWeek
     
     
     
@@ -60,14 +60,14 @@ struct Appointment: Codable, Identifiable, Hashable {
 
 extension Appointment {
     static var MOCK_APPOINTMENT  : Appointment {
-        .init(id: NSUUID().uuidString, store: "PuppyPaws", service: "BasicBath", addOnService: "TeethBrush", groomer: "Lisa", dueDate: Date(), time: "2 PM", timeDate: Date(), ownerId: "123", petName:  "Hachi", groomerId: "user111", dateCreated: Date(), dayOfWeek: "Mon" )
+        .init(id: NSUUID().uuidString, store: "PuppyPaws", service: "BasicBath", addOnService: "TeethBrush", groomer: "Lisa", dueDate: Date(), time: "2 PM", timeDate: Date(), ownerId: "123", petName:  "Hachi", groomerId: "user111", dateCreated: Date(), dayOfWeek: DayOfWeek(rawValue: "Mon") ?? .monday )
     }
 }
 
 extension Appointment {
     static var MOCK_APPOINTMENTS  : [Appointment] = [
-        .init(id: NSUUID().uuidString, store: "PuppyPaws", service: "BasicBath", addOnService: "Teeth Brush", groomer: "Lisa", dueDate: Date(), time: "11 AM", timeDate: Date(), ownerId: "123", petName:  "Hachi", groomerId: "user111", dateCreated: Date(), dayOfWeek: "Tue" ),
-        .init(id: NSUUID().uuidString, store: "PuppyPaws", service: "FullGrooming", addOnService: "Nails cut", groomer: "Lisa", dueDate: Date(), time: "1 PM", timeDate: Date(), ownerId: "123", petName:  "Snowball", groomerId: "user111", dateCreated: Date(), dayOfWeek: "Wed" ),
-        .init(id: NSUUID().uuidString, store: "PuppyPaws", service: "SpaBath", addOnService: "Detangle", groomer: "Lisa", dueDate: Date(), time: "2 PM", timeDate: Date(), ownerId: "123", petName:  "Mimi", groomerId: "user111", dateCreated: Date(), dayOfWeek: "Fri" ),
+        .init(id: NSUUID().uuidString, store: "PuppyPaws", service: "BasicBath", addOnService: "Teeth Brush", groomer: "Lisa", dueDate: Date(), time: "11 AM", timeDate: Date(), ownerId: "123", petName:  "Hachi", groomerId: "user111", dateCreated: Date(), dayOfWeek: DayOfWeek(rawValue: "Tue") ?? .monday ),
+        .init(id: NSUUID().uuidString, store: "PuppyPaws", service: "FullGrooming", addOnService: "Nails cut", groomer: "Lisa", dueDate: Date(), time: "1 PM", timeDate: Date(), ownerId: "123", petName:  "Snowball", groomerId: "user111", dateCreated: Date(), dayOfWeek: DayOfWeek(rawValue: "Wed") ?? .monday ),
+        .init(id: NSUUID().uuidString, store: "PuppyPaws", service: "SpaBath", addOnService: "Detangle", groomer: "Lisa", dueDate: Date(), time: "2 PM", timeDate: Date(), ownerId: "123", petName:  "Mimi", groomerId: "user111", dateCreated: Date(), dayOfWeek: DayOfWeek(rawValue: "Fri") ?? .monday ),
         ]
 }

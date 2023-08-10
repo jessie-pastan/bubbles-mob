@@ -17,36 +17,34 @@ class GroomerAnalyticViewModel: ObservableObject {
         //delete old data
         try await deleteSevendayBookingData()
         //fetch new 7day appt
-        var sevendayAppt = try await self.fetchSevendayAppt()
+        let sevendayAppt = try await self.fetchSevendayAppt()
         
         sevendayAppt.forEach { appt in
             switch appt.dayOfWeek {
-            case "Mon":
+            case .monday:
                 monAppt += 1
-            case "Tue":
+            case .tuesday:
                 tueAppt += 1
-            case "Wed":
+            case .wednesday:
                 wedAppt += 1
-            case "Thu" :
+            case .thursday :
                 thuAppt += 1
-            case "Fri" :
+            case .friday :
                 friAppt += 1
-            case "Sat" :
+            case .saturday:
                 satAppt += 1
-            case "Sun" :
+            case .sunday:
                 sunAppt += 1
-            default :
-                return
             }
         }
         
-        let objects = [BookingData(bookings: CGFloat(monAppt), day: "Mon"),
-                       BookingData(bookings: CGFloat(tueAppt), day: "Tue"),
-                       BookingData(bookings: CGFloat(wedAppt), day: "Wed"),
-                       BookingData(bookings: CGFloat(thuAppt), day: "Thu"),
-                       BookingData(bookings: CGFloat(friAppt), day: "Fri"),
-                       BookingData(bookings: CGFloat(satAppt), day: "Sat"),
-                       BookingData(bookings: CGFloat(sunAppt), day: "Sun")]
+        let objects = [BookingData(bookings: CGFloat(monAppt), day: .monday, dayInt: 1),
+                       BookingData(bookings: CGFloat(tueAppt), day: .tuesday, dayInt: 2),
+                       BookingData(bookings: CGFloat(wedAppt), day: .wednesday,dayInt: 3),
+                       BookingData(bookings: CGFloat(thuAppt), day: .thursday, dayInt: 4),
+                       BookingData(bookings: CGFloat(friAppt), day: .friday, dayInt: 5),
+                       BookingData(bookings: CGFloat(satAppt), day: .saturday, dayInt: 6),
+                       BookingData(bookings: CGFloat(sunAppt), day: .sunday, dayInt: 0)]
         
         //insert new data
         for objectData in objects {
@@ -79,7 +77,11 @@ class GroomerAnalyticViewModel: ObservableObject {
 
     func fetchSevendayBookingData() async throws {
         let snapshots = try await Firestore.firestore().collection("sevendayBookingData").getDocuments()
-        self.sevendayBookingData = try snapshots.documents.compactMap({try $0.data(as: BookingData.self ) })
+        
+        let bookingData = try snapshots.documents.compactMap({try $0.data(as: BookingData.self ) })
+        
+        self.sevendayBookingData = bookingData.sorted { $0.dayInt < $1.dayInt }
+        print(self.sevendayBookingData)
     }
     
     

@@ -63,7 +63,7 @@ class BookingViewModel : ObservableObject {
                                isDone: false,
         reminderSent: false,
         clientConfirmed: false,
-                               dayOfWeek: dayOfWeek.rawValue)
+                               dayOfWeek: dayOfWeek)
         //encode swift object to json
         guard let encodeAppt = try? Firestore.Encoder().encode(appt) else { return }
         //insert in firestore

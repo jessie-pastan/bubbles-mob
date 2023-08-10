@@ -63,7 +63,7 @@ class PetDetailViewModel : ObservableObject {
         
     }
     
-    
+    /*
     func updateGroomerCompensate(servicePrice: String, addOnPrice: String, appt: Appointment) async throws {
         if let servicePrice = Int(servicePrice) {
             if let addOnPrice =  Int(addOnPrice) {
@@ -88,6 +88,6 @@ class PetDetailViewModel : ObservableObject {
             }
         }
     }
-   
+   */
     
 }

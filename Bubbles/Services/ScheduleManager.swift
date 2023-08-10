@@ -63,18 +63,18 @@ class ScheduleManager {
                         timeSlotId = timeslot.id
                     }
                 }
-                // remove timeslot that Booked
+                // find timeslot that selected by user
                 let db = Firestore.firestore()
                 let ref = db.collection("users").document(groomerId).collection("schedules").document(scheduleId)
                 
                 let snapshot = try await ref.getDocument()
                 if var schedule  = try? snapshot.data(as: Schedule.self) {
                     
-                    // Filter out the TimeSlot with the given timeSlotID and remove the isBooked value
+                    // Filter out the TimeSlot with the given timeSlotId and remove timeSlot
                     schedule.timeSlots.removeAll { $0.id == timeSlotId }
-                    // update isbooked: true
+                    // and add updated new timeSlot with isbooked: true
                     schedule.timeSlots.append(newTimeSlot)
-                    
+                    // insert object in collection
                     try ref.setData(from: schedule)
                 }
             

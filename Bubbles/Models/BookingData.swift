@@ -13,5 +13,7 @@ struct BookingData: Codable, Identifiable, Hashable {
     //how  many booking time?
     var bookings: CGFloat
     // day of week eg. "Mon", "Tue", "Wed"
-    var day: String
+    var day: DayOfWeek
+    var dayInt: Int
+        
 }

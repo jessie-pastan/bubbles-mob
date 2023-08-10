@@ -12,7 +12,7 @@ struct Schedule: Codable, Identifiable {
     var date: Date
     var timeSlots: [TimeSlot]
     var isFullBooked = false
-    var compensate: Int
+   
     
     
     mutating func markAsFullBooked(_ state: Bool){
@@ -42,7 +42,7 @@ struct TimeSlot: Codable, Identifiable {
 
 extension  Schedule {
     static let MOCK_selectedDateAndTime: Schedule  =
-        .init(id: NSUUID().uuidString, date: Date(), timeSlots: TimeSlot.MOCK_timeSlot, isFullBooked: false, compensate: 0)
+        .init(id: NSUUID().uuidString, date: Date(), timeSlots: TimeSlot.MOCK_timeSlot, isFullBooked: false)
 }
     
 extension TimeSlot {

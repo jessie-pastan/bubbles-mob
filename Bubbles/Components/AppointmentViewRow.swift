@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct AppointmentViewRow: View {
+    @ObservedObject var viewModel = ApptViewModel()
     var appt: Appointment
+    @State private var showAlert = false
     var body: some View {
         
         VStack(alignment: .leading){
@@ -27,7 +29,7 @@ struct AppointmentViewRow: View {
             
             HStack( spacing: 20 ){
                 Button {
-                    //
+                    showAlert = true
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 15)
@@ -38,6 +40,18 @@ struct AppointmentViewRow: View {
                             .foregroundColor(.white)
                             .bold()
                     }
+                }.alert(isPresented: $showAlert) {
+                    Alert(title: Text("Cancel this appointment?"), primaryButton: .destructive(Text("Cancel")) {
+                        //delete appt form collection
+                        Task{
+                            try await viewModel.deleteAppt(appt: appt)
+                            //update groomerSchedule timeSlotBooked : true -> false
+                            try await viewModel.updateFreeSlot(appt: appt)
+                            //fetch all appt to display
+                            try await viewModel.fetchAppt()
+                        }
+                                         
+                    }, secondaryButton: .cancel())
                 }
                 
                 Button {
@@ -64,6 +78,6 @@ struct AppointmentViewRow: View {
 
 struct AppointmentViewRow_Previews: PreviewProvider {
     static var previews: some View {
-        AppointmentViewRow(appt: Appointment(id: "1", store: "PuppyPaws", service: "FullGrooming", addOnService: "Nailcut", groomer: "Lisa", dueDate: Date(), time: "2pm", timeDate: Date(), note: "Hachi is very sensitive", ownerId: "123", petName: "Hachi", groomerId: "123", dateCreated: Date(), dayOfWeek: "Wed"))
+        AppointmentViewRow(appt: Appointment(id: "1", store: "PuppyPaws", service: "FullGrooming", addOnService: "Nailcut", groomer: "Lisa", dueDate: Date(), time: "2pm", timeDate: Date(), note: "Hachi is very sensitive", ownerId: "123", petName: "Hachi", groomerId: "123", dateCreated: Date(), dayOfWeek: DayOfWeek(rawValue: "Wed") ?? .monday))
     }
 }
