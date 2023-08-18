@@ -48,8 +48,7 @@ class ScheduleManager {
                 let _ = try? Firestore.firestore().collection("users").document(groomerId).collection("schedules").document(itemId).setData(from: copyItem)
             }
         }
-                                                                                                                                        
-                                                                                                            
+                                                                                                    
         //Mark Booked status of timeslot
         static func markSlotBooked(items: [Schedule], timeSlotString: String, groomerId: String) async throws {
             if let schedule = items.first{

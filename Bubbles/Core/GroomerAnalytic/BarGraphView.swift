@@ -15,7 +15,7 @@ struct BarGraphView: View {
             
             HStack{
                 
-                Text("Booking Analytic Day of Week")
+                Text("Booking Analytic")
                     .fontWeight(.bold)
                 
                 Spacer()

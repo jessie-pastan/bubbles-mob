@@ -76,7 +76,7 @@ struct GroomerAnalyticView: View {
                                 Text("Full Grooming")
                                     .fontWeight(.bold)
                                 
-                                Text("389 Bookings")
+                                Text("389 Bookings this month")
                                     .font(.caption2.bold())
                                     .foregroundColor(.gray)
                             }

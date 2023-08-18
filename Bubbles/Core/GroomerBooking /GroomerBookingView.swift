@@ -27,7 +27,7 @@ struct GroomerBookingView: View {
                 
                 ScrollView{
                     VStack(alignment: .leading){
-                        Text("Tasks")
+                        Text("Bookings")
                             .font(.title)
                             .bold()
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -54,7 +54,7 @@ struct GroomerBookingView: View {
                             
                             Toggle(isOn: $viewModel.isTakeDayOff) {
                                 VStack(alignment: .leading){
-                                    Text("Take day off? ")
+                                    Text("Take a day off? ")
                                     Text("When turn this on will block all day slots")
                                         .foregroundColor(.red)
                                         .font(.subheadline)
