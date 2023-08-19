@@ -4,7 +4,7 @@
 //
 //  Created by Jessie P on 7/11/23.
 //
-
+/*
 import SwiftUI
 import Firebase
 import FirebaseAuth
@@ -36,3 +36,4 @@ struct View1_Previews: PreviewProvider {
         
     }
 }
+*/

@@ -4,7 +4,7 @@
 //
 //  Created by Jessie P on 7/21/23.
 //
-
+/*
 import SwiftUI
 import Firebase
 
@@ -86,3 +86,4 @@ struct ScheduleListView_Previews: PreviewProvider {
         ScheduleListView()
     }
 }
+*/

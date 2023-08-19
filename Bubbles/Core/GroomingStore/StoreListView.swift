@@ -18,8 +18,11 @@ struct StoreListView: View {
         return viewModel.stores.filter {$0.name.localizedCaseInsensitiveContains(text)}
     }
     
+    
+    
     var body: some View {
         NavigationStack(path: $root.path ){
+          
             ScrollView{
                 LazyVStack{
                     ForEach(filteredStores) { store in
@@ -35,7 +38,6 @@ struct StoreListView: View {
                                         .foregroundColor(.white)
                                         .cornerRadius(15)
                                         .padding(5)
-                                    
                                 }
                                
                             }

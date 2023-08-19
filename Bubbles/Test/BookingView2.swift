@@ -4,7 +4,7 @@
 //
 //  Created by Jessie P on 7/12/23.
 //
-
+/*
 import SwiftUI
 
 struct BookingView2: View {
@@ -45,3 +45,4 @@ struct BookingView2_Previews: PreviewProvider {
         BookingView2()
     }
 }
+*/

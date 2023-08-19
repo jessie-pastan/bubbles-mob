@@ -4,7 +4,7 @@
 //
 //  Created by Jessie P on 7/12/23.
 //
-
+/*
 import SwiftUI
 
 struct SuccessView: View {
@@ -30,3 +30,4 @@ struct SuccessView_Previews: PreviewProvider {
             .environmentObject(Router())
     }
 }
+*/

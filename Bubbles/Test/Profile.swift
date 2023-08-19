@@ -4,7 +4,7 @@
 //
 //  Created by Jessie P on 7/12/23.
 //
-
+/*
 import SwiftUI
 
 struct Profile: View {
@@ -19,3 +19,4 @@ struct Profile_Previews: PreviewProvider {
         Profile()
     }
 }
+*/

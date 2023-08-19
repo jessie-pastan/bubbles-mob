@@ -50,7 +50,7 @@ struct GraphView: View {
                                
                             }
                             .frame(width: 8)
-                            .frame(height: viewModel.getBarHeight(point: data.bookings, size: proxy.size, bookingData: bookings))
+                            //.frame(height: viewModel.getBarHeight(point: data.bookings, size: proxy.size, bookingData: bookings))
                             
                             Text(data.day.rawValue)
                                 .font(.caption)
