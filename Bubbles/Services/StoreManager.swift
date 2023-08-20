@@ -14,6 +14,7 @@ class StoreManager: ObservableObject {
     @Published var stores = [Store]()
     @Published var groomers = [User]()
     
+    
     init() {
         Task{
             self.stores =  try await UserService.fetchAllStores()
@@ -35,7 +36,6 @@ class StoreManager: ObservableObject {
     static func fetchAddOnServices(storeId: String) {
     
     }
-    
     
     
     

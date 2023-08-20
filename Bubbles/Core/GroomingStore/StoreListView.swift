@@ -20,10 +20,26 @@ struct StoreListView: View {
     
     
     
+    
+    
     var body: some View {
         NavigationStack(path: $root.path ){
-          
+           Banner()
             ScrollView{
+                Spacer()
+                VStack(alignment: .leading){
+                    Text("Category").bold().font(.title2).padding(.top,-20)
+                    ScrollView(.horizontal, showsIndicators: false){
+                        HStack(spacing: 20){
+                            CategoryRow(title: "Dog Grooming", icon:"dog" , tag: 1)
+                            CategoryRow(title: "Cat Grooming", icon: "cat", tag: 2)
+                            CategoryRow(title: "All Grooming", icon: "shop", tag: 3)
+                            CategoryRow(title: "Store Near me", icon: "pin", tag: 4)
+                        }.padding(.leading, 1)
+                    }//.frame(height: 50)
+                    
+                }.padding()
+    
                 LazyVStack{
                     ForEach(filteredStores) { store in
                         NavigationLink(value: store) {
