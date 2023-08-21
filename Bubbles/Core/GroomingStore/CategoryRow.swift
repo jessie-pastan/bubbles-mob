@@ -19,18 +19,23 @@ struct CategoryRow: View {
             Button  {
                 tappedButton = tag
             } label: {
-                Capsule()
-                    .stroke(lineWidth: 1)
+                Rectangle()
+                    .fill(Color(.systemCyan).opacity(0.3))
                     .frame(width: 150, height: 39)
                     .overlay(
                         HStack(spacing: 10) {
                             Image(icon)
                                 .resizable()
-                                .frame(width: 30, height: 30)
+                                .scaledToFill()
+                                .frame(width: 20, height: 20)
+                                
                                 
                             Text(title).font(.callout)
+                                .foregroundColor(.black)
                                 
                         })
+                    .cornerRadius(20)
+                    
             }
             .tag(tag)
 

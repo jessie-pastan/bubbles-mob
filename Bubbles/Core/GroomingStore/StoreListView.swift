@@ -12,14 +12,12 @@ struct StoreListView: View {
     @StateObject var viewModel = StoreManager()
     @EnvironmentObject var root : Router
     @State private var text = ""
+    @State var selectedCatagory: StoreCategory = StoreCategory.categories.first!
     
     var filteredStores : [Store] {
         guard  !text.isEmpty else {return viewModel.stores}
         return viewModel.stores.filter {$0.name.localizedCaseInsensitiveContains(text)}
     }
-    
-    
-    
     
     
     var body: some View {
@@ -28,16 +26,34 @@ struct StoreListView: View {
             ScrollView{
                 Spacer()
                 VStack(alignment: .leading){
-                    Text("Category").bold().font(.title2).padding(.top,-20)
+                    Text("Categories").bold().font(.title2).padding(.top,-20)
                     ScrollView(.horizontal, showsIndicators: false){
-                        HStack(spacing: 20){
-                            CategoryRow(title: "Dog Grooming", icon:"dog" , tag: 1)
-                            CategoryRow(title: "Cat Grooming", icon: "cat", tag: 2)
-                            CategoryRow(title: "All Grooming", icon: "shop", tag: 3)
-                            CategoryRow(title: "Store Near me", icon: "pin", tag: 4)
-                        }.padding(.leading, 1)
-                    }//.frame(height: 50)
-                    
+                        HStack(spacing: 15){
+                            ForEach(StoreCategory.categories) { category in
+                                HStack(spacing: 10){
+                                    Image(category.icon)
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(.white)
+                                    Text(category.title)
+                                        .bold()
+                                    
+                                }
+                                .foregroundColor( selectedCatagory.id == category.id ? .white : .black)
+                                .padding(.vertical, 9)
+                                .padding(.horizontal)
+                                .background(selectedCatagory.id == category.id ? Color(.systemCyan).opacity(0.3) : Color(.systemGray).opacity(0.08))
+                                .clipShape(Capsule())
+                                //button dynamic when tap 
+                                .onTapGesture {
+                                    withAnimation(.spring()){
+                                        selectedCatagory = category
+                                    }
+                                }
+                                
+                            }.padding(.leading, 1)
+                        }
+                    }
                 }.padding()
     
                 LazyVStack{

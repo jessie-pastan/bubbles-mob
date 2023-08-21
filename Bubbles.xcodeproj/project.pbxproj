@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8301E8E72A9140B20009538C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8301E8E62A9140B20009538C /* Router.swift */; };
 		8301E8E92A918F1D0009538C /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8301E8E82A918F1D0009538C /* Banner.swift */; };
+		8301E8EB2A92F22A0009538C /* StoreCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8301E8EA2A92F22A0009538C /* StoreCategory.swift */; };
 		8303091C2A6B693C001E5F7A /* FetchSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8303091B2A6B693C001E5F7A /* FetchSchedule.swift */; };
 		831A12012A759BE900051561 /* NotificationsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A12002A759BE900051561 /* NotificationsRowView.swift */; };
 		831A12042A75FEE800051561 /* GroomerNoteForClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A12032A75FEE800051561 /* GroomerNoteForClientView.swift */; };
@@ -124,6 +125,7 @@
 /* Begin PBXFileReference section */
 		8301E8E62A9140B20009538C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8301E8E82A918F1D0009538C /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		8301E8EA2A92F22A0009538C /* StoreCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCategory.swift; sourceTree = "<group>"; };
 		8303091B2A6B693C001E5F7A /* FetchSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSchedule.swift; sourceTree = "<group>"; };
 		831A12002A759BE900051561 /* NotificationsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsRowView.swift; sourceTree = "<group>"; };
 		831A12032A75FEE800051561 /* GroomerNoteForClientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomerNoteForClientView.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 				83E58E9E2A7D652A0032326B /* GroomingHistory.swift */,
 				83E58EA52A7F44670032326B /* GroomerIncome.swift */,
 				83E58EAE2A82E3F40032326B /* BookingData.swift */,
+				8301E8EA2A92F22A0009538C /* StoreCategory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -779,6 +782,7 @@
 				83E6FAA52A5DF41400732F90 /* View3.swift in Sources */,
 				83E6FABC2A5F86D200732F90 /* SuccessBookingView.swift in Sources */,
 				83E6FAA12A5DD6C500732F90 /* TestTabView.swift in Sources */,
+				8301E8EB2A92F22A0009538C /* StoreCategory.swift in Sources */,
 				8301E8E92A918F1D0009538C /* Banner.swift in Sources */,
 				8387EB032A57780600CDA143 /* RegisterViewModel.swift in Sources */,
 				831D3B962A59BCEE007BFAB5 /* RabiesExpirationView .swift in Sources */,
