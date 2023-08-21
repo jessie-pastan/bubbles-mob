@@ -23,10 +23,10 @@ struct StoreListView: View {
     var body: some View {
         NavigationStack(path: $root.path ){
            Banner()
-            ScrollView{
-                Spacer()
+            ScrollView {
+                
                 VStack(alignment: .leading){
-                    Text("Categories").bold().font(.title2).padding(.top,-20)
+                    Text("Categories").bold().font(.title2).padding(.top,-10).padding(.bottom, -5)
                     ScrollView(.horizontal, showsIndicators: false){
                         HStack(spacing: 15){
                             ForEach(StoreCategory.categories) { category in
@@ -44,7 +44,9 @@ struct StoreListView: View {
                                 .padding(.horizontal)
                                 .background(selectedCatagory.id == category.id ? Color(.systemCyan).opacity(0.3) : Color(.systemGray).opacity(0.08))
                                 .clipShape(Capsule())
-                                //button dynamic when tap 
+                                //shadows
+                                .shadow(color: Color.black.opacity(0.05), radius: 5, x: 5, y:5 )
+                                //button dynamic when tap
                                 .onTapGesture {
                                     withAnimation(.spring()){
                                         selectedCatagory = category
@@ -54,33 +56,33 @@ struct StoreListView: View {
                             }.padding(.leading, 1)
                         }
                     }
+                    
+                    
+                    
                 }.padding()
-    
-                LazyVStack{
-                    ForEach(filteredStores) { store in
-                        NavigationLink(value: store) {
-                            ZStack{
-                                
-                                StoreRowView(store: store)
-                                
+                
+                
+                VStack(alignment: .leading) {
+                    Text("Stores").bold().font(.title2).padding(.leading, 20).padding(.bottom, -20)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack( spacing: 10){
+                            
+                            ForEach(filteredStores) { store in
                                 NavigationLink(value: store) {
-                                    Text("Book an appointment")
-                                        .frame(width: 200, height: 39)
-                                        .background(Color(.systemCyan))
-                                        .foregroundColor(.white)
-                                        .cornerRadius(15)
-                                        .padding(5)
+                                    StoreRowView(store: store)
+                                    
                                 }
-                               
-                            }
+                                .accentColor(.black)
+                            }.padding(.vertical)
                         }
-                        .accentColor(.black)
+                        .padding(.horizontal)
                     }
                 }
-            }
-            .navigationDestination(for: Store.self) { store in
-                StoreDetailView(store: store)
-                
+                .navigationDestination(for: Store.self) { store in
+                    StoreDetailView(store: store)
+                    
+                }
             }
         }
         .searchable(text: $text, prompt: "Search store")

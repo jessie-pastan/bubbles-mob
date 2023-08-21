@@ -13,31 +13,41 @@ struct StoreRowView: View {
     var body: some View {
         
         VStack{
+            Button {
+                //
+            } label: {
+                Image(systemName: "heart")
+                    .font(.footnote)
+                    .foregroundColor(.black)
+                    .padding(8)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            
             
             Image(store.storeImageUrl ?? "shop2")
                 .resizable()
-                .frame(width: 350, height: 250)
+                .scaledToFit()
+                .frame(width: getRect().width / 2.5 )
+                .cornerRadius(15)
+            Text(store.name)
+                .bold()
+            Text(store.phoneNumber)
+                .font(.footnote)
+            Text(store.businessHour)
+                .font(.footnote)
+            Text(store.address)
+            .font(.footnote)
             
-            VStack(alignment: .leading){
-               
-                    Text(store.name)
-                        .font(.title)
-                    Text(store.address)
-                        .font(.title2)
-                    Text(store.businessHour)
-                        .font(.title2)
-                    Text(store.phoneNumber)
-                        .font(.title2)
-                    Text(store.about)
-                        .font(.footnote)
-                        .fontWeight(.semibold)
-                    
-                }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.leading)
-            
-            Divider()
         }
+                .padding(.horizontal,30)
+                .padding(.vertical)
+                .background(Color.white)
+                .cornerRadius(25)
+                // shadows..
+                .shadow(color: Color.black.opacity(0.1), radius: 10, x: 10, y: 0)
+            
+            
+       
         
     }
 }
@@ -45,5 +55,11 @@ struct StoreRowView: View {
 struct StoreRowView_Previews: PreviewProvider {
     static var previews: some View {
         StoreRowView(store: Store.MOCK_STORES[0])
+    }
+}
+// Extending View To Get Screen Frame...
+extension View{
+    func getRect()->CGRect{
+        return UIScreen.main.bounds
     }
 }

@@ -17,6 +17,7 @@ extension StoreCategory {
     static let categories: [StoreCategory] = [
         .init(id: 1, title: "Dog Grooming", icon: "dog"),
         .init(id: 2, title: "Cat Grooming", icon: "happycat"),
-        .init(id: 3, title: "Store Near Me", icon: "pin")
+        .init(id: 3, title: "All Store", icon: "shop"),
+        .init(id: 4, title: "Store Near Me", icon: "pin")
     ]
 }
