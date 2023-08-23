@@ -18,8 +18,11 @@ struct GroomerCompensateView: View {
                // totalPrice  of every appt. done since start working
 
                VStack{
-                   Text("Total").bold().font(.title2)
-                   Text("Compensate").foregroundColor(.gray)
+                   VStack(alignment: .leading){
+                       Text("Total").bold().font(.title)
+                       Text("Compensate").foregroundColor(.gray).font(.title3).opacity(0.5)
+                       
+                   }
                    Text("$ \(viewModel.allCompensate)")
                        .frame(width: getRect().width / 4.5)
                        .cornerRadius(15)
@@ -36,8 +39,11 @@ struct GroomerCompensateView: View {
                //MARK: Weekly Compensate
                VStack{
                    // totalPrice  of appt. done during that week
-                        Text("Weekly").bold().font(.title2)
-                        Text("Compensate(last 7 days)").foregroundColor(.gray)
+                   VStack(alignment: .leading){
+                       Text("Weekly").bold().font(.title)
+                       Text("Compensate(last 7 days)").foregroundColor(.gray).font(.title3).opacity(0.5)
+                       
+                   }
                         Text(" $\(viewModel.sevendayCompensate)")
                        .frame(width: getRect().width / 4.5)
                        .cornerRadius(15)
@@ -55,8 +61,10 @@ struct GroomerCompensateView: View {
             //MARK: Today's Compensate
              // totalPrice  of appt. done today
              VStack{
-                 Text("Today's").bold().font(.title)
-                 Text("Compensate").foregroundColor(.gray)
+                 VStack(alignment: .leading){
+                     Text("Today's").bold().font(.title)
+                     Text("Compensate").foregroundColor(.gray).font(.title3).opacity(0.5)
+                 }
                  Text("$ \(viewModel.todayCompensate)")
                      .frame(width: getRect().width / 4.5)
                      .cornerRadius(15)
