@@ -15,7 +15,7 @@ struct Banner: View {
                     .bold()
                     .font(.title2)
                 
-                Text("'Find the grooming professtional in your area'")
+                Text("'Find grooming professtional in your area'")
                     .multilineTextAlignment(.center)
                 Button {
                     //explore

@@ -22,66 +22,76 @@ struct StoreListView: View {
     
     var body: some View {
         NavigationStack(path: $root.path ){
-           Banner()
-            ScrollView {
-                
-                VStack(alignment: .leading){
-                    Text("Categories").bold().font(.title2).padding(.top,-10).padding(.bottom, -5)
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack(spacing: 15){
-                            ForEach(StoreCategory.categories) { category in
-                                HStack(spacing: 10){
-                                    Image(category.icon)
-                                        .resizable()
-                                        .frame(width: 20, height: 20)
-                                        .foregroundColor(.white)
-                                    Text(category.title)
-                                        .bold()
-                                    
-                                }
-                                .foregroundColor( selectedCatagory.id == category.id ? .white : .black)
-                                .padding(.vertical, 9)
-                                .padding(.horizontal)
-                                .background(selectedCatagory.id == category.id ? Color(.systemCyan).opacity(0.3) : Color(.systemGray).opacity(0.08))
-                                .clipShape(Capsule())
-                                //shadows
-                                .shadow(color: Color.black.opacity(0.05), radius: 5, x: 5, y:5 )
-                                //button dynamic when tap
-                                .onTapGesture {
-                                    withAnimation(.spring()){
-                                        selectedCatagory = category
+            VStack{
+                Banner()
+                ScrollView {
+                    VStack(alignment: .leading){
+                        Text("Categories").bold().font(.title2).padding(.top,-20).padding(.bottom, -5)
+                        ScrollView(.horizontal, showsIndicators: false){
+                            HStack(spacing: 15){
+                                ForEach(StoreCategory.categories) { category in
+                                    HStack(spacing: 10){
+                                        Image(category.icon)
+                                            .resizable()
+                                            .frame(width: 20, height: 20)
+                                            .foregroundColor(.white)
+                                        Text(category.title)
+                                            .bold()
+                                        
                                     }
-                                }
-                                
-                            }.padding(.leading, 1)
-                        }
-                    }
-                    
-                    
-                    
-                }.padding()
-                
-                
-                VStack(alignment: .leading) {
-                    Text("Stores").bold().font(.title2).padding(.leading, 20).padding(.bottom, -20)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        LazyHStack( spacing: 10){
-                            
-                            ForEach(filteredStores) { store in
-                                NavigationLink(value: store) {
-                                    StoreRowView(store: store)
+                                    .foregroundColor( selectedCatagory.id == category.id ? .white : .black)
+                                    .padding(.vertical, 9)
+                                    .padding(.horizontal)
+                                    .background(selectedCatagory.id == category.id ? Color(.systemCyan).opacity(0.3) : Color(.systemGray).opacity(0.08))
+                                    .clipShape(Capsule())
+                                    //shadows
+                                    .shadow(color: Color.black.opacity(0.05), radius: 0, x: 0.5, y:0.5 )
+                                    //button dynamic when tap
+                                    .onTapGesture {
+                                        withAnimation(.spring()){
+                                            selectedCatagory = category
+                                        }
+                                    }
                                     
-                                }
-                                .accentColor(.black)
-                            }.padding(.vertical)
+                                }.padding(.leading, 1)
+                            }
                         }
-                        .padding(.horizontal)
-                    }
-                }
-                .navigationDestination(for: Store.self) { store in
-                    StoreDetailView(store: store)
+                        
+                    }.padding()
                     
+                    VStack(alignment: .leading) {
+                        Text("Stores").bold().font(.title2).padding(.leading, 20).padding(.bottom, -25).padding(.top,-10)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHStack( spacing: 10){
+                                
+                                ForEach(filteredStores) { store in
+                                    NavigationLink(value: store) {
+                                        StoreRowView(store: store)
+                                    }
+                                    .accentColor(.black)
+                                }.padding(.vertical)
+                            }
+                            .padding(.horizontal)
+                        }
+                        //MARK: Reviews
+                        VStack(alignment: .leading){
+                            Text("Reviews").bold().font(.title2).padding(.top,-10).padding(.bottom, -25).padding(.leading, 20)
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                LazyHStack( spacing: 10){
+                                    ForEach(Review.MOCK_Reviews) { review in
+                                        NavigationLink(value: review) {
+                                            ReviewRowView(review: review)
+                                        }
+                                        .accentColor(.black)
+                                    }.padding(.vertical)
+                                }
+                                .padding(.horizontal)
+                            }
+                        }
+                    }
+                    .navigationDestination(for: Store.self) { store in
+                        StoreDetailView(store: store)
+                    }
                 }
             }
         }

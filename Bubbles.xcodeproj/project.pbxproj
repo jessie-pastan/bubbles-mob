@@ -10,6 +10,11 @@
 		8301E8E72A9140B20009538C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8301E8E62A9140B20009538C /* Router.swift */; };
 		8301E8E92A918F1D0009538C /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8301E8E82A918F1D0009538C /* Banner.swift */; };
 		8301E8EB2A92F22A0009538C /* StoreCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8301E8EA2A92F22A0009538C /* StoreCategory.swift */; };
+		8301E8ED2A93F0D80009538C /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8301E8EC2A93F0D80009538C /* Review.swift */; };
+		8301E9112A9530B80009538C /* ReviewRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8301E9102A9530B80009538C /* ReviewRowView.swift */; };
+		8301E9132A955EAF0009538C /* GroomerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8301E9122A955EAF0009538C /* GroomerRowView.swift */; };
+		8301E9152A9577F10009538C /* ServiceRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8301E9142A9577F10009538C /* ServiceRowView.swift */; };
+		8301E9172A95783B0009538C /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8301E9162A95783B0009538C /* Service.swift */; };
 		8303091C2A6B693C001E5F7A /* FetchSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8303091B2A6B693C001E5F7A /* FetchSchedule.swift */; };
 		831A12012A759BE900051561 /* NotificationsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A12002A759BE900051561 /* NotificationsRowView.swift */; };
 		831A12042A75FEE800051561 /* GroomerNoteForClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A12032A75FEE800051561 /* GroomerNoteForClientView.swift */; };
@@ -126,6 +131,11 @@
 		8301E8E62A9140B20009538C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8301E8E82A918F1D0009538C /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		8301E8EA2A92F22A0009538C /* StoreCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCategory.swift; sourceTree = "<group>"; };
+		8301E8EC2A93F0D80009538C /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		8301E9102A9530B80009538C /* ReviewRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRowView.swift; sourceTree = "<group>"; };
+		8301E9122A955EAF0009538C /* GroomerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomerRowView.swift; sourceTree = "<group>"; };
+		8301E9142A9577F10009538C /* ServiceRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRowView.swift; sourceTree = "<group>"; };
+		8301E9162A95783B0009538C /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		8303091B2A6B693C001E5F7A /* FetchSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSchedule.swift; sourceTree = "<group>"; };
 		831A12002A759BE900051561 /* NotificationsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsRowView.swift; sourceTree = "<group>"; };
 		831A12032A75FEE800051561 /* GroomerNoteForClientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomerNoteForClientView.swift; sourceTree = "<group>"; };
@@ -418,6 +428,9 @@
 				83D4B6862A905A0000FB4D70 /* StoreListView2.swift */,
 				83D4B6882A906C7200FB4D70 /* CategoryRow.swift */,
 				8301E8E82A918F1D0009538C /* Banner.swift */,
+				8301E9102A9530B80009538C /* ReviewRowView.swift */,
+				8301E9122A955EAF0009538C /* GroomerRowView.swift */,
+				8301E9142A9577F10009538C /* ServiceRowView.swift */,
 			);
 			path = GroomingStore;
 			sourceTree = "<group>";
@@ -519,6 +532,8 @@
 				83E58EA52A7F44670032326B /* GroomerIncome.swift */,
 				83E58EAE2A82E3F40032326B /* BookingData.swift */,
 				8301E8EA2A92F22A0009538C /* StoreCategory.swift */,
+				8301E8EC2A93F0D80009538C /* Review.swift */,
+				8301E9162A95783B0009538C /* Service.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -702,6 +717,7 @@
 				831D3B9C2A5A2187007BFAB5 /* EditPetProfileView.swift in Sources */,
 				831A9C112A71828E0043EFF2 /* GroomerBooking.swift in Sources */,
 				831A9C1E2A735D080043EFF2 /* SortedTime .swift in Sources */,
+				8301E9112A9530B80009538C /* ReviewRowView.swift in Sources */,
 				83E58EA62A7F44670032326B /* GroomerIncome.swift in Sources */,
 				83DBA9522A562E0E00D3FF7D /* Price.swift in Sources */,
 				83DBA9382A55EB7200D3FF7D /* StoreDetailView.swift in Sources */,
@@ -721,6 +737,7 @@
 				83D4B6892A906C7200FB4D70 /* CategoryRow.swift in Sources */,
 				831D3BA42A5A6F66007BFAB5 /* Test.swift in Sources */,
 				83D4B6872A905A0000FB4D70 /* StoreListView2.swift in Sources */,
+				8301E9132A955EAF0009538C /* GroomerRowView.swift in Sources */,
 				831A9C192A72F3C70043EFF2 /* GroomerBookingView.swift in Sources */,
 				83E58EAB2A82DA4C0032326B /* GroomerAnalyticView.swift in Sources */,
 				83E6FAAE2A5F54B400732F90 /* SuccessView.swift in Sources */,
@@ -738,6 +755,7 @@
 				8387EAF02A571BD700CDA143 /* RegisterView.swift in Sources */,
 				83E6FA932A5C8C1100732F90 /* BookingViewModel.swift in Sources */,
 				831A120C2A78570900051561 /* EditGroomerNoteViewModel.swift in Sources */,
+				8301E8ED2A93F0D80009538C /* Review.swift in Sources */,
 				83E6FAB42A5F706200732F90 /* GroomersView.swift in Sources */,
 				8387EB182A58850F00CDA143 /* Pet.swift in Sources */,
 				83E6FABA2A5F7F9600732F90 /* CreateBookingView.swift in Sources */,
@@ -788,10 +806,12 @@
 				831D3B962A59BCEE007BFAB5 /* RabiesExpirationView .swift in Sources */,
 				83E58E9F2A7D652A0032326B /* GroomingHistory.swift in Sources */,
 				83E58E9B2A7C6D170032326B /* PetDetailView.swift in Sources */,
+				8301E9152A9577F10009538C /* ServiceRowView.swift in Sources */,
 				8387EAFF2A57609D00CDA143 /* PetInfoView.swift in Sources */,
 				83E6FAAA2A5F4F1E00732F90 /* View4.swift in Sources */,
 				8387EB0B2A579F7500CDA143 /* ContentView.swift in Sources */,
 				83DBA91F2A55EA1800D3FF7D /* BubblesApp.swift in Sources */,
+				8301E9172A95783B0009538C /* Service.swift in Sources */,
 				83DBA9442A55EFDF00D3FF7D /* NotificationView.swift in Sources */,
 				8387EAEB2A571A8C00CDA143 /* User.swift in Sources */,
 			);
