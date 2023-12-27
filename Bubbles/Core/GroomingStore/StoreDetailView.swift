@@ -9,12 +9,8 @@ import SwiftUI
 import FirebaseFirestoreSwift
 
 struct StoreDetailView: View {
-    
     @StateObject var viewModel = StoreManager()
-    
     var store: Store
-    
-    
     @FirestoreQuery var services: [GroomingService]
     init(store: Store) {
         self.store = store
@@ -22,46 +18,43 @@ struct StoreDetailView: View {
     }
     
     var body: some View {
-       
-            VStack{
-                Text("Service of  \(store.name) ")
-                List( services ){ service in
-                    NavigationLink(value: service){
-                        Text("\(service.item)") +
-                        Text("  $ \(service.price)")
+        VStack(alignment: .leading){
+            //MARK: Services
+            VStack(alignment: .leading) {
+               
+                Text("\(store.name) Services").bold().font(.title2).padding(.leading, 20).padding(.bottom, -40).padding(.top,-10)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack( spacing: 10){
+                        
+                        ForEach(services) { service in
+                            NavigationLink(value: service) {
+                                ServiceRowView(service: service)
+                            }
+                            .accentColor(.black)
+                        }.padding(.vertical)
                     }
+                    .padding(.horizontal)
                 }
+            }
                 
-                Text("Our Groomers")
-                List(viewModel.groomers) { groomer in
-                    NavigationLink(value: groomer) {
-                        Text(groomer.userName)
+            //MARK: Groomers
+            VStack(alignment: .leading){
+                Text("Our Groomers").bold().font(.title2).padding(.top,-10).padding(.bottom, -25).padding(.leading, 20)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack( spacing: 10){
+                        ForEach(viewModel.groomers) { groomer in
+                            NavigationLink(value: groomer) {
+                                GroomerRowView(groomer: groomer)
+                                
+                            }
+                            .accentColor(.black)
+                        }.padding(.vertical)
                     }
+                    .padding(.horizontal)
                 }
-                
-              /*
-                NavigationLink {
-                   EditBookingView()
-                    
-                } label: {
-                    Text("edit booking view")
-                }
-               */
-                
+            }
             
-                NavigationLink {
-                    CreateBookingView(store: store)
-                } label: {
-                    Text("Book an appointment")
-                        .frame(width: 200, height: 39)
-                        .background(Color(.systemCyan))
-                        .foregroundColor(.white)
-                        .cornerRadius(15)
-                        .padding(5)
-                    
-                }
-                
-                
+            
             }
             .navigationDestination(for: GroomingService.self) { service in
                 GroomingServiceDetailView(service: service)
@@ -74,14 +67,26 @@ struct StoreDetailView: View {
                     try await viewModel.queryGroomers(storeId: store.id)
                 }
             }
-        }
+            
         
-    
+        //MARK: Create booking Button
+        VStack(alignment: .center) {
+            NavigationLink {
+                CreateBookingView(store: store)
+            } label: {
+                Text("Book an appointment")
+                    .bold()
+                    .frame(width: 350, height: 39)
+                    .background(Color(.systemCyan).opacity(0.5))
+                    .foregroundColor(.white)
+                    .cornerRadius(15)
+                    .padding(5)
+            }
+        }
+    }
 }
 struct BusinessDetailView_Previews: PreviewProvider {
     static var previews: some View {
         StoreDetailView(store: Store.MOCK_STORES[0])
-            
-        
     }
 }

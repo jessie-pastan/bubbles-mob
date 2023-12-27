@@ -13,32 +13,90 @@ struct GroomerCompensateView: View {
     
     var body: some View {
         VStack {
-            VStack(alignment: .leading){
-                // totalPrice  of appt. done today
-                Text("Today's compensate: $\(viewModel.todayCompensate) " )
+           HStack(){
+               //MARK: Total Compensate
+               // totalPrice  of every appt. done since start working
+
+               VStack{
+                   VStack(alignment: .leading){
+                       Text("Total").bold().font(.title)
+                       Text("Compensate").foregroundColor(.gray).font(.title3).opacity(0.5)
+                       
+                   }
+                   Text("$ \(viewModel.allCompensate)")
+                       .frame(width: getRect().width / 4.5)
+                       .cornerRadius(15)
+       
+               }
+                       .padding(.horizontal,30)
+                       .padding(.vertical)
+                       .background(Color.white)
+                       .cornerRadius(25)
+                       // shadows..
+                       .shadow(color: Color.black.opacity(0.1), radius: 10, x: 10, y: 0)
+               
+        
+               //MARK: Weekly Compensate
+               VStack{
+                   // totalPrice  of appt. done during that week
+                   VStack(alignment: .leading){
+                       Text("Weekly").bold().font(.title)
+                       Text("Compensate(last 7 days)").foregroundColor(.gray).font(.title3).opacity(0.5)
+                       
+                   }
+                        Text(" $\(viewModel.sevendayCompensate)")
+                       .frame(width: getRect().width / 4.5)
+                       .cornerRadius(15)
+                   
+               }
+               .padding(.horizontal,30)
+               .padding(.vertical)
+               .background(Color.white)
+               .cornerRadius(25)
+               // shadows..
+               .shadow(color: Color.black.opacity(0.1), radius: 10, x: 10, y: 0)
                 
-                // totalPrice  of appt. done during that week
-                Text("Weekly Compensate(last 7 days): $\(viewModel.sevendayCompensate)")
-                
-                // totalPrice  of every appt. done since start working
-                Text("Total Compensate: $\(viewModel.allCompensate)")
             }
+            
+            //MARK: Today's Compensate
+             // totalPrice  of appt. done today
+             VStack{
+                 VStack(alignment: .leading){
+                     Text("Today's").bold().font(.title)
+                     Text("Compensate").foregroundColor(.gray).font(.title3).opacity(0.5)
+                 }
+                 Text("$ \(viewModel.todayCompensate)")
+                     .frame(width: getRect().width / 4.5)
+                     .cornerRadius(15)
+     
+             }
+                     .padding(.horizontal,30)
+                     .padding(.vertical)
+                     .background(Color.white)
+                     .cornerRadius(25)
+                     // shadows..
+                     .shadow(color: Color.black.opacity(0.1), radius: 10, x: 10, y: 0)
+
+               
+
             Divider()
             
-            Text("Compensate in detail")
-            ScrollView{
-                ForEach(viewModel.sortedIncomes) { groomerIncome in
-                    if groomerIncome.income != 0 {
-                        HStack{
-                            Text("Date: \(groomerIncome.apptDate.formatted(date: .abbreviated, time: .omitted))  ")
-                                .bold()
-                            Text("Income: $\(groomerIncome.income)")
+            VStack(alignment: .leading){
+                Text("Compensate in detail").bold()
+                List{
+                    ForEach(viewModel.sortedIncomes) { groomerIncome in
+                        if groomerIncome.income != 0 {
+                            HStack{
+                                Text("Date: \(groomerIncome.apptDate.formatted(date: .abbreviated, time: .omitted))  ")
+                                    .bold()
+                                Text("Income: $\(groomerIncome.income)")
+                            }
                         }
                     }
                 }
-                
-                
             }
+            .padding()
+            
         }.onAppear {
             Task{
                 try await viewModel.fetchTodayIncome()

@@ -38,7 +38,7 @@ struct User: Codable, Identifiable ,Hashable {
 extension User {
     
     static var MOCK_USERS: [User] = [
-        .init(id: NSUUID().uuidString, email: "test@gmail.com", userName: "testUser", phoneNumber: "927.333.3333", pet: [Pet.MOCK_PETS[0]], isGroomer: false)
+        .init(id: NSUUID().uuidString, email: "test@gmail.com", userName: "testUser", phoneNumber: "927.333.3333", profileUrl: "shop3", pet: [Pet.MOCK_PETS[0]], isGroomer: false)
         
         
     ]}

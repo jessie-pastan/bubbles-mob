@@ -12,6 +12,7 @@ struct Store: Codable, Identifiable, Hashable {
     
     let id :String
     var name: String
+    var type: String
     var storeImageUrl: String?
     var address: String
     var phoneNumber: String
@@ -28,11 +29,11 @@ struct Store: Codable, Identifiable, Hashable {
 extension Store {
     static var MOCK_STORES: [Store] = [
         
-        .init(id: NSUUID().uuidString, name: "PuppyPaws", storeImageUrl: "shop1", address: "1122 73th St. Manhattan,NY", phoneNumber: "212.235.2222", businessHour: "09am-08pm daily", about: "We are the best pet grooming Store in your area", rating: 4.7, liked: false, groomingService: GroomingService.MOCK_GROOMIMGSERVICE, groomer: Groomer.groomers),
+        .init(id: NSUUID().uuidString, name: "PuppyPaws", type: "dog", storeImageUrl: "shop1", address: "1122 73th St. Manhattan,NY", phoneNumber: "212.235.2222", businessHour: "09am-08pm daily", about: "We are the best pet grooming Store in your area", rating: 4.7, liked: false, groomingService: GroomingService.MOCK_GROOMIMGSERVICE, groomer: Groomer.groomers),
         
-            .init(id: NSUUID().uuidString, name: "Silver Scissor Grooming", storeImageUrl: "shop2", address: "Midtown Manhattan,NY", phoneNumber: "212.232.2343", businessHour: "09am-08pm daily", about: "Professional groomers with high experience", rating: 4.9,liked: false, groomingService: GroomingService.MOCK_GROOMIMGSERVICE, groomer: Groomer.groomers),
+            .init(id: NSUUID().uuidString, name: "Silver Scissor Grooming", type: "all", storeImageUrl: "shop2", address: "Midtown Manhattan,NY", phoneNumber: "212.232.2343", businessHour: "09am-08pm daily", about: "Professional groomers with high experience", rating: 4.9,liked: false, groomingService: GroomingService.MOCK_GROOMIMGSERVICE, groomer: Groomer.groomers),
         
-            .init(id: NSUUID().uuidString, name: "Meow Meow Love"  ,storeImageUrl: "shop5", address: "Downtown Manhattan,NY", phoneNumber: "213.359.0023", businessHour: "09am-08pm daily", about: "Take the best care to your little furbaby", rating: 4.0, liked: false, groomingService: GroomingService.MOCK_GROOMIMGSERVICE,groomer: Groomer.groomers)
+            .init(id: NSUUID().uuidString, name: "Meow Meow Love", type: "cat"  ,storeImageUrl: "shop5", address: "Downtown Manhattan,NY", phoneNumber: "213.359.0023", businessHour: "09am-08pm daily", about: "Take the best care to your little furbaby", rating: 4.0, liked: false, groomingService: GroomingService.MOCK_GROOMIMGSERVICE,groomer: Groomer.groomers)
         ]
     /*
         .init(id: NSUUID().uuidString, name: "Smiley Pups",storeImageUrl: "shop4", address: "Soho, Manhattan,NY", phoneNumber: "542.222.2532", businessHour: "09am-08pm daily", about: "We are the best pet grooming Store in your area", rating: 4.9, liked: false),
