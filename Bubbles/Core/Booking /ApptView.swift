@@ -12,6 +12,8 @@ struct ApptView: View {
     @StateObject var viewModel = ApptViewModel()
     
     var body: some View {
+        Text("Appt view")
+        /*
         VStack{
         if !viewModel.appts.isEmpty {
             if let appts = viewModel.sortedAppts.filter({ $0.isDone == false}){
@@ -44,6 +46,7 @@ struct ApptView: View {
         
             
         }
+         */
     }
 }
     

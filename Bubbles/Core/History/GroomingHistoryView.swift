@@ -14,6 +14,8 @@ struct GroomingHistoryView: View {
     
     
     var body: some View {
+        Text("")
+        /*
         VStack{
             if !viewModel.appts.isEmpty {
                 if let appts = viewModel.sortedAppts.filter({ $0.isDone == true}){
@@ -87,6 +89,7 @@ struct GroomingHistoryView: View {
                 try await viewModel.fetchAppt()
             }
         }
+         */
     }
 }
 

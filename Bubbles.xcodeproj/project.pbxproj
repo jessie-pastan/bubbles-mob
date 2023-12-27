@@ -35,7 +35,6 @@
 		831D3B9C2A5A2187007BFAB5 /* EditPetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D3B9B2A5A2187007BFAB5 /* EditPetProfileView.swift */; };
 		831D3BA02A5A4D2E007BFAB5 /* ExploreGroomerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D3B9F2A5A4D2E007BFAB5 /* ExploreGroomerView.swift */; };
 		831D3BA22A5A50D1007BFAB5 /* GroomerViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D3BA12A5A50D1007BFAB5 /* GroomerViewRow.swift */; };
-		831D3BA42A5A6F66007BFAB5 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D3BA32A5A6F66007BFAB5 /* Test.swift */; };
 		8327A45D2A744443009A30AC /* SearchPetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8327A45C2A744443009A30AC /* SearchPetView.swift */; };
 		8387EADC2A563D0900CDA143 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387EADB2A563D0900CDA143 /* Appointment.swift */; };
 		8387EAE02A564B2F00CDA143 /* CompleteBookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387EADF2A564B2F00CDA143 /* CompleteBookingView.swift */; };
@@ -156,7 +155,6 @@
 		831D3B9B2A5A2187007BFAB5 /* EditPetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPetProfileView.swift; sourceTree = "<group>"; };
 		831D3B9F2A5A4D2E007BFAB5 /* ExploreGroomerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreGroomerView.swift; sourceTree = "<group>"; };
 		831D3BA12A5A50D1007BFAB5 /* GroomerViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomerViewRow.swift; sourceTree = "<group>"; };
-		831D3BA32A5A6F66007BFAB5 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		8327A45C2A744443009A30AC /* SearchPetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPetView.swift; sourceTree = "<group>"; };
 		8387EADB2A563D0900CDA143 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		8387EADF2A564B2F00CDA143 /* CompleteBookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteBookingView.swift; sourceTree = "<group>"; };
@@ -606,7 +604,6 @@
 			isa = PBXGroup;
 			children = (
 				83E6FA9B2A5D083C00732F90 /* Test2.swift */,
-				831D3BA32A5A6F66007BFAB5 /* Test.swift */,
 				83E6FAA02A5DD6C500732F90 /* TestTabView.swift */,
 				83E6FAAF2A5F584C00732F90 /* Profile.swift */,
 				83E6FA9E2A5DD65200732F90 /* View1.swift */,
@@ -657,7 +654,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					83DBA91A2A55EA1800D3FF7D = {
 						CreatedOnToolsVersion = 14.2;
@@ -735,7 +732,6 @@
 				83E6FAB82A5F726E00732F90 /* BookingWithGroomerView.swift in Sources */,
 				8387EADC2A563D0900CDA143 /* Appointment.swift in Sources */,
 				83D4B6892A906C7200FB4D70 /* CategoryRow.swift in Sources */,
-				831D3BA42A5A6F66007BFAB5 /* Test.swift in Sources */,
 				83D4B6872A905A0000FB4D70 /* StoreListView2.swift in Sources */,
 				8301E9132A955EAF0009538C /* GroomerRowView.swift in Sources */,
 				831A9C192A72F3C70043EFF2 /* GroomerBookingView.swift in Sources */,
@@ -856,6 +852,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -916,6 +913,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1021,7 +1019,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
+				minimumVersion = 10.0.0;
 			};
 		};
 		8387EB0E2A57AE6D00CDA143 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
