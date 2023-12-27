@@ -380,6 +380,7 @@
 				8387EAE12A564E2500CDA143 /* Components */,
 				83DBA94A2A56126000D3FF7D /* Core */,
 				83DBA94B2A5612A100D3FF7D /* Models */,
+				83E6FA982A5CFEE500732F90 /* Helpers */,
 				83DBA94C2A5612B200D3FF7D /* Services */,
 				83DBA9222A55EA1B00D3FF7D /* Assets.xcassets */,
 				8387EAFC2A574F3200CDA143 /* GoogleService-Info.plist */,
@@ -614,7 +615,6 @@
 				83E6FAB12A5F5AE200732F90 /* BookingView2.swift */,
 				8303091B2A6B693C001E5F7A /* FetchSchedule.swift */,
 				83E6FAAD2A5F54B400732F90 /* SuccessView.swift */,
-				83E6FA982A5CFEE500732F90 /* Helpers */,
 			);
 			path = Test;
 			sourceTree = "<group>";
