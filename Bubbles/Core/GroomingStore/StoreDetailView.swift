@@ -77,7 +77,7 @@ struct StoreDetailView: View {
                 Text("Book an appointment")
                     .bold()
                     .frame(width: 350, height: 39)
-                    .background(Color(.systemCyan).opacity(0.5))
+                    .background(Color(.systemCyan))
                     .foregroundColor(.white)
                     .cornerRadius(15)
                     .padding(5)

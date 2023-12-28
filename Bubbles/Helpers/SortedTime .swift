@@ -42,8 +42,9 @@ class SortedTime {
         }
     }
     
+    //showing income from recent > past 
     static func sortedByDate(incomes: [GroomerIncomeData]) -> [GroomerIncomeData] {
-        return incomes.sorted { $0.apptDate < $1.apptDate}
+        return incomes.sorted { $0.apptDate > $1.apptDate}
         }
     
     

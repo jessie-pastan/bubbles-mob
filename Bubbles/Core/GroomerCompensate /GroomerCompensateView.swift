@@ -19,8 +19,8 @@ struct GroomerCompensateView: View {
 
                VStack{
                    VStack(alignment: .leading){
-                       Text("Total").bold().font(.title)
-                       Text("Compensate").foregroundColor(.gray).font(.title3).opacity(0.5)
+                       Text("Total").bold().font(.title2)
+                       Text("Compensate").foregroundColor(.gray).font(.caption).opacity(0.5)
                        
                    }
                    Text("$ \(viewModel.allCompensate)")
@@ -40,8 +40,8 @@ struct GroomerCompensateView: View {
                VStack{
                    // totalPrice  of appt. done during that week
                    VStack(alignment: .leading){
-                       Text("Weekly").bold().font(.title)
-                       Text("Compensate(last 7 days)").foregroundColor(.gray).font(.title3).opacity(0.5)
+                       Text("Weekly").bold().font(.title2)
+                       Text("Compensate(last 7 days)").foregroundColor(.gray).font(.caption).opacity(0.5)
                        
                    }
                         Text(" $\(viewModel.sevendayCompensate)")
@@ -63,7 +63,7 @@ struct GroomerCompensateView: View {
              VStack{
                  VStack(alignment: .leading){
                      Text("Today's").bold().font(.title)
-                     Text("Compensate").foregroundColor(.gray).font(.title3).opacity(0.5)
+                     Text("Compensate").foregroundColor(.gray).font(.caption).opacity(0.5)
                  }
                  Text("$ \(viewModel.todayCompensate)")
                      .frame(width: getRect().width / 4.5)
@@ -77,25 +77,37 @@ struct GroomerCompensateView: View {
                      // shadows..
                      .shadow(color: Color.black.opacity(0.1), radius: 10, x: 10, y: 0)
 
-               
-
-            Divider()
+        Spacer()
+            //MARK: Compensate in detail
+            if !viewModel.sortedIncomes.isEmpty {
             
-            VStack(alignment: .leading){
-                Text("Compensate in detail").bold()
-                List{
-                    ForEach(viewModel.sortedIncomes) { groomerIncome in
-                        if groomerIncome.income != 0 {
-                            HStack{
-                                Text("Date: \(groomerIncome.apptDate.formatted(date: .abbreviated, time: .omitted))  ")
-                                    .bold()
-                                Text("Income: $\(groomerIncome.income)")
+                VStack(alignment: .center){
+                    Text("Compensate in detail").bold()
+                    ScrollView {
+                        ForEach(viewModel.sortedIncomes) { groomerIncome in
+                            if groomerIncome.income != 0 {
+                                HStack{
+                                    Text("Date: \(groomerIncome.apptDate.formatted(date: .abbreviated, time: .omitted))  ")
+                                        .bold()
+                                    Text("Income: $\(groomerIncome.income)")
+                                }
                             }
+                            
                         }
                     }
+                    
+                    
                 }
+                .padding()
+                .background(Color(.systemBackground).clipShape(RoundedRectangle(cornerRadius: 20)))
+                .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 0, y:5)
+            }else{
+                Text("No recent income")
+                    .bold()
+                    .frame( maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                
             }
-            .padding()
+            
             
         }.onAppear {
             Task{

@@ -11,8 +11,8 @@ import Firebase
 
 @MainActor
 class ApptViewModel : ObservableObject {
-    @Published var appts = [Appointment]()
-    @Published var sortedAppts = [Appointment]()
+    @Published var appts: [Appointment]?
+    @Published var sortedAppts: [Appointment]?
     @Published var selectedAppt: Appointment?
     
 
@@ -25,7 +25,7 @@ class ApptViewModel : ObservableObject {
     
     func fetchAppt() async throws {
         self.appts = try await UserService.fetchUserAppts()
-        self.sortedAppts = SortedTime.sortedItemsByDayAndTime(appts: appts)
+        self.sortedAppts = SortedTime.sortedItemsByDayAndTime(appts: appts ?? Appointment.MOCK_APPOINTMENTS)
     }
     
     func deleteAppt(appt: Appointment) async throws {
