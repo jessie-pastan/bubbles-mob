@@ -17,12 +17,13 @@ struct Banner: View {
                 
                 Text("'Find grooming professtional in your area'")
                     .multilineTextAlignment(.center)
+                    .padding(.horizontal)
                 Button {
                     //explore
                 } label: {
                     ZStack{
                         Rectangle()
-                            .frame(width: 100, height: 39)
+                            .frame(width: 100, height: 29)
                             .background(Color(.systemCyan))
                             .opacity(0.1)
                             .cornerRadius(15)
@@ -32,6 +33,7 @@ struct Banner: View {
                             .bold()
                     }
                 }
+                .padding(.bottom,20)
             }
             Image("bubbles banner")
                 .resizable()
